@@ -12,8 +12,7 @@
                  ?>
 
              <td valign="top">
-             <div class="p_navigator">    
-
+             <div class="p_navigator">
 
 <<select name="filters" class="edbx" id="filters" onclick="f()" style="margin-right: 30px;" >
   <option hidden value="1">Filtruj wg</option>
@@ -47,19 +46,19 @@
                 xhttp.send();
             }
             else if(document.getElementById("filters").value == 2){
-                xhttp.open("GET", "zap2.php", true);
+                xhttp.open("GET", "?action=zap2", true);
                 xhttp.send();
             }
             else if(document.getElementById("filters").value == 3){
-                xhttp.open("GET", "zap3.php", true);
+                xhttp.open("GET", "?action=zap3", true);
                 xhttp.send();
             }
              else if(document.getElementById("filters").value == 4){
-                xhttp.open("GET", "zap4.php", true);
+                xhttp.open("GET", "?action=zap4", true);
                 xhttp.send();
             }
             else if(document.getElementById("filters").value == 5){
-                xhttp.open("GET", "zap5.php", true);
+                xhttp.open("GET", "?action=zap5", true);
                 xhttp.send();
             }
             }
@@ -71,7 +70,7 @@
                 }
                 };
             temp = document.getElementById("sz_text").value;
-                xhttp.open("GET", "zap6.php?temp="+temp, true);
+                xhttp.open("GET", "?action=zap6?temp="+temp, true);
                 xhttp.send();
         }
     </script>
