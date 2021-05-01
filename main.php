@@ -70,7 +70,7 @@
                 }
                 };
             temp = document.getElementById("sz_text").value;
-                xhttp.open("GET", "?action=zap6?temp="+temp, true);
+                xhttp.open("GET", "?action=zap6&temp="+temp, true);
                 xhttp.send();
         }
     </script>

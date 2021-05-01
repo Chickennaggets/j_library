@@ -1,16 +1,5 @@
  <?php
-session_start();
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "library";
-
-$temp = $_GET["temp"];
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
+ $temp = $_GET["temp"];
 
 $sql = "select id_song, name_song, count, author, folder.name_folder from song left join folder on song.id_folder = folder.id_folder where name_song like '%$temp%'; ";
 $result = $conn->query($sql);
