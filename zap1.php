@@ -9,7 +9,7 @@ if ($result->num_rows > 0) {
   echo "<tr><td>Numer teczki</td><td>Nazwa utworu</td><td>Ilość partytur</td><td>Autor</td><td>Nazwa teczki</td></tr>";
   while($row = $result->fetch_assoc()) {
 
-  echo "<tr><td>".$row["id_song"]."</td><td><a class = 'a' href=song.php?id=".$row["id_song"].">".
+  echo "<tr><td>".$row["id_song"]."</td><td><a class = 'a' href='?action=song&id=".$row["id_song"]."'>".
       $row["name_song"]."</a></td><td>".$row["count"]."</td><td>"
       .$row["author"]."</td><td>".$row["name_folder"]."</td></tr>";
   }

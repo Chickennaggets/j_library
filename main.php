@@ -12,14 +12,14 @@
              <td valign="top">
              <div class="p_navigator">
 
-<<select name="filters" class="edbx" id="filters" onclick="f()" style="margin-right: 30px;" >
+<select name="filters" class="edbx" id="filters" onclick="f()" style="margin-right: 30px;" >
   <option hidden value="1">Filtruj wg</option>
   <option value="1">Numeru teczki</option>
   <option value="2">Autora</option>
   <option value="3">Nazwy utworu</option>
   <option value="4">Ilości partytur</option>
   <option value="5">Nazwy teczki</option>
-</select>>
+</select>
      <input type = "text" id="sz_text" class="edbx" placeholder="Szukaj*" onchange="sz()">   
                  <input type="button" value="Szukaj" class="btn" id="sz_btn" onclick="sz()" style="margin-left: 10px;">
                  
