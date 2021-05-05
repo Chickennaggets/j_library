@@ -1,6 +1,5 @@
 <html>
 <?php
-    session_start();
     print_header();
 ?>
 
@@ -10,7 +9,6 @@
                  <?php
                     print_nav_menu();
                  ?>
-
              <td valign="top">
              <div class="p_navigator">
 
@@ -27,9 +25,6 @@
                  
                  <br><br>
                  <div id = "demo">
-
-
-
                  </div>  </div> </td>
     </table>
     <script>

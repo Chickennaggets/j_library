@@ -2,7 +2,7 @@
     function print_header(){
         echo '<head>
     <title>Biblioteka Chóru Katedralnego</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../public/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
     <div class="header">
@@ -25,5 +25,5 @@
                      <a href='?action=folders' class = 'a'>Teczki</a><br>
                      <a href='?action=users' class = 'a'>Użytkowniki</a><br>";
                  }
-                 echo '<a href="action=authorization" class = "a">Wyloguj</a><br></div></td>';
+                 echo '<a href="authorization.html" class = "a">Wyloguj</a><br></div></td>';
     }
