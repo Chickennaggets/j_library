@@ -35,18 +35,7 @@
               <div class="p_navigator" style="width: 100%;">   
          <div class="regform_d">
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "library";
-
-                 
 $id = $_GET["id"];
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
 
 $sql = "select id_song, name_song, count, author, folder.name_folder, song.note from song left join folder on song.id_folder = folder.id_folder where id_song = '$id'";
 $result = $conn->query($sql);
@@ -66,19 +55,9 @@ if ($result->num_rows > 0) {
 } else {
   echo "Nie ma danych";
 }
-$conn->close();
 ?>
        
         <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "library";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
 
 $sql = "select * from folder order by name_folder";
 $result = $conn->query($sql);
@@ -92,7 +71,6 @@ if ($result->num_rows > 0) {
 } else {
   echo "Nie ma danych";
 }
-$conn->close();
 ?>
         
 	<input type="submit" name="submit"  class="btn" value="Zachowaj">

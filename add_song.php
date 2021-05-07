@@ -21,15 +21,6 @@
 	<input type="text" class="edbx" name="autor" id="autor" required placeholder="Autor" data-validate><br><br>
        
         <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "library";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
 
 $sql = "select * from folder order by name_folder";
 $result = $conn->query($sql);
@@ -44,7 +35,6 @@ if ($result->num_rows > 0) {
 } else {
   echo "Nie ma danych";
 }
-$conn->close();
 ?>
        
              <textarea name="notatki" id="notatki" placeholder="Notatki"></textarea><br><br>

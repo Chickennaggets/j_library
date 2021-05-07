@@ -1,18 +1,10 @@
  <?php
-session_write_close();
-session_start();
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "library";
+session_destroy();
 
 $login = $_POST['log'];
 $pass = $_POST['has'];
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
+
 
 $sql = "select login, ac_password, activated, adminn from accounts where login = '$login' && ac_password = '$pass';";
 $result = $conn->query($sql);
@@ -36,5 +28,4 @@ else {
   echo "Nieprawidłowy login albo hasło";
 }
 echo "<br><a href='authorization.html'>Zaloguj</a>";
-$conn->close();
 ?>

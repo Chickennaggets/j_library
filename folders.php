@@ -11,15 +11,6 @@
                  <div class="p_navigator" style="width: 100%;">
            <a class = "a" href="add_fold.php">Nowa teczka</a><br><br>    
         <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "library";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
 
 $sql = "select name_folder, note from folder order by name_folder;";
 $result = $conn->query($sql);
@@ -38,7 +29,6 @@ if ($result->num_rows > 0) {
 } else {
   echo "Nie ma danych";
 }
-$conn->close();
 ?>
                  </div>
        </td>
