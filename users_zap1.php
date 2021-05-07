@@ -1,16 +1,10 @@
  <?php
-session_start();
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "library";
+ global $conn;
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
+$sql = "SELECT login, ac_password, activated, adminn, regist_date 
+        FROM accounts 
+        ORDER BY login;";
 
-$sql = "select login, ac_password, activated, adminn, regist_date from accounts order by login;";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {

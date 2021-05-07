@@ -1,6 +1,8 @@
  <?php
-$login = mysqli_real_escape_string($conn, $_GET["login"]);
-$stat = mysqli_real_escape_string($conn, $_GET["status"]);
+ global $conn;
+
+$login = getParameter($_GET["login"], 'String');
+$stat = getParameter($_GET["status"], 'String');
 
 $stat = !$stat;
 

@@ -1,6 +1,8 @@
  <?php
-$name_fold = $_POST['name_fold'];
-$notes = $_POST['note'];
+ global $conn;
+
+$name_fold = getParameter($_POST['name_fold'], 'String');
+$notes = getParameter($_POST['note'], 'String');
 
 $sql = "INSERT INTO folder(name_folder, note) 
             VALUES ('$name_fold', '$notes');";
@@ -8,7 +10,7 @@ $sql = "INSERT INTO folder(name_folder, note)
 
 if ($conn->query($sql) === TRUE) {
     echo "Teczka dodana<br>";
-    echo "<meta http-equiv='refresh' content='1; url=folders.php'>";
+    header('Location: folders.php');
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
     echo "<br><br>Możliwe że taka teczka już istnieje.";

@@ -1,7 +1,9 @@
  <?php
-$name_folder = $_GET["name_folder"];
+ global $conn;
+$name_folder = getParameter($_GET["name_folder"], 'String');
 
-$sql = "delete from folder where name_folder='$name_folder';";
+$sql = "DELETE FROM folder 
+        WHERE name_folder='$name_folder';";
 
 if ($conn->query($sql) === TRUE) {
   header('Location: folders.php');

@@ -1,7 +1,10 @@
  <?php
-$login = $_GET["login"];
+ global $conn;
 
-$sql = "delete from accounts where login='$login';";
+$login = getParameter($_GET["login"], 'String');
+
+$sql = "DELETE FROM accounts 
+        WHERE login='$login';";
 
 
 if ($conn->query($sql) === TRUE) {
