@@ -6,7 +6,10 @@ $pass = getParameter($_POST['has'], 'String');
 
 
 
-$sql = "select login, ac_password, activated, adminn from accounts where login = '$login' && ac_password = '$pass';";
+$sql = "SELECT activated, adminn 
+        FROM accounts 
+        WHERE login = '$login' && ac_password = '$pass';";
+
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
