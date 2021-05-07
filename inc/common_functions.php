@@ -21,10 +21,9 @@
                  }else{
                      echo "(Użytkownik)<br><br>";
                  }
-             echo '<a href="?action=main" class = "a">Główna</a><br>';
+             echo '<a href="?action=main" class = "a">Utwory</a><br>';
                  if($_SESSION["root"]) {
-                     echo "<a href='?action=add_song' class = 'a'>Nowy utwór</a><br>
-                           <a href='?action=folders' class = 'a'>Teczki</a><br>
+                     echo "<a href='?action=folders' class = 'a'>Teczki</a><br>
                            <a href='?action=users' class = 'a'>Użytkowniki</a><br>";
                  }
                  echo '<a href="?action=authorization" class = "a">Wyloguj</a><br>

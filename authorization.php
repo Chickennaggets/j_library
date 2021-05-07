@@ -1,20 +1,12 @@
 <!doctype html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="style.css">
-     <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
-    <title>Authorization</title>
-    <div class="header">
-        <h1 class="zagl">Biblioteka Chóru Katedralnego</h1>
-    </div>
-    
-</head>
+<?php
+    print_header();
+?>
 <body>
     <div style="width: 100%; text-align: center;">
 <div class="reg_form">
-    <form method="post" action="authorization_sql.php" class = "form" id="fform">
+    <form method="post" action="?action=authorization_sql" class = "form" id="fform">
           <h1 style="text-align: center; margin: 30px; background-color: transparent;">Zaloguj się</h1>
 	
 	<input type="text" class="edbx" name="log" id="log" required placeholder="Login*" data-validate><br><br>
@@ -22,7 +14,7 @@
 	<input type="password" class="edbx" name="has" id="has" required placeholder="Hasło*" onchange="checkpasswords()" data-validate><br><br>
   
 <input type="submit" class="btn" value="Zaloguj"><br><br>
-        <a class = "a" href="registration.php">Zarejestruj</a>
+        <a class = "a" href="?action=registration">Zarejestruj</a>
     </form>
     </div>
         </div>

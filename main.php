@@ -12,6 +12,11 @@
              </td>
              <td valign="top">
                  <div class="p_navigator">
+                     <?php
+                     if($_SESSION["root"]){
+                         echo "<a href = '?action=add_song' class = 'a' style = 'margin-right: 30px'>Nowy utwór</a>";
+                     }
+                     ?>
                     <select name="filters" class="edbx" onchange="m_srch()" id="filters" style="margin-right: 30px;" >
                         <option hidden value="id_song">Filtruj wg</option>
                         <option value="id_song">Numeru teczki</option>
