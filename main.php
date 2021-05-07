@@ -11,36 +11,25 @@
                  ?>
              </td>
              <td valign="top">
-             <div class="p_navigator">
-
-<select name="filters" class="edbx" id="filters" style="margin-right: 30px;" >
-    <option hidden value="id_song">Filtruj wg</option>
-    <option value="id_song">Numeru teczki</option>
-    <option value="author">Autora</option>
-    <option value="name_song">Nazwy utworu</option>
-    <option value="count">Ilości partytur</option>
-    <option value="name_folder">Nazwy teczki</option>
-</select>
-     <input type = "text" id="sz_text" class="edbx" placeholder="Szukaj*" onchange="sz()">   
-                 <input type="button" value="Szukaj" class="btn" id="sz_btn" onclick="sz()" style="margin-left: 10px;">
-                 <br><br>
-                 <div id = "demo">
-                 </div>  </div> </td>
+                 <div class="p_navigator">
+                    <select name="filters" class="edbx" onchange="m_srch()" id="filters" style="margin-right: 30px;" >
+                        <option hidden value="id_song">Filtruj wg</option>
+                        <option value="id_song">Numeru teczki</option>
+                        <option value="author">Autora</option>
+                        <option value="name_song">Nazwy utworu</option>
+                        <option value="count">Ilości partytur</option>
+                        <option value="name_folder">Nazwy teczki</option>
+                    </select>
+                     <input type = "text" id="sz_text" class="edbx" placeholder="Szukaj*" onchange="m_srch()">
+                     <input type="button" value="Szukaj" class="btn" id="sz_btn" onclick="m_srch()" style="margin-left: 10px;"><br><br>
+                     <div id = "demo">
+                     </div>
+                 </div>
+             </td>
+         </tr>
     </table>
-    <script>
-        sz();
-        function sz(){
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function(){
-                if(this.readyState == 4 && this.status == 200){
-                    document.getElementById("demo").innerHTML = this.responseText;
-                }
-                };
-            var word = document.getElementById("sz_text").value;
-            var filt = document.getElementById("filters").value
-                xhttp.open("GET", "?action=zap1&parameter="+filt+"&word="+word, true);
-                xhttp.send();
-        }
-    </script>
+        <script>
+            m_srch();
+        </script>
     </body>
 </html>

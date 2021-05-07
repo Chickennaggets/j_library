@@ -3,6 +3,7 @@
         echo '<head>
     <title>Biblioteka Chóru Katedralnego</title>
     <link rel="stylesheet" href="../public/style.css">
+    <script src="../public/script.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
     <div class="header">
