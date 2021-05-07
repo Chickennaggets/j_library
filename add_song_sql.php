@@ -12,7 +12,7 @@ $sql = "INSERT INTO song(name_song, count, author, id_folder, note)
 
 if ($conn->query($sql) === TRUE) {
     echo "Nowy utwór został dodany<br>";
-    echo "<meta http-equiv='refresh' content='1; url=main.php'>";
+    echo "<meta http-equiv='refresh' content='1; url=?action=main'>";
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }

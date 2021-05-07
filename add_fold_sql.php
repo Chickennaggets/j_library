@@ -10,7 +10,7 @@ $sql = "INSERT INTO folder(name_folder, note)
 
 if ($conn->query($sql) === TRUE) {
     echo "Teczka dodana<br>";
-    header('Location: folders.php');
+    header('Location: ?action=folders');
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
     echo "<br><br>Możliwe że taka teczka już istnieje.";

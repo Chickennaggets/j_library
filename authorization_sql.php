@@ -1,8 +1,8 @@
  <?php
 session_destroy();
-
-$login = $_POST['log'];
-$pass = $_POST['has'];
+global $conn;
+$login = getParameter($_POST['log'],'String');
+$pass = getParameter($_POST['has'], 'String');
 
 
 
@@ -27,5 +27,5 @@ if ($result->num_rows > 0) {
 else {
   echo "Nieprawidłowy login albo hasło";
 }
-echo "<br><a href='authorization.html'>Zaloguj</a>";
+echo "<br><a href='?action=authorization'>Zaloguj</a>";
 ?>

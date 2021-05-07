@@ -27,7 +27,7 @@
                            <a href='?action=folders' class = 'a'>Teczki</a><br>
                            <a href='?action=users' class = 'a'>Użytkowniki</a><br>";
                  }
-                 echo '<a href="authorization.html" class = "a">Wyloguj</a><br>
+                 echo '<a href="?action=authorization" class = "a">Wyloguj</a><br>
                 </div>';
     }
 

@@ -19,7 +19,7 @@
                 <span class="help-text"></span><br>
   
                 <input type="button" onclick="reg()" class="btn" value="Zarejestruj"><br><br>
-                <a class = "a" href="authorization.html">Zalogj</a>
+                <a class = "a" href="?action=authorization">Zalogj</a>
             </form>
         </div>
     </div>
