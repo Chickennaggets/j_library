@@ -1,7 +1,8 @@
  <?php
+global $conn;
 
-$parameter = mysqli_real_escape_string($conn, $_GET['parameter']);
-$word = mysqli_real_escape_string($conn, $_GET['word']);
+$parameter = getParameter($_GET['parameter'], 'String');
+$word = getParameter($_GET['word'], 'String');
 
 $sql = "SELECT id_song, name_song, count, author, folder.name_folder
                     FROM song 

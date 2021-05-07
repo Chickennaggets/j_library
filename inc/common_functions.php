@@ -10,7 +10,8 @@
                                 <h1 class="zagl">Biblioteka Chóru Katedralnego</h1>   
                             </div>
                </head>';
-}
+    }
+
     function print_nav_menu()
     {
         echo '<div class="navigator">';
@@ -29,3 +30,17 @@
                  echo '<a href="authorization.html" class = "a">Wyloguj</a><br>
                 </div>';
     }
+
+    function getParameter($var, $type){
+        global $conn;
+        switch ($type){
+            case "String":
+                return mysqli_real_escape_string($conn, $var);
+                break;
+            case "Integer":
+                return intval($var);
+                break;
+        }
+    }
+
+
