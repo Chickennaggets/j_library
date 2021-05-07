@@ -4,9 +4,11 @@
 ?>
 <body>
     <table>
-        <tr><?php
+        <tr><td style="width: 180px;" valign="top">
+                <?php
                 print_nav_menu();
-            ?>
+                ?>
+            </td>
              <td valign="top" style="width: 80%;">
                  <div class="p_navigator" style="width: 100%;">
            <a class = "a" href="add_fold.php">Nowa teczka</a><br><br>    

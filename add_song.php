@@ -5,9 +5,11 @@
 <body>
     <table>
          <tr>
-             <?php
-                print_nav_menu();
-             ?>
+             <td style="width: 180px;" valign="top">
+                 <?php
+                 print_nav_menu();
+                 ?>
+             </td>
              <td valign="top" style="width: 80%">
                  <div class="p_navigator" style="width: 100%;">
                  

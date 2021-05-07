@@ -11,25 +11,9 @@
 <body>
     <table>
          <tr><td style="width: 180px;" valign="top">
-             <div class="navigator">
-                   <?php 
-                 session_start();
-                 echo $_SESSION["online_login"]."<br>";
-                 if($_SESSION["root"]){
-                     echo "(Administrator)<br><br>";
-                 }else{
-                     echo "(Użytkownik)<br><br>";
-                 }?>
-             <a href="main.php" class = "a">Główna</a><br>
                  <?php
-                 if($_SESSION["root"]){
-                     echo "<a href='add_song.php' class = 'a'>Nowy utwór</a><br>";
-                     echo "<a href='folders.php' class = 'a'>Teczki</a><br>";
-                     echo "<a href='users.php' class = 'a'>Użytkowniki</a><br>";
-                 }                
+                 print_nav_menu();
                  ?>
-              <a href="authorization.html" class = "a">Wyloguj</a><br>
-             </div>
              </td>
             <td valign="top" style="width: 80%;">
                  <div class="p_navigator" style="width: 100%;">

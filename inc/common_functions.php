@@ -12,7 +12,7 @@
 }
     function print_nav_menu()
     {
-        echo '<td style="width: 180px;" valign="top"><div class="navigator">';
+        echo '<div class="navigator">';
                  echo $_SESSION["online_login"]."<br>";
                  if($_SESSION["root"]){
                      echo "(Administrator)<br><br>";
@@ -25,5 +25,5 @@
                      <a href='?action=folders' class = 'a'>Teczki</a><br>
                      <a href='?action=users' class = 'a'>Użytkowniki</a><br>";
                  }
-                 echo '<a href="authorization.html" class = "a">Wyloguj</a><br></div></td>';
+                 echo '<a href="authorization.html" class = "a">Wyloguj</a><br></div>';
     }
