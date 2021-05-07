@@ -8,7 +8,7 @@ $pass = getParameter($_POST['has'], 'String');
 
 
 
-$sql = "SELECT activated, adminn 
+$sql = "SELECT login, activated, adminn 
         FROM accounts 
         WHERE login = '$login' && ac_password = '$pass';";
 
@@ -16,7 +16,7 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
-    if($row["activated"]===false){
+    if(!$row["activated"]){
         echo "Konto nie jest aktywne. Skontaktuj się z administratorem, aby aktywować swoje konto.";
     }
     else if($row["activated"]){
