@@ -32,8 +32,8 @@
                             <hr>Teczka: ".$row["name_folder"]."<br>
                             <hr>Notatki: ".$row["note"]."</h2>";
                           if($_SESSION["root"]){
-                               echo "<br><br><br><a class = 'a' href=edit_song.php?id=".$row["id_song"].">Edycja</a>";
-                                echo "<br><br><a class = 'a' href=delete_song_sql.php?id=".$row["id_song"].">Usunąć utwór</a>";
+                               echo "<br><br><br><a class = 'a' href=?action=edit_song&id=".$row["id_song"].">Edycja</a>";
+                                echo "<br><br><a class = 'a' href=?action=delete_song_sql&id=".$row["id_song"].">Usunąć utwór</a>";
                           }
 
                       }
