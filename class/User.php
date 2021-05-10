@@ -1,12 +1,21 @@
 <?php
 
-const TABLE = 'table_name';
+const TABLE = 'accounts';
 
 class User
 {
 
     function isLogin() {
         if(isset($_SESSION["online_login"])){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    function isAdmin() {
+        if(isset($_SESSION["root"])){
             return true;
         }
         else{

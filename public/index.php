@@ -11,6 +11,8 @@ $oUser = new User();
 global $conn;
 $conn = new mysqli(DB_SERVER, DB_USER, DB_PAS, DB_NAME);
 
+//$query = $_GET['action'] ? $_GET['action'] : 'section';
+
 $action = $oUser->isLogin() ? $action : 'authorization';
 
 if ($conn->connect_error) {

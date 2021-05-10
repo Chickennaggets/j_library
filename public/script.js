@@ -7,7 +7,7 @@ function m_srch(){
     };
     var word = document.getElementById("sz_text").value;
     var filt = document.getElementById("filters").value
-    xhttp.open("GET", "?action=zap1&parameter="+filt+"&word="+word, true);
+    xhttp.open("GET", "?action=zap&parameter="+filt+"&word="+word, true);
     xhttp.send();
 }
 
@@ -55,6 +55,10 @@ function u_srch(){
     };
     var word = document.getElementById("sz_text").value;
     var filt = document.getElementById("filters").value
-    xhttp.open("GET", "?action=users_zap1&parameter="+filt+"&word="+word, true);
+    xhttp.open("GET", "?action=users_zap&parameter="+filt+"&word="+word, true);
     xhttp.send();
+}
+
+function switchTab(){
+
 }
