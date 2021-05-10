@@ -42,4 +42,12 @@
         }
     }
 
+    function checkLogIn($nickname){
+
+    }
+
+    function checkAdmin(){
+
+    }
+
 

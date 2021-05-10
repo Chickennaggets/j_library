@@ -6,7 +6,7 @@
 <body>
     <div style="width: 100%; text-align: center;">
         <div class="reg_form">
-            <form method="post" action="regist_zap.php" class = "form" id="fform">
+            <form method="post" action="?action=regist_zap" class = "form" id="fform">
                 <h1 style="text-align: center; margin: 30px; background-color: transparent;">Rejestracja</h1>
 	
 	            <input type="text" class="edbx" name="log" id="log" required placeholder="Login*" data-validate><br><br>

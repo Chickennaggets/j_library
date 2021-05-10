@@ -17,11 +17,12 @@ else {
     $sql1 = "INSERT INTO accounts(login, ac_password, activated, adminn)
             values('$login', '$pass', false, false);";
 
-    $result = $conn->query($sql1);
-    if ($conn->query($sql1) === TRUE) {
+    $result1 = $conn->query($sql1);
+
+    if ($result1 == TRUE) {
     echo "Konto zostało zarejestrowane. Żeby móc załogować się i korzystać z biblioteki potrzebna jest aktywacja administratora. ";
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error: " . $sql1 . "<br>" . $conn->error;
     }
 }
 echo "<br><a href='?action=authorization'>Zaloguj</a>";
