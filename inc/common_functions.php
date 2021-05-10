@@ -1,4 +1,6 @@
 <?php
+    global $oUser;
+
     function print_header(){
         echo '<head>
                     <title>Biblioteka Chóru Katedralnego</title>
@@ -42,12 +44,5 @@
         }
     }
 
-    function checkLogIn($nickname){
-
-    }
-
-    function checkAdmin(){
-
-    }
 
 

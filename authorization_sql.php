@@ -1,8 +1,7 @@
  <?php
-session_destroy();
-session_start();
 
 global $conn;
+global $oUser;
 $login = getParameter($_POST['log'],'String');
 $pass = getParameter($_POST['has'], 'String');
 
@@ -20,9 +19,9 @@ if ($result->num_rows > 0) {
         echo "Konto nie jest aktywne. Skontaktuj się z administratorem, aby aktywować swoje konto.";
     }
     else if($row["activated"]){
-     $_SESSION["online_login"] = $row["login"];
-     $_SESSION["root"] = $row["adminn"];
-     header('Location: ?action=main');
+
+        $oUser->Login($row["login"],$row["adminn"]);
+
     }
     else{
         echo "ERROR";
