@@ -170,27 +170,53 @@ h2{
 }
 
 
-.nav{
-    justify-content: space-between;
-}
-
 .tabs{
-    width: 800px;
+    width: inherit;
     margin: 0 auto;
 }
 
 .tab{
     cursor: pointer;
+    color: #fa6800;
     border-bottom: 1px solid transparent;
-    flex: 1;
     padding: 20px;
+}
+.tab:hover{
+    background-color: #F5F5F5;
+    color:red;
+}
+
+.nav{
+    display: flex;
+    justify-content: space-between;
+    width: auto;
+    margin: 0 auto;
 }
 
 .tab-act{
     cursor: pointer;
-    border-bottom: 1px solid transparent;
+    color: #fa6800;
+    border-bottom: 1px solid #fa6800;
     flex: 1;
     padding: 20px;
 }
+.tab-act:hover{
+    background-color: #F5F5F5;
+    border-bottom: 1px solid red;
+    color:red;
+}
+.cont{
+    margin-top: 20px;
+    padding: 15px;
+}
+.content{
+    display: none;
+}
+
+.content-act{
+    display: block;
+    text-align: left;
+}
+
 
 

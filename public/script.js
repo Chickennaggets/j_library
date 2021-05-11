@@ -59,6 +59,22 @@ function u_srch(){
     xhttp.send();
 }
 
-function switchTab(){
+function switchTab(temp){
+    document.getElementById("1").className = "tab";
+    document.getElementById("2").className = "tab";
+    document.getElementById("3").className = "tab";
+    document.getElementById("4").className = "content";
+    document.getElementById("5").className = "content";
+    document.getElementById("6").className = "content";
+    temp.className = "tab-act";
 
+    if(document.getElementById("1").className == "tab-act"){
+        document.getElementById("4").className = "content-act";
+    }
+    else if(document.getElementById("2").className == "tab-act"){
+        document.getElementById("5").className = "content-act";
+    }
+    else if(document.getElementById("3").className == "tab-act"){
+        document.getElementById("6").className = "content-act";
+    }
 }
