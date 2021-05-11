@@ -171,15 +171,19 @@ h2{
 
 
 .tabs{
-    width: inherit;
+    width: auto;
     margin: 0 auto;
 }
 
 .tab{
+    flex-flow: row wrap;
+    justify-content: space-around;
+    width: auto;
     cursor: pointer;
     color: #fa6800;
     border-bottom: 1px solid transparent;
     padding: 20px;
+
 }
 .tab:hover{
     background-color: #F5F5F5;
@@ -187,17 +191,16 @@ h2{
 }
 
 .nav{
-    display: flex;
-    justify-content: space-between;
+    display:flex;
     width: auto;
     margin: 0 auto;
 }
 
 .tab-act{
+    width: auto;
     cursor: pointer;
     color: #fa6800;
     border-bottom: 1px solid #fa6800;
-    flex: 1;
     padding: 20px;
 }
 .tab-act:hover{
@@ -216,6 +219,22 @@ h2{
 .content-act{
     display: block;
     text-align: left;
+}
+.img{
+    margin: 20px;
+}
+p{
+    text-indent: 25px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+.leftimg {
+    float:left; /* Выравнивание по левому краю */
+    margin: 20px; /* Отступы вокруг картинки */
+}
+.rightimg{
+    float: right; /* Выравнивание по правому краю  */
+    margin: 20px; /* Отступы вокруг картинки */
 }
 
 

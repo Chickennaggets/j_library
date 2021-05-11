@@ -29,6 +29,7 @@
                            <a href='?action=users' class = 'a'>Użytkowniki</a><br>";
                  }
                  echo '<a href="?action=info" class = "a">O chórze</a><br>';
+
                  echo '<a href="?action=authorization" class = "a">Wyloguj</a><br>
                 </div>';
     }
