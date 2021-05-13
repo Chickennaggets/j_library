@@ -64,7 +64,51 @@ switch($action) {
     case 'delete':
         $id = get::GET('id', 0, Get::TYPE_INT);
         $oSong ->deleteSong($id);
-        
+
+        break;
+
+    case 'add':
+
+        $aFold = $oFold->getAll();
+
+        ?>
+        <div class="regform_d">
+            <form method="post" action="?section=songs&action=insert" class = "form">
+                 <h1 style="text-align: center; margin: 30px; background-color: transparent;">Nowy utwór</h1>
+                      <input type="text" class="edbx" name="song_name" id="song_name"
+                                                                required placeholder="Nazwa utworu*" data-validate><br><br>
+                           <input type="number" class="edbx" name="count_p" id="count_p"
+                                                                required placeholder="Ilość partytur*" data-validate><br><br>
+                                    <input type="text" class="edbx" name="autor" id="autor"
+                                                                required placeholder="Autor" data-validate><br><br>
+                                        <?php
+                                        if ($aFold) {
+                                            echo "Teczka <select class = 'edbx' name='folders' id='folders'>";
+                                            while($row = $aFold->fetch_assoc()) {
+                                                echo "<option value='".$row["id_folder"]."'>".$row["name_folder"]."</option>";
+                                            }
+                                            echo "</select><br><br>";
+                                        } else {
+                                            echo "Nie ma danych";
+                                        }
+                                        ?>
+
+                                        <textarea name="notatki" id="notatki" placeholder="Notatki"></textarea><br><br>
+                                        <input type="submit" name="submit" class="btn" value="Dodaj">
+            </form>
+        </div>
+        <?php
+        break;
+
+    case 'insert':
+        $song_name = Get::post('song_name', '', GET::TYPE_STR);
+        $count_p = Get::post('count_p', 0, GET::TYPE_INT);
+        $autor = Get::post('autor', '', GET::TYPE_STR);
+        $folders = Get::post('folders', 0, GET::TYPE_INT);
+        $notatki = Get::post('notatki', '', GET::TYPE_STR);
+
+        $oSong->addSong($song_name,$count_p,$autor,$folders,$notatki);
+
         break;
     default:
         $id = get::GET('id', 0, Get::TYPE_INT);

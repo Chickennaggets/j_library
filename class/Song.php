@@ -52,4 +52,18 @@ class Song {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
     }
+
+    function addSong($song_name, $count_p, $autor, $folders, $notatki){
+        global $conn;
+
+        $sql = "INSERT INTO song(name_song, count, author, id_folder, note)
+            values ('$song_name', $count_p, '$autor', $folders, '$notatki');";
+
+        if ($conn->query($sql) === TRUE) {
+            echo "Nowy utwór został dodany<br>";
+            echo "<meta http-equiv='refresh' content='1; url=?section=main'>";
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+    }
 }
