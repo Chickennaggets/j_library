@@ -7,7 +7,7 @@ class Folder {
     function getAll() {
         global $conn;
 
-        $sql = "SELECT name_folder, note 
+        $sql = "SELECT id_folder, name_folder, note 
                 FROM folder 
                 ORDER BY name_folder";
 

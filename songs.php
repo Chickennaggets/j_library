@@ -12,16 +12,16 @@ $oFold = new Folder();
 switch($action) {
     case 'edit' :
         $id = get::GET('id', 0, Get::TYPE_INT);
-        echo $id;
         $aSong = $oSong->getById($id);
         $aFold = $oFold->getAll();
 
-        if (!$aSong) echo "Nie ma danych"
+        if (!$aSong)
+            echo "Nie ma danych";
 
         ?>
 
         <div class="regform_d">
-            <form method='post' action=?section=songs&action=update&id=<?php echo $aSong["id_song"]; ?> class = 'form'>
+            <form method='post' action='?section=songs&action=update' class = 'form'>
                 <h1 style='text-align: center; margin: 30px; background-color: transparent;'>Edycja utworu - <?php echo $aSong["name_song"]; ?></h1>
                 <input type='text' class='edbx' name='song_name' id='song_name' required placeholder='Nazwa utworu' value='<?php echo $aSong["name_song"]; ?>' data-validate>
                 <br><br>
@@ -31,7 +31,8 @@ switch($action) {
                 <br><br>
                 <textarea class='edbx' name='notatki' id='notatki' placeholder='Notatki*' data-validate><?php echo $aSong["note"]; ?></textarea>
                 <br><br>
-                Numer teczki: <label><?php echo $aSong["id_song"]; ?></label><br><br>
+                <input type="hidden" name="n_teczki" value=<?php echo $aSong["id_song"]; ?> />
+                Numer teczki: <label ><?php echo $aSong["id_song"]; ?></label><br><br>
                 <?php
                 if ($aFold) {
                     echo "Teczka <select class = 'edbx' name='folders' id='folders'>";
@@ -49,19 +50,24 @@ switch($action) {
     <?php
     break;
     case 'update':
+
         $song_name = Get::post('song_name', '', GET::TYPE_STR);
-        $count_p = Get::post('count_p', '', GET::TYPE_INT);
+        $count_p = Get::post('count_p', 0, GET::TYPE_INT);
         $autor = Get::post('autor', '', GET::TYPE_STR);
-        $folders = Get::post('folders', '', GET::TYPE_STR);
+        $folders = Get::post('folders', 0, GET::TYPE_INT);
         $notatki = Get::post('notatki', '', GET::TYPE_STR);
-        $id = Get::post('id', 0, GET::TYPE_INT);
+        $id = Get::post('n_teczki', 0, GET::TYPE_INT);
 
         $oSong->updateSong($song_name, $count_p, $autor, $folders, $notatki, $id);
 
         break;
+    case 'delete':
+        $id = get::GET('id', 0, Get::TYPE_INT);
+        $oSong ->deleteSong($id);
+        
+        break;
     default:
         $id = get::GET('id', 0, Get::TYPE_INT);
-
         $aSong = $oSong->getById($id);
 
         if (!$aSong) {
@@ -75,6 +81,6 @@ switch($action) {
           <hr>Notatki: ".$aSong["note"]."</h2>";
         if ($oUser->isLogin()) {
             echo "<br><br><br><a class = 'a' href=?section=songs&action=edit&id=".$aSong["id_song"].">Edycja</a>";
-            echo "<br><br><a class = 'a' href=?section=delete_song_sql&id=".$aSong["id_song"].">Usunąć utwór</a>";
+            echo "<br><br><a class = 'a' href=?section=songs&action=delete&id=".$aSong["id_song"].">Usunąć utwór</a>";
         }
 }

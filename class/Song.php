@@ -33,8 +33,21 @@ class Song {
 
         if ($conn->query($sql) === TRUE) {
             echo "Dane zostały zaktualizowane<br>";
-            //echo "<meta http-equiv='refresh' content='1; url=?section=main'>";
-            echo $id;
+            echo "<meta http-equiv='refresh' content='1; url=?section=main'>";
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+    }
+
+    function deleteSong($id){
+        global $conn;
+
+        $sql = "DELETE FROM song 
+        WHERE id_song=$id";
+
+        if ($conn->query($sql) === TRUE) {
+            echo "Utwór został usunięty<br>";
+            echo "<meta http-equiv='refresh' content='1; url=?section=main'>";
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
