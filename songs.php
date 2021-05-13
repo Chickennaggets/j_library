@@ -79,9 +79,9 @@ switch($action) {
                                                                 required placeholder="Nazwa utworu*" data-validate><br><br>
                            <input type="number" class="edbx" name="count_p" id="count_p"
                                                                 required placeholder="Ilość partytur*" data-validate><br><br>
-                                    <input type="text" class="edbx" name="autor" id="autor"
+                                <input type="text" class="edbx" name="autor" id="autor"
                                                                 required placeholder="Autor" data-validate><br><br>
-                                        <?php
+                                    <?php
                                         if ($aFold) {
                                             echo "Teczka <select class = 'edbx' name='folders' id='folders'>";
                                             while($row = $aFold->fetch_assoc()) {

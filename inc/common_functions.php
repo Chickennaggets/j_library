@@ -26,7 +26,7 @@
              echo '<a href="?section=main" class = "a">Utwory</a><br>';
                  if($_SESSION["root"]) {
                      echo "<a href='?section=folders' class = 'a'>Teczki</a><br>
-                           <a href='?section=users' class = 'a'>Użytkowniki</a><br>";
+                           <a href='?section=administrating' class = 'a'>Użytkowniki</a><br>";
                  }
                  echo '<a href="?section=info" class = "a">O chórze</a><br>';
 

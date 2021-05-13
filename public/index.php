@@ -19,4 +19,4 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-include ROOT_FOLDER.$section.'.php';
+include ROOT_FOLDER.'page.php';
