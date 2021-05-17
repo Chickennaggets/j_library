@@ -7,7 +7,7 @@ function m_srch(){
     };
     var word = document.getElementById("sz_text").value;
     var filt = document.getElementById("filters").value
-    xhttp.open("GET", "?section=songs&action=search&parameter="+filt+"&word="+word, true);
+    xhttp.open("GET", "?section=songs&action=search&parameter="+filt+"&word="+word+"&ajax", true);
     xhttp.send();
 }
 

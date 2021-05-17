@@ -21,5 +21,10 @@ if ($conn->connect_error) {
 $section = Get::get('section', 'main', Get::TYPE_STR);
 $section = $oUser->isLogin() ? $section : 'authorization';
 
-include_once ROOT_FOLDER.'page.php';
+
+if (isset($_GET['ajax'])) {
+    include_once ROOT_FOLDER.$section.'.php';
+} else {
+    include_once ROOT_FOLDER.'page.php';
+}
 
