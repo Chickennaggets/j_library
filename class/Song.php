@@ -66,4 +66,21 @@ class Song {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
     }
+
+    function searchSongs($parameter, $word){
+        global $conn;
+
+        $sql = "SELECT id_song, name_song, count, author, folder.name_folder
+                    FROM song 
+                        LEFT JOIN folder ON song.id_folder = folder.id_folder
+                            WHERE name_song LIKE '%".$word."%' OR author LIKE '%".$word."%'
+                                ORDER BY ".$parameter." ";
+
+        $result = $conn->query($sql);
+
+        if ($result) {
+            return $result;
+        }
+        return false;
+    }
 }

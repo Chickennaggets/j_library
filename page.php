@@ -1,5 +1,5 @@
 <?php
-
+global $section;
 ?>
     <html>
 <?php
@@ -16,7 +16,7 @@ print_header();
             <td valign="top" style="width: 80%;">
                 <div class="p_navigator" style="width: 100%;">
                     <?php
-                    include ROOT_FOLDER.$section.'.php';
+                        include ROOT_FOLDER.$section.'.php';
                     ?>
                 </div>
             </td>

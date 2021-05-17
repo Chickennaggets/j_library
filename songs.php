@@ -1,5 +1,4 @@
 <?php
-//require_once CLASS_FOLDER.'Song.php';
 
 global $conn;
 global $oUser;
@@ -110,6 +109,30 @@ switch($action) {
         $oSong->addSong($song_name,$count_p,$autor,$folders,$notatki);
 
         break;
+
+    case 'search':
+        $parameter = Get::get('parameter', '', GET::TYPE_STR);
+        $word = Get::get('word', '', GET::TYPE_STR);
+
+        $aSong = $oSong->searchSongs($parameter, $word);
+
+        if ($aSong) {
+            echo "<table class='table'>";
+            echo "<tr><td>Numer teczki</td><td>Nazwa utworu</td><td>Ilość partytur</td><td>Autor</td><td>Nazwa teczki</td></tr>";
+            while($row = $aSong->fetch_assoc()) {
+                echo "<tr><td>".$row["id_song"]."</td>
+                  <td><a class = 'a' href='?section=songs&id=".$row["id_song"]."'>".$row["name_song"]."</a></td>
+                  <td>".$row["count"]."</td>
+                  <td>".$row["author"]."</td>
+                  <td>".$row["name_folder"]."</td>
+             </tr>";
+            }
+            echo "</table>";
+        } else {
+            echo "Nie ma danych";
+        }
+        break;
+
     default:
         $id = get::GET('id', 0, Get::TYPE_INT);
         $aSong = $oSong->getById($id);

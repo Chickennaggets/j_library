@@ -23,7 +23,7 @@
                  }else{
                      echo "(Użytkownik)<br><br>";
                  }
-             echo '<a href="?section=main" class = "a">Utwory</a><br>';
+             echo '<a href="?section=songs&action=search" class = "a">Utwory</a><br>';
                  if($_SESSION["root"]) {
                      echo "<a href='?section=folders' class = 'a'>Teczki</a><br>
                            <a href='?section=administrating' class = 'a'>Użytkowniki</a><br>";
