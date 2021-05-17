@@ -13,9 +13,8 @@ body{
     color:white;
     text-align: center;
     font-size: 30px;
-    
-background: rgb(2,0,36);
-background: linear-gradient(60deg, rgba(2,0,36,1) 0%, rgba(163,70,99,1) 0%, rgba(154,88,44,1) 100%);
+    background: rgb(2,0,36);
+    background: linear-gradient(60deg, rgba(2,0,36,1) 0%, rgba(163,70,99,1) 0%, rgba(154,88,44,1) 100%);
     margin-bottom: 30px;
     height: 50px;
 }
@@ -52,7 +51,6 @@ hr{
      margin-bottom: 10px;
 }
 .navigator{
-
     padding: 20px;
     width:inherit ;
     height: auto;
@@ -76,26 +74,33 @@ hr{
     margin-left: auto;
     margin-right: auto;
 }
-
-.table {
-	width: 100%;
+.l_panel{
+    width: max-content;
+}
+.r_panel{
+    width: max-content;
+}
+table{
+    padding:20px;
+	width: auto;
 	margin-bottom: 20px;
+    margin-right: 20px;
 	border-collapse: collapse; 
 }
-.table th {
+table th {
 	font-weight: bold;
 	padding: 5px;
 	background: #efefef;
 	border: 1px solid #dddddd;
 }
-.table td {
+table td {
 	border: 1px solid #dddddd;
 	padding: 5px;
 }
-.table tr td:first-child, .table tr th:first-child {
+table tr td:first-child, .table tr th:first-child {
 	border-left: none;
 }
-.table tr td:last-child, .table tr th:last-child {
+table tr td:last-child, .table tr th:last-child {
 	border-right: none;
 }
 .reg_form{
@@ -112,54 +117,52 @@ hr{
     margin-right: auto;
 }
 textarea {
-  width: 300px;
-  resize: vertical;
-  padding:15px;
-  border-radius:10px;
-  border:0;
-  box-shadow:rgb(215, 216, 219) 0px 1px 0px 0px, rgb(227, 228, 232) 0px 0px 0px 1px;
-  height:150px;
+    width: 300px;
+    resize: vertical;
+    padding:15px;
+    border-radius:10px;
+    border:0;
+    box-shadow:rgb(215, 216, 219) 0px 1px 0px 0px, rgb(227, 228, 232) 0px 0px 0px 1px;
+    height:150px;
 }
 .edbx{
-  border-radius:10px;
-  border:0;
-  box-shadow:rgb(215, 216, 219) 0px 1px 0px 0px, rgb(227, 228, 232) 0px 0px 0px 1px;
-  height: inherit;
-  width: 300px;
-  padding: 10px;
+    border-radius:10px;
+    border:0;
+    box-shadow:rgb(215, 216, 219) 0px 1px 0px 0px, rgb(227, 228, 232) 0px 0px 0px 1px;
+    height: inherit;
+    width: 300px;
+    padding: 10px;
 }
 .btn{
-  background: white;  
-  border-radius:10px;
-  border:0;
-  box-shadow:rgb(215, 216, 219) 0px 1px 0px 0px, rgb(227, 228, 232) 0px 0px 0px 1px;
-  height: inherit;
-  width: inherit;
-  padding: 10px;
-  padding-left: 25px;
-  padding-right:25px;
+    background: white;
+    border-radius:10px;
+    border:0;
+    box-shadow:rgb(215, 216, 219) 0px 1px 0px 0px, rgb(227, 228, 232) 0px 0px 0px 1px;
+    height: inherit;
+    width: auto;
+    padding: 10px;
+    padding-left: 25px;
+    padding-right:25px;
 }
 .btn:hover{
-  cursor: pointer;
-  background: #edeef0;
+    cursor: pointer;
+    background: #edeef0;
 }
 .ok-haslo{
-  border-radius:10px;
-  border:0;
-  box-shadow:rgb(0, 255, 0) 0px 1px 0px 0px, rgb(0, 255, 0) 0px 0px 0px 1px;
-  height: inherit;
-  width: 300px;
-  padding: 10px;
-
- 
+    border-radius:10px;
+    border:0;
+    box-shadow:rgb(0, 255, 0) 0px 1px 0px 0px, rgb(0, 255, 0) 0px 0px 0px 1px;
+    height: inherit;
+    width: 300px;
+    padding: 10px;
 }
 .bad-haslo{
-border-radius:10px;
-border:0;
-box-shadow:rgb(255,0,0) 0px 1px 0px 0px, rgb(255,0,0) 0px 0px 0px 1px;
-height: inherit;
-width: 300px;
-padding: 10px;
+    border-radius:10px;
+    border:0;
+    box-shadow:rgb(255,0,0) 0px 1px 0px 0px, rgb(255,0,0) 0px 0px 0px 1px;
+    height: inherit;
+    width: 300px;
+    padding: 10px;
 }
 
 h1{

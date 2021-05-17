@@ -146,7 +146,6 @@ switch($action) {
         if (!$aSong) {
             echo "Nie ma danych";
         }
-
         echo "<h1 align='center'>".$aSong["name_song"]."</h1><br><br><br><br>";
         echo "<h2>Numer teczki: ".$aSong["id_song"]."<br><hr>Ilość partytur: ".$aSong["count"]."<br>
           <hr>Autor: ".$aSong["author"]."<br>

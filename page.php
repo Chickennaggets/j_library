@@ -8,13 +8,13 @@ print_header();
     <body>
     <table>
         <tr>
-            <td style="width: 180px;" valign="top">
+            <td class="l_panel" valign="top">
                 <?php
                 print_nav_menu();
                 ?>
             </td>
-            <td valign="top" style="width: 80%;">
-                <div class="p_navigator" style="width: 100%;">
+            <td class="r_panel" valign="top">
+                <div class="p_navigator" style="width: auto;">
                     <?php
                         include ROOT_FOLDER.$section.'.php';
                     ?>

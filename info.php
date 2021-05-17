@@ -1,18 +1,5 @@
 <html>
-<?php
-print_header();
-?>
-<body>
-<table>
-    <tr>
-        <td style="width: 180px;" valign="top">
-            <?php
-            print_nav_menu();
-            ?>
-        </td>
-        <td valign="top" style = "padding-right: 10px">
-            <div class="p_navigator">
-                <div class="tabs">
+<div class="tabs">
                    <div class="nav">
                        <div class="tab-act" id="1" onclick="switchTab(this)">O chórze</div>
                        <div class="tab" id="2" onclick="switchTab(this)">Ks. A. Hoffman</div>
@@ -307,10 +294,5 @@ print_header();
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </td>
-    </tr>
-</table>
-</body>
+</div>
 </html>
