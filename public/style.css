@@ -76,8 +76,10 @@ hr{
 }
 .l_panel{
     width: max-content;
+    border: 0;
 }
 .r_panel{
+    border: 0;
     width: max-content;
 }
 table{
@@ -87,13 +89,13 @@ table{
     margin-right: 20px;
 	border-collapse: collapse; 
 }
-table th {
+th {
 	font-weight: bold;
 	padding: 5px;
 	background: #efefef;
 	border: 1px solid #dddddd;
 }
-table td {
+td {
 	border: 1px solid #dddddd;
 	padding: 5px;
 }
@@ -106,7 +108,7 @@ table tr td:last-child, .table tr th:last-child {
 .reg_form{
     text-align: center;
     padding: 25px;
-    width: 50%;
+    width: auto;
     height: auto;
     background-color: white;
     border-radius: 10px;

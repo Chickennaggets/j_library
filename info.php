@@ -1,4 +1,5 @@
-<html>
+<?php
+?>
 <div class="tabs">
                    <div class="nav">
                        <div class="tab-act" id="1" onclick="switchTab(this)">O chórze</div>
@@ -295,4 +296,4 @@
                         </div>
                     </div>
 </div>
-</html>
+<?php

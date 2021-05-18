@@ -30,21 +30,10 @@
                  }
                  echo '<a href="?section=info" class = "a">O chórze</a><br>';
 
-                 echo '<a href="?section=authorization" class = "a">Wyloguj</a><br>
+                 echo '<a href="?section=users&action=logout" class = "a">Wyloguj</a><br>
                 </div>';
     }
 
-    function getParameter($var, $type){
-        global $conn;
-        switch ($type){
-            case "String":
-                return mysqli_real_escape_string($conn, $var);
-                break;
-            case "Integer":
-                return intval($var);
-                break;
-        }
-    }
 
 
 

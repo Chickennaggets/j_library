@@ -22,15 +22,25 @@ class User
         }
     }
 
-    function Login($login, $root) {
-        $_SESSION["online_login"] = $login;
-        $_SESSION["root"] = $root;
-        header('Location: ?section=main');
+    function Login($login, $pass) {
+        global $conn;
+
+        $sql = "SELECT login, activated, adminn 
+                    FROM accounts 
+                        WHERE login = '$login' && ac_password = '$pass';";
+        $result = $conn->query($sql);
+
+        if($result->num_rows>0){
+            return $result;
+        }
+        else{
+            return false;
+        }
     }
 
     function Logout() {
         session_destroy();
-        header('Location: ?action=authorization');
+        header('Location: ?section=authorization');
     }
 
     function getAll($word, $parameter){

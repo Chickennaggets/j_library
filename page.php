@@ -1,5 +1,7 @@
 <?php
 global $section;
+global $oUser;
+
 ?>
     <html>
 <?php
@@ -10,7 +12,9 @@ print_header();
         <tr>
             <td class="l_panel" valign="top">
                 <?php
-                print_nav_menu();
+                if($oUser->isLogin()){
+                    print_nav_menu();
+                }
                 ?>
             </td>
             <td class="r_panel" valign="top">
