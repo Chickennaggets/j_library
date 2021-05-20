@@ -27,14 +27,14 @@ class User
 
         $sql = "SELECT login, activated, adminn 
                     FROM accounts 
-                        WHERE login = '$login' && ac_password = '$pass';";
+                        WHERE login = '$login' && ac_password = '$pass' && activated = true;";
         $result = $conn->query($sql);
 
         if($result->num_rows>0){
             $row = $result->fetch_assoc();
             $_SESSION["online_login"] = $login;
             $_SESSION["root"] = $row["adminn"];
-            return $result;
+            return true;
         }
         else{
             return false;

@@ -17,9 +17,23 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+$allowed = array('authorization','info','error');
 
-$section = Get::get('section', 'main', Get::TYPE_STR);
+$section = Get::get('section', 'info', Get::TYPE_STR);
 $section = $oUser->isLogin() ? $section : 'authorization';
+
+if(!$oUser->isLogin()){
+    foreach ($allowed as $allowed){
+        if($section==$allowed){
+            $section=$allowed;
+            break;
+        }
+        else{
+            $section='error&texterror=You_are_not_loginned!';
+        }
+    }
+}
+
 
 
 if (isset($_GET['ajax'])) {

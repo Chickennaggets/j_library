@@ -10,18 +10,11 @@ switch ($action) {
         $pass = Get::post('has', '', GET::TYPE_STR);
         $aUser = $oUser->Login($login, $pass);
 
-        if ($aUser->num_rows > 0) {
-            $row = $aUser->fetch_assoc();
-            if (!$row["activated"]) {
-                header("Location:  ?section=error&texterror=".$row["activated"]);
-            } else if ($row["activated"]) {
-                header('Location:  ?section=index');
-            } else {
-                header('Location:  ?section=error&texterror=No_data');
-            }
+        if ($aUser) {
+            header('Location:  ?section=index');
         }
         else {
-            echo "Nieprawidłowy login albo hasło";
+            header("Location:  ?section=error&texterror=Incorrect_login_or_password");
         }
         break;
     default: ?>
@@ -37,9 +30,7 @@ switch ($action) {
         </div>
     <?php
 }
-?>
 
-<?php
 
 
 
