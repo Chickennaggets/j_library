@@ -53,31 +53,6 @@ switch ($action){
         $stat = get::Get('status','',Get::TYPE_STR);
         $oUser->changeStatus($login, $stat);
         break;
-    case 'login':
-        $login = Get::post('log', '', GET::TYPE_STR);
-        $pass = Get::post('has', '', GET::TYPE_STR);
-        $uUser = $oUser->Login($login, $pass);
-
-        if ($uUser->num_rows > 0) {
-            while($row = $uUser->fetch_assoc()) {
-                if(!$row["activated"]){
-                    echo "Konto nie jest aktywne. Skontaktuj się z administratorem, aby aktywować swoje konto.";
-                }
-                else if($row["activated"]){
-                    $_SESSION["online_login"] = $login;
-                    $_SESSION["root"] = $row["adminn"];
-                    header('Location: ?section=index');
-                }
-                else{
-                    echo "ERROR";
-                }
-            }
-        }
-        else {
-            echo "Nieprawidłowy login albo hasło";
-        }
-
-        break;
     default:
         ?>
             <select name="filters" class="edbx" id="filters" onclick="u_srch()" style="margin-right: 30px;" >

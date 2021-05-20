@@ -34,6 +34,10 @@
                 </div>';
     }
 
+    function showError($text){
+        echo $text;
+    }
+
 
 
 

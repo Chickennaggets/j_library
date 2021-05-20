@@ -14,7 +14,7 @@ class User
     }
 
     function isAdmin() {
-        if(isset($_SESSION["root"])){
+        if($_SESSION["root"]){
             return true;
         }
         else{
@@ -31,6 +31,9 @@ class User
         $result = $conn->query($sql);
 
         if($result->num_rows>0){
+            $row = $result->fetch_assoc();
+            $_SESSION["online_login"] = $login;
+            $_SESSION["root"] = $row["adminn"];
             return $result;
         }
         else{
