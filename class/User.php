@@ -90,4 +90,29 @@ class User
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
     }
+    function newUser($login, $pass){
+        global $conn;
+
+        $sql = "SELECT login 
+                FROM accounts 
+                WHERE login = '$login';";
+
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            return false;
+        }
+        else {
+            $sql1 = "INSERT INTO accounts(login, ac_password, activated, adminn)
+            values('$login', '$pass', false, false);";
+
+            $result1 = $conn->query($sql1);
+
+            if ($result1 == TRUE) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
 }
