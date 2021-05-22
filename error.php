@@ -1,5 +1,5 @@
 <?php
 
-$text = Get::get('texterror','',get::TYPE_STR);
+$text = Get::get('text','',get::TYPE_STR);
 
 showError($text);

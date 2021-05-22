@@ -11,7 +11,7 @@ switch ($action) {
         $aUser = $oUser->Login($login, $pass);
 
         if ($aUser) {
-            header('Location:  ?section=index');
+            header('Location:  index.php');
         }
         else {
             header("Location:  ?section=error&texterror=Incorrect_login_or_password");

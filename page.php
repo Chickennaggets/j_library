@@ -12,9 +12,7 @@ print_header();
         <tr>
             <td class="l_panel" valign="top">
                 <?php
-                if($oUser->isLogin()){
                     print_nav_menu();
-                }
                 ?>
             </td>
             <td class="r_panel" valign="top">

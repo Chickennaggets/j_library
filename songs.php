@@ -151,7 +151,7 @@ switch($action) {
           <hr>Autor: ".$aSong["author"]."<br>
           <hr>Teczka: ".$aSong["name_folder"]."<br>
           <hr>Notatki: ".$aSong["note"]."</h2>";
-        if ($oUser->isLogin()) {
+        if ($oUser->isAdmin()) {
             echo "<br><br><br><a class = 'a' href=?section=songs&action=edit&id=".$aSong["id_song"].">Edycja</a>";
             echo "<br><br><a class = 'a' href=?section=songs&action=delete&id=".$aSong["id_song"].">Usunąć utwór</a>";
         }
