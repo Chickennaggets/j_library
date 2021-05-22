@@ -27,7 +27,7 @@ class User
 
         $sql = "SELECT login, activated, adminn 
                     FROM accounts 
-                        WHERE login = '$login' && ac_password = '$pass' && activated = true;";
+                        WHERE login = '$login' && ac_password = PASSWORD('$pass') && activated = true;";
         $result = $conn->query($sql);
 
         if($result->num_rows>0){
@@ -104,7 +104,7 @@ class User
         }
         else {
             $sql1 = "INSERT INTO accounts(login, ac_password, activated, adminn)
-            values('$login', '$pass', false, false);";
+            values('$login', PASSWORD('$pass'), false, false);";
 
             $result1 = $conn->query($sql1);
 
