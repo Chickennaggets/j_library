@@ -241,6 +241,54 @@ p{
     float: right; /* Выравнивание по правому краю  */
     margin: 20px; /* Отступы вокруг картинки */
 }
+.info_header {
+    color: white;
+    height: 40px;
+    background: rgba(1, 1, 1, 0.6);
+    font-size: 7px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-around;
+}
+.info_body{
+    height: 100%;
+    width: 100%;
+    background-image: url("img/chor.jpg");
+    background-color: rgba(1,1,1, 0.6);
+    background-repeat: no-repeat, repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.link{
+    width: 10%;
+    padding: 15px;
+    height: min-content;
+}
 
+.info_a{
+    font-size: 16px;
+    color: white;
+    text-decoration: none;
+}
 
+.info_a:hover{
+    color: lightcoral;
+}
+
+.underbody{
+    background-color: rgba(200, 200, 200, 0.85);;
+    padding: 25px;
+}
+
+.center{
+    text-align: center;
+    height: 440px;
+}
+
+#center-text{
+    margin-top: 170px;
+    font-size: 53px;
+    text-shadow: 2px 2px 14px black, 0 0 1em black;
+    color: white;
+}
 

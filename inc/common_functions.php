@@ -14,6 +14,41 @@
                </head>';
     }
 
+    function print_main_header(){
+        echo '
+        <title>Chór Katedralny im. Ks. Alfreda Hoffmana w Siedlcach</title>
+        <link rel="stylesheet" href="../public/style.css">
+        <script src="../public/script.js"></script>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+        <div class="info_header">
+            <div>
+                <a href="" class="info_a">Chór Katedralny im. Ks. Alfreda Hoffmana<br>w Siedlcach</a>
+            </div>
+            <div class="link">
+                <a href="" class="info_a">O chórze</a>
+            </div>
+            
+            <div class="link">
+                <a href="" class="info_a">Atkualności</a>
+            </div>
+            
+            <div class="link">
+                <a href="" class="info_a">Biblioteka</a>
+            </div>
+            
+            <div class="link">
+                <a href="" class="info_a">Kontakt</a>
+            </div>
+            
+            
+        </div>
+                
+        
+        
+        ';
+    }
+
     function print_nav_menu()
     {
         global $oUser;
