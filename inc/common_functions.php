@@ -22,8 +22,8 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
         <div class="info_header">
-            <div>
-                <a href="" class="info_a">Chór Katedralny im. Ks. Alfreda Hoffmana<br>w Siedlcach</a>
+            <div class="link">
+                <a href="" class="info_a">Strona główna</a>
             </div>
             <div class="link">
                 <a href="" class="info_a">O chórze</a>
