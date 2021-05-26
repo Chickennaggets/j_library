@@ -23,10 +23,17 @@
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
         <div class="info_header">
             <div class="link">
-                <a href="" class="info_a">Strona główna</a>
+                <a href="?section=info_main&ajax" class="info_a">Strona główna</a>
             </div>
             <div class="link">
-                <a href="" class="info_a">O chórze</a>
+                <div class="dropdown">
+                    <a href="?section=info&ajax" class="info_a">O chórze</a>
+                      <div class="dropdown-content">
+                        <a href="?section=info&ajax">Dyrygent</a>
+                        <a href="?section=info&action=hoffman&ajax">Ks. A. Hoffman</a>
+                        <a href="?section=info&action=history&ajax">Historia chóru</a>
+                      </div>
+                </div>          
             </div>
             
             <div class="link">
@@ -34,14 +41,12 @@
             </div>
             
             <div class="link">
-                <a href="" class="info_a">Biblioteka</a>
+                <a href="?section=authorization" class="info_a">Biblioteka</a>
             </div>
             
             <div class="link">
                 <a href="" class="info_a">Kontakt</a>
             </div>
-            
-            
         </div>
                 
         
@@ -66,11 +71,10 @@
                 echo "<hr>";
             }
             echo '<a href="?section=main" class = "a">Utwory</a><br>';
-            echo '<a href="?section=info" class = "a">O chórze</a><br>';
             echo '<a href="?section=users&action=logout" class = "a">Wyloguj</a><br>';
         }
         else{
-            echo '<a href="?section=info" class = "a">O chórze</a><br>';
+            echo '<a href="?section=info_main&ajax" class="a">Strona chóru</a><br>';
             echo '<a href="?section=authorization" class = "a">Zaloguj</a>';
         }
                 echo '</div>';

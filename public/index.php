@@ -19,7 +19,7 @@ if ($conn->connect_error) {
 
 
 
-$section = Get::get('section', 'info', Get::TYPE_STR);
+$section = Get::get('section', 'main', Get::TYPE_STR);
 //$section = $oUser->isLogin() ? $section : 'authorization';
 
 if(!faceControle($section)){
