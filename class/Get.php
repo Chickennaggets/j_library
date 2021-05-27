@@ -9,6 +9,10 @@ class Get {
     const TYPE_FLOAT = 'float';
     const TYPE_STR = 'string';
 
+    function __construct() {
+
+    }
+
     /**
      * Returns value from _GET
      *
