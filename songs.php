@@ -138,7 +138,21 @@ switch($action) {
             echo "Nie ma danych";
         }
         break;
+    case 'uploadfile':
+        $id_folder = Get::post('id_folder', '', GET::TYPE_STR);
+        if(!is_dir(ROOT_FOLDER.'/files/'.$id_folder)) {
+            mkdir(ROOT_FOLDER.'/files/'.$id_folder, 0700);
+        }
+        if(move_uploaded_file($_FILES['filename']['tmp_name'], ROOT_FOLDER.'/files/'.$id_folder.'/'.$_FILES['filename']['name'])){
+            echo 'File was uploaded';
+        }
+        else{
+            echo 'File is not uploaded';
+        }
 
+
+
+        break;
     default:
         $id = get::GET('id', 0, Get::TYPE_INT);
         $aSong = $oSong->getById($id);
@@ -151,8 +165,29 @@ switch($action) {
           <hr>Autor: ".$aSong["author"]."<br>
           <hr>Teczka: ".$aSong["name_folder"]."<br>
           <hr>Notatki: ".$aSong["note"]."</h2>";
-        if ($oUser->isAdmin()) {
-            echo "<br><br><br><a class = 'a' href=?section=songs&action=edit&id=".$aSong["id_song"].">Edycja</a>";
-            echo "<br><br><a class = 'a' href=?section=songs&action=delete&id=".$aSong["id_song"].">Usunąć utwór</a>";
+
+        $dir = ROOT_FOLDER.'/files/'.$id.'/';
+        if (is_dir($dir)) {
+            if ($dh = opendir($dir)) {
+                while (false !== ($file = readdir($dh))) {
+                    if($file!="." && $file != "..")
+
+                        echo $file." - <a href='".$dir."/".$file."' download=''>Pobierz</a> - <a href='".$dir."/".$file."'>Nagraj</a>";
+                }
+                closedir($dh);
+            }
         }
+        if ($oUser->isAdmin()) {
+            echo '
+            <br><br><form action="?section=songs&action=uploadfile" method="post" enctype="multipart/form-data">
+            <input type="text" name="id_folder" value="'.$id.'" hidden>
+           <input type="file" name="filename"><br>
+            <input type="submit">
+            </form>
+            ';
+            echo "<br><a class = 'a' href=?section=songs&action=edit&id=".$aSong["id_song"].">Edycja</a>";
+            echo "<br><br><a class = 'a' href=?section=songs&action=delete&id=".$aSong["id_song"].">Usunąć utwór</a>";
+
+        }
+        break;
 }
