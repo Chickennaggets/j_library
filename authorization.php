@@ -8,19 +8,19 @@ switch ($action) {
     case 'login':
         $login = Get::post('log', '', GET::TYPE_STR);
         $pass = Get::post('has', '', GET::TYPE_STR);
-        $aUser = $oUser->Login($login, $pass);
+        $oUser->Login($login, $pass);
 
-        if ($aUser) {
+        if ($oUser->Login($login, $pass)) {
             header('Location:  index.php');
         }
         else {
-            header("Location:  ?section=error&texterror=Incorrect_login_or_password");
+            header("Location:  ?section=error&text=Incorrect_login_or_password");
         }
         break;
     case 'registration':
         ?>
-        <div class="reg_form">
-            <form method="post" action="?section=authorization&action=regist_query" class = "form" id="fform">
+
+            <form method="post" action="?section=authorization&action=regist_query" class = "form" id="fform" style="text-align: center;padding-top: 5%;">
                 <h1 style="text-align: center; margin: 30px; background-color: transparent;">Rejestracja</h1>
 
 	            <input type="text" class="edbx" name="log" id="log" required placeholder="Login*" data-validate><br><br>
@@ -35,7 +35,7 @@ switch ($action) {
                 <input type="button" onclick="reg()" class="btn" value="Zarejestruj"><br><br>
                 <a class = "a" href="?section=authorization">Zalogj</a>
             </form>
-        </div>
+
     <?php
         break;
     case 'regist_query':
@@ -50,16 +50,14 @@ switch ($action) {
             echo 'Błąd, możliwe że taki login już zajęty';
         break;
     default: ?>
-        <div class="reg_form">
-            <form method="post" action="?section=authorization&action=login" class = "form" id="fform">
+            <form method="post" action="?section=authorization&action=login" class = "form" id="fform" style="text-align: center; padding-top: 5%;">
                 <h1 style="text-align: center; margin: 30px; background-color: transparent;">Zaloguj się</h1>
                 <input type="text" class="edbx" name="log" id="log" required placeholder="Login*" data-validate><br><br>
                 <span class="help-text"></span>
                 <input type="password" class="edbx" name="has" id="has" required placeholder="Hasło*" data-validate><br><br>
                 <input type="submit" class="btn" value="Zaloguj"><br><br>
-                <a class = "a" href="?section=authorization&action=registration">Zarejestruj</a>
+                <a class = "a" href="?section=authorization&action=registration">Zarejestruj</a><br><br>
             </form>
-        </div>
     <?php
 }
 

@@ -7,23 +7,25 @@ global $oUser;
 <?php
 print_header();
 ?>
-    <body>
-    <table>
-        <tr>
-            <td class="l_panel" valign="top">
-                <?php
-                    print_nav_menu();
-                ?>
-            </td>
-            <td class="r_panel" valign="top">
-                <div class="p_navigator" style="width: auto;">
-                    <?php
-                        include ROOT_FOLDER.$section.'.php';
-                    ?>
-                </div>
-            </td>
-        </tr>
-    </table>
-    </body>
+<body>
+<div class="page">
+    <div class="parent">
+
+        <?php
+            if($oUser->isLogin())
+                print_nav_menu();
+            ?>
+
+        <div class="p_navigator">
+            <?php
+                include ROOT_FOLDER.$section.'.php';
+            ?>
+        </div>
+    </div>
+    <?php
+        print_footer();
+    ?>
+</div>
+</body>
     </html>
 <?php

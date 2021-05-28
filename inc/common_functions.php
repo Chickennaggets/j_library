@@ -9,7 +9,7 @@
                         <link rel="preconnect" href="https://fonts.gstatic.com">
                         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
                             <div class="header">
-                                <a href="?section=info"><h1 class="zagl">Biblioteka Chóru Katedralnego</h1></a> 
+                                <h1 class="zagl">Biblioteka Chóru Katedralnego</h1> 
                             </div>
                </head>';
     }
@@ -45,7 +45,7 @@
             </div>
             
             <div class="link">
-                <a href="" class="info_a">Kontakt</a>
+                <a href="?section=info&action=kontakt&ajax" class="info_a">Kontakt</a>
             </div>
         </div>
                 
@@ -71,13 +71,13 @@
                 echo "<hr>";
             }
             echo '<a href="?section=main" class = "a">Utwory</a><br>';
+
             echo '<a href="?section=users&action=logout" class = "a">Wyloguj</a><br>';
         }
         else{
-            echo '<a href="?section=info_main&ajax" class="a">Strona chóru</a><br>';
             echo '<a href="?section=authorization" class = "a">Zaloguj</a>';
         }
-                echo '</div>';
+        echo '</div>';
     }
 
     function showError($text){
@@ -114,4 +114,13 @@
         }
     }
 
+    function print_footer(){
+        echo '
+        <footer class="footer">
+            <p>Chór Katedralny
+im. Ks. Alfreda Hoffmana w Siedlcach © 2021 |
+website by Yan Ramanouski</p>
+        </footer>
+        ';
+    }
 

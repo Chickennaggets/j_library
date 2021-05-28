@@ -3,7 +3,7 @@
 ?>
 <html>
 <body class="info_body">
-
+<div class="page">
 <?php
     print_main_header();
 ?>
@@ -30,6 +30,10 @@
     dfghdfiogj asdfjsad oghudsa gohsadigh usad g sdhgpi hpasdg saud ghpsuad gds <br>
     dfghdfiogj asdfjsad oghudsa gohsadigh usad g sdhgpi hpasdg saud ghpsuad gds <br>
     dfghdfiogj asdfjsad oghudsa gohsadigh usad g sdhgpi hpasdg saud ghpsuad gds <br>
+</div>
+<?php
+print_footer();
+?>
 </div>
 </body>
 

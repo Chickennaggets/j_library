@@ -50,41 +50,32 @@ hr{
     margin-top: 10px;
      margin-bottom: 10px;
 }
+.parent{
+    justify-content: space-around;
+    display: flex;
+    padding: 10px;
+}
 .navigator{
-    padding: 20px;
-    width:inherit ;
-    height: auto;
+    padding: 15px;
+    flex: 1;
     background-color: white;
     border-radius: 10px;
     box-shadow:rgb(215, 216, 219) 0px 1px 0px 0px, rgb(227, 228, 232) 0px 0px 0px 1px;
-    margin-top: 10px;
-    margin-left: 10px;
     margin-right: 10px;
 }
 .p_navigator{
-    text-align: center;
-    padding: 20px;
-    width: auto;
+    padding: 15px;
+    flex: 5;
+
+    min-height: 650px;
     height: auto;
     background-color: white;
     border-radius: 10px;
     box-shadow:rgb(215, 216, 219) 0px 1px 0px 0px, rgb(227, 228, 232) 0px 0px 0px 1px;
-    margin-bottom: 50px;
-    margin-top: 10px;
-    margin-left: auto;
-    margin-right: auto;
-}
-.l_panel{
-    width: max-content;
-    border: 0;
-}
-.r_panel{
-    border: 0;
-    width: max-content;
 }
 table{
     padding:20px;
-	width: auto;
+	width: 100%;
 	margin-bottom: 20px;
     margin-right: 20px;
 	border-collapse: collapse; 
@@ -104,19 +95,6 @@ table tr td:first-child, .table tr th:first-child {
 }
 table tr td:last-child, .table tr th:last-child {
 	border-right: none;
-}
-.reg_form{
-    text-align: center;
-    padding: 25px;
-    width: auto;
-    height: auto;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow:rgb(215, 216, 219) 0px 1px 0px 0px, rgb(227, 228, 232) 0px 0px 0px 1px;
-    margin-bottom: 50px;
-    margin: 10px;
-    margin-left: auto;
-    margin-right: auto;
 }
 textarea {
     width: 300px;
@@ -277,15 +255,15 @@ p{
 }
 
 .underbody{
+    height: auto;
     padding: 25px 100px 25px 100px;
     font-size: 18px;
     background-color: rgba(255, 255, 255, 1);
-
 }
 
 .center{
     text-align: center;
-    height: 440px;
+    height: 90vh;
 }
 
 #center-text{
@@ -321,3 +299,17 @@ p{
 .dropdown:hover .dropdown-content {display: block;}
 
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+.page{
+    overflow:  hidden;
+    display: flex;
+    flex-direction: column;
+    //min-height: 100vh;
+}
+.footer{
+    text-align: center;
+    padding: 20px;
+    color:white;
+    background-color: rgba(64,64,64, 1);
+    margin: 0px;
+}
