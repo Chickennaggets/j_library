@@ -310,6 +310,17 @@ p{
     text-align: center;
     padding: 20px;
     color:white;
-    background-color: rgba(64,64,64, 1);
+    background-color: rgba(64,64,64, 0.9);
     margin: 0px;
+}
+#upbutton {
+    background: url("img/up.png") no-repeat;
+    height: 60px;
+    width: 60px;
+    bottom: 30px;
+    right: 30px;
+    cursor: pointer;
+    display: none;
+    position: fixed;
+    z-index: 999;
 }

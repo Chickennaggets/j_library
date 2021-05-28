@@ -125,15 +125,20 @@ switch($action) {
                         <td>Autor</td>
                         <td>Nazwa teczki</td>
                   </tr>";
-            while($row = $aSong->fetch_assoc()) {
-                echo "<tr><td>".$row["id_song"]."</td>
-                          <td><a class = 'a' href='?section=songs&id=".$row["id_song"]."'>".$row["name_song"]."</a></td>
-                          <td>".$row["count"]."</td>
-                          <td>".$row["author"]."</td>
-                          <td>".$row["name_folder"]."</td>
+            while ($row = $aSong->fetch_assoc()) {
+                echo "<tr><td>" . $row["id_song"] . "</td>
+                          <td><a class = 'a' href='?section=songs&id=" . $row["id_song"] . "'>" . $row["name_song"] . "</a></td>
+                          <td>" . $row["count"] . "</td>
+                          <td>" . $row["author"] . "</td>
+                          <td>" . $row["name_folder"] . "</td>
                      </tr>";
             }
             echo "</table>";
+        ?>
+            <a id="upbutton" href="#" onclick="smoothJumpUp(); return false;">
+                <img src="img/up.png" alt="Top" border="none" title="Наверх">
+            </a>
+        <?php
         } else {
             echo "Nie ma danych";
         }

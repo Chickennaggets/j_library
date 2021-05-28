@@ -9,6 +9,9 @@
 print_main_header();
 ?>
 <div class="underbody">
+    <a id="upbutton" href="#" onclick="smoothJumpUp(); return false;">
+        <img src="img/up.png" alt="Top" border="none" title="Наверх">
+    </a>
 <?php
 $action = Get::get('action', '', GET::TYPE_STR);
 switch ($action){
