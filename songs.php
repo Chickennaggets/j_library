@@ -155,8 +155,6 @@ switch($action) {
             echo 'File is not uploaded';
         }
 
-
-
         break;
     default:
         $id = get::GET('id', 0, Get::TYPE_INT);
@@ -169,15 +167,15 @@ switch($action) {
         echo "<h2>Numer teczki: ".$aSong["id_song"]."<br><hr>Ilość partytur: ".$aSong["count"]."<br>
           <hr>Autor: ".$aSong["author"]."<br>
           <hr>Teczka: ".$aSong["name_folder"]."<br>
-          <hr>Notatki: ".$aSong["note"]."</h2>";
+          <hr>Notatki: ".$aSong["note"]."<br>
+          <hr>Piki:</h2><br>";
 
         $dir = ROOT_FOLDER.'/files/'.$id.'/';
         if (is_dir($dir)) {
             if ($dh = opendir($dir)) {
                 while (false !== ($file = readdir($dh))) {
                     if($file!="." && $file != "..")
-
-                        echo $file." - <a href='".$dir."/".$file."' download=''>Pobierz</a> - <a href='".$dir."/".$file."'>Nagraj</a>";
+                        echo $file." - <a class='a' href='".$dir."/".$file."' download=''>Pobierz</a> - <a class='a' href='".$dir."/".$file."'>Nagraj</a>";
                 }
                 closedir($dh);
             }
@@ -186,7 +184,7 @@ switch($action) {
             echo '
             <br><br><form action="?section=songs&action=uploadfile" method="post" enctype="multipart/form-data">
             <input type="text" name="id_folder" value="'.$id.'" hidden>
-           <input type="file" name="filename"><br>
+           <input type="file" name="filename"><br><br>
             <input type="submit">
             </form>
             ';
