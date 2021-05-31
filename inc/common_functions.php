@@ -37,7 +37,7 @@
             </div>
             
             <div class="link">
-                <a href="" class="info_a">Atkualności</a>
+                <a href="" class="info_a">Aktualności</a>
             </div>
             
             <div class="link">
@@ -67,7 +67,8 @@
             }
             if($oUser->isAdmin()){
                 echo "<a href='?section=folders' class = 'a'>Teczki</a><br>
-                           <a href='?section=users' class = 'a'>Użytkowniki</a><br>";
+                      <a href='?section=users' class = 'a'>Użytkowniki</a><br>
+                      <a href='?section=news' class = 'a'>Aktualności</a><br>";
                 echo "<hr>";
             }
             echo '<a href="?section=main" class = "a">Utwory</a><br>';

@@ -49,7 +49,7 @@ class User
     function getAll($word, $parameter){
         global $conn;
 
-        $sql = "SELECT login, ac_password, activated, adminn, regist_date 
+        $sql = "SELECT login, activated, adminn, regist_date 
         FROM accounts
         WHERE login LIKE '%".$word."%'
         ORDER BY ".$parameter.";";

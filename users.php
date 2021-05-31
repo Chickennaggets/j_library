@@ -14,7 +14,6 @@ switch ($action){
         echo "<table class='table'>
                 <tr>
                     <td>Login</td>
-                    <td>Hasło</td>
                     <td>Aktywowano</td>
                     <td>Administrator</td>
                     <td>Data rejestracji</td>
@@ -36,7 +35,7 @@ switch ($action){
             } else {
                 $adm = "Nie";
             }
-            echo "<tr><td>" . $row["login"] . "</td><td>" . $row["ac_password"] . "</td>" . $akt . "<td>" . $adm . "</td><td>" . $row["regist_date"] . "</td><td>$delete</tr>";
+            echo "<tr><td>" . $row["login"] . "</td>" . $akt . "<td>" . $adm . "</td><td>" . $row["regist_date"] . "</td><td>$delete</tr>";
         }
         echo "</table>";
 

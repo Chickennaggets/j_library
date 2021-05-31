@@ -3,11 +3,11 @@
 
 class News
 {
-    function addPost($header, $post_text, $pictures){
+    function addPost($header, $post_text){
         global $conn;
 
-        $sql = "INSERT INTO wall(header, post_text, pictures)
-            values ('$header', $post_text, '$pictures',);";
+        $sql = "INSERT INTO wall(header, post_text)
+            values ('$header', '$post_text');";
 
         if ($conn->query($sql) === TRUE) {
             echo "Dane zostały zaktualizowane<br>";
@@ -16,5 +16,18 @@ class News
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
 
+    }
+    function getAll(){
+        global $conn;
+
+        $sql = "SELECT * 
+                FROM wall";
+
+        $result = $conn->query($sql);
+
+        if ($result) {
+            return $result;
+        }
+        return false;
     }
 }

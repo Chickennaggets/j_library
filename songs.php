@@ -175,7 +175,7 @@ switch($action) {
             if ($dh = opendir($dir)) {
                 while (false !== ($file = readdir($dh))) {
                     if($file!="." && $file != "..")
-                        echo $file." - <a class='a' href='".$dir."/".$file."' download=''>Pobierz</a> - <a class='a' href='".$dir."/".$file."'>Nagraj</a>";
+                        echo $file." - <a class='a' href='".$dir."/".$file."' download=''>Pobierz</a> - <a class='a' href='".$dir."/".$file."'>Otwórz</a><br>";
                 }
                 closedir($dh);
             }
@@ -185,7 +185,7 @@ switch($action) {
             <br><br><form action="?section=songs&action=uploadfile" method="post" enctype="multipart/form-data">
             <input type="text" name="id_folder" value="'.$id.'" hidden>
            <input type="file" name="filename"><br><br>
-            <input type="submit">
+            <input type="submit" class="btn">
             </form>
             ';
             echo "<br><a class = 'a' href=?section=songs&action=edit&id=".$aSong["id_song"].">Edycja</a>";

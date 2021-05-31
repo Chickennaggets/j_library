@@ -8,14 +8,38 @@ $action = Get::get('action', '', GET::TYPE_STR);
 $oNews = new News();
 
 switch($action) {
+    case 'new_post':
+        ?>
+        <form action="?section=news&action=insert" style="text-align: center;" method="post">
+            <h2>Aktualności - nowy zapis</h2><br>
+            <input type="text" class="edbx" placeholder="Zagłówek" name = "header"><br><br>
+            <textarea name="post_text" placeholder="Tekst"></textarea><br><br>
+            <input type="submit" class="btn" value="Zapisz">
+        </form>
+    <?php
+        break;
     case 'insert':
         $header = Get::post('header', '', GET::TYPE_STR);
         $post_text = Get::post('post_text', '', GET::TYPE_STR);
-        $pictures = Get::post('pictures', '', GET::TYPE_STR);
+        //$pictures = Get::post('pictures', '', GET::TYPE_STR);
 
-        $oNews->addPost($header,$post_text,$pictures);
+        $oNews->addPost($header,$post_text);
 
         break;
+    default:
+        echo '<a href="?section=news&action=new_post" class="a">Nowy zapis</a><hr>';
+        $aNews = $oNews->getAll();
 
+        if($aNews->num_rows > 0){
+            while($row = $aNews->fetch_assoc()){
+                echo '
+                <div class="post">
+                <h2>'.$row["header"].'</h2>
+                <p>'.$row["post_text"].'</p>
+                
+                </div>';
+            }
+        }
+        break;
 
 }
