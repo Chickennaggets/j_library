@@ -21,6 +21,10 @@ if ($conn->connect_error) {
 
 
 $section = Get::get('section', 'main', Get::TYPE_STR);
+if($section=='authorization' && $oUser->isLogin()){
+    $section = 'main';
+}
+
 //$section = $oUser->isLogin() ? $section : 'authorization';
 
 if(!faceControle($section)){

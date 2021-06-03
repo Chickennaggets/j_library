@@ -52,8 +52,11 @@ body{
     cursor: pointer;
 }
 hr{
+    border: 0;
+    background: gray;
+    height: 1px;
     margin-top: 10px;
-     margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 .parent{
     justify-content: space-around;
@@ -64,8 +67,7 @@ hr{
     padding: 15px;
     flex: 1;
 
-    background: rgb(249,240,230);
-    background: radial-gradient(circle, rgba(249,240,230,1) 0%, rgba(255,255,255,1) 100%);
+    background-color: white;
 
     border-radius: 10px;
     box-shadow:rgb(215, 216, 219) 0px 1px 0px 0px, rgb(227, 228, 232) 0px 0px 0px 1px;
@@ -77,8 +79,7 @@ hr{
 
     min-height: 650px;
     height: auto;
-    background: rgb(249,240,230);
-    background: radial-gradient(circle, rgba(249,240,230,1) 0%, rgba(255,255,255,1) 100%);
+    background-color: white;
     border-radius: 10px;
     box-shadow:rgb(215, 216, 219) 0px 1px 0px 0px, rgb(227, 228, 232) 0px 0px 0px 1px;
 }
