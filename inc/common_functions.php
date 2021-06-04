@@ -23,15 +23,15 @@
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
         <div class="info_header">
             <div class="link">
-                <a href="?section=info_main&ajax" class="info_a">Strona główna</a>
+                <a href="?section=info&action=mainpage" class="info_a">Strona główna</a>
             </div>
             <div class="link">
                 <div class="dropdown">
-                    <a href="?section=info&ajax" class="info_a">O chórze</a>
+                    <a href="?section=info" class="info_a">O chórze</a>
                       <div class="dropdown-content">
-                        <a href="?section=info&ajax">Dyrygent</a>
-                        <a href="?section=info&action=hoffman&ajax">Ks. A. Hoffman</a>
-                        <a href="?section=info&action=history&ajax">Historia chóru</a>
+                        <a href="?section=info&action=szulik">Dyrygent</a>
+                        <a href="?section=info&action=hoffman">Ks. A. Hoffman</a>
+                        <a href="?section=info&action=history">Historia chóru</a>
                       </div>
                 </div>          
             </div>
@@ -45,7 +45,7 @@
             </div>
             
             <div class="link">
-                <a href="?section=info&action=kontakt&ajax" class="info_a">Kontakt</a>
+                <a href="?section=info&action=kontakt" class="info_a">Kontakt</a>
             </div>
         </div>
                 
@@ -115,13 +115,20 @@
         }
     }
 
-    function print_footer(){
+    function print_footer()
+    {
         echo '
         <footer class="footer">
-            <p>Chór Katedralny
-im. Ks. Alfreda Hoffmana w Siedlcach © 2021 |
-website by Yan Ramanouski</p>
+            <p>
+                Chór Katedralny im. Ks. Alfreda Hoffmana w Siedlcach © 2021 | website by Yan Ramanouski
+            </p>
         </footer>
         ';
+    }
+    function print_up_button(){
+        echo
+        '<a id="upbutton" href="#" onclick="smoothJumpUp(); return false;">
+            <img src="img/up.png" alt="Top" border="none" title="Do góry">
+         </a>';
     }
 
