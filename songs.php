@@ -145,10 +145,14 @@ switch($action) {
         break;
     case 'uploadfile':
         $id_folder = Get::post('id_folder', '', GET::TYPE_STR);
-        if(!is_dir(ROOT_FOLDER.'/files/'.$id_folder)) {
-            mkdir(ROOT_FOLDER.'/files/'.$id_folder, 0700);
+        $folderName = getNameFolder($id_folder);
+        if(!is_dir(ROOT_FOLDER.'/files/'.$folderName)) {
+            mkdir(ROOT_FOLDER.'/files/'.$folderName, 0700);
         }
-        if(move_uploaded_file($_FILES['filename']['tmp_name'], ROOT_FOLDER.'/files/'.$id_folder.'/'.$_FILES['filename']['name'])){
+        if(!is_dir(ROOT_FOLDER.'/files/'.$folderName.'/'.$id_folder)) {
+            mkdir(ROOT_FOLDER.'/files/'.$folderName.'/'.$id_folder, 0700);
+        }
+        if(move_uploaded_file($_FILES['filename']['tmp_name'], ROOT_FOLDER.'/files/'.$folderName.'/'.$id_folder.'/'.$_FILES['filename']['name'])){
             echo 'File was uploaded';
         }
         else{
@@ -169,8 +173,8 @@ switch($action) {
           <hr>Teczka: ".$aSong["name_folder"]."<br>
           <hr>Notatki: ".$aSong["note"]."<br>
           <hr>Piki:</h2><br>";
-
-        $dir = ROOT_FOLDER.'/files/'.$id.'/';
+        $folderName = getNameFolder($id);
+        $dir = ROOT_FOLDER.'/files/'.$folderName.'/'.$id.'/';
         if (is_dir($dir)) {
             if ($dh = opendir($dir)) {
                 while (false !== ($file = readdir($dh))) {
