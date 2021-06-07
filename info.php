@@ -21,7 +21,7 @@ switch ($action){
         require_once CONTENT_FOLDER.'mainpage.html';
         break;
     default:
-
+        require_once CONTENT_FOLDER.'about.html';
         break;
 }
 

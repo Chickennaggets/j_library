@@ -45,6 +45,7 @@ body{
     color:#fa6800;
     text-decoration: none;
     cursor: pointer;
+    transition: 0.5s;
 }
 .a:hover{
     font-size:19px;
@@ -133,6 +134,7 @@ textarea {
     padding: 10px;
     padding-left: 25px;
     padding-right:25px;
+    transition: 2s;
 }
 .btn:hover{
     cursor: pointer;
@@ -257,18 +259,18 @@ p{
     font-size: 17px;
     color: white;
     text-decoration: none;
+    transition: 1s;
 }
 
 .info_a:hover{
     color: lightcoral;
-    text-decoration: underline;
 }
 
 .underbody{
     height: auto;
     padding: 25px 100px 25px 100px;
     font-size: 18px;
-    background-color: rgba(255, 255, 255, 1);
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
 .center{
@@ -277,7 +279,7 @@ p{
 }
 
 #center-text{
-    margin-top: 170px;
+    margin-top: 250px;
     font-size: 53px;
     text-shadow: 2px 2px 14px black, 0 0 1em black;
     color: white;
@@ -320,7 +322,7 @@ p{
     text-align: center;
     padding: 20px;
     color:white;
-    background-color: rgba(64,64,64, 0.9);
+    background: rgba(1, 1, 1, 0.6);
     margin: 0px;
 }
 #upbutton {
@@ -333,4 +335,27 @@ p{
     display: none;
     position: fixed;
     z-index: 999;
+}
+.about_style{
+    padding: 30px;
+    background-color: rgba(1, 1, 1, 0.45);
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+.element{
+    padding: 5px;
+    height: min-content;
+    text-align: center;
+    border-radius: 10px;
+    color: white;
+    transition: 1s;
+    filter: brightness(90%);
+
+}
+.element:hover{
+    filter: brightness(135%);
+    text-decoration: underline;
+    cursor: pointer;
 }
