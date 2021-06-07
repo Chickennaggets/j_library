@@ -186,10 +186,11 @@ switch($action) {
         }
         if ($oUser->isAdmin()) {
             echo '
-            <br><br><form action="?section=songs&action=uploadfile" method="post" enctype="multipart/form-data">
-            <input type="text" name="id_folder" value="'.$id.'" hidden>
-           <input type="file" name="filename"><br><br>
-            <input type="submit" class="btn">
+            <br><br>
+            <form action="?section=songs&action=uploadfile" method="post" enctype="multipart/form-data">
+                <input type="text" name="id_folder" value="'.$id.'" hidden>
+                <input type="file" name="filename"><br><br>
+                <input type="submit" class="btn">
             </form>
             ';
             echo "<br><a class = 'a' href=?section=songs&action=edit&id=".$aSong["id_song"].">Edycja</a>";

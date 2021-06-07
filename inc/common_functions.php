@@ -86,33 +86,27 @@
     }
 
     function faceControle($section){
-
         global $oUser;
-
-        $allowedForAll = array('authorization','info','error');
-        $allowedForUsers = array('authorization','info','error','main', 'songs');
-
-        if(!$oUser->isLogin()){
-            foreach ($allowedForAll as $value){
-                if(strcasecmp($section, $value)){
-                    return true;
-                }
-            }
-            return false;
+        $action = get::Get('action','',Get::TYPE_STR);
+        $allowedForUsers = array('main', 'songs','users');
+        if($oUser->isLogin() && !$oUser->isAdmin()){
+            $decision = in_array($section, $allowedForUsers, true);
+            if($section=='users' && $action != 'logout')
+                $decision = false;
+            return $decision;
         }
-
-        else if($oUser->isLogin() && !$oUser->isAdmin()){
-            foreach ($allowedForUsers as $value){
-                if(strcasecmp($section, $value)){
-                    return true;
-                }
+        else if(!$oUser->isLogin()){
+            if($section == 'authorization'){
+                return true;
             }
-            return false;
         }
-
         else if($oUser->isLogin() && $oUser->isAdmin()){
             return true;
         }
+        else{
+            return false;
+        }
+
     }
 
     function print_footer()
@@ -137,14 +131,10 @@
     $max = 100;
         while(true){
             if($min < $id && $id < $max){
-                if($min==0){
+                if($min==0)
                     $result = "0".$min."00";
-                }
-                else{
+                else
                     $result = "0" . $min;
-                }
-
-
                 return $result;
             }
             else{

@@ -9,14 +9,6 @@ if($section=='authorization' && $oUser->isLogin()){
     $section = 'main';
 }
 
-//$section = $oUser->isLogin() ? $section : 'authorization';
-
-if(!faceControle($section)){
-    echo 'No way';
-    $section='error?text=No_way';
-}
-
-
 if (isset($_GET['ajax'])) {
     include_once ROOT_FOLDER.$section.'.php';
 } else {
@@ -24,7 +16,15 @@ if (isset($_GET['ajax'])) {
         include_once ROOT_FOLDER. 'main_template.php';
     }
     else{
+        if(faceControle($section))
         include_once ROOT_FOLDER . 'lib_template.php';
+        else
+            echo "ERROR";
     }
 }
+
+
+
+
+
 
