@@ -118,7 +118,7 @@ switch($action) {
 
         if ($aSong) {
             echo "<table class='table'>";
-            echo "<tr>
+            echo "<tr class='anim_tr'>
                         <td>Numer teczki</td>
                         <td>Nazwa utworu</td>
                         <td>Ilość partytur</td>
@@ -126,7 +126,7 @@ switch($action) {
                         <td>Nazwa teczki</td>
                   </tr>";
             while ($row = $aSong->fetch_assoc()) {
-                echo "<tr><td>" . $row["id_song"] . "</td>
+                echo "<tr class='anim_tr'><td>" . $row["id_song"] . "</td>
                           <td><a class = 'a' href='?section=songs&id=" . $row["id_song"] . "'>" . $row["name_song"] . "</a></td>
                           <td>" . $row["count"] . "</td>
                           <td>" . $row["author"] . "</td>
@@ -136,7 +136,7 @@ switch($action) {
             echo "</table>";
         ?>
             <a id="upbutton" href="#" onclick="smoothJumpUp(); return false;">
-                <img src="img/up.png" alt="Top" border="none" title="Наверх">
+                <img src="img/up.png" alt="Top" border="none" title="Do góry">
             </a>
         <?php
         } else {
@@ -167,39 +167,47 @@ switch($action) {
         if (!$aSong) {
             echo "Nie ma danych";
         }
-        echo "<h1 align='center' style='margin-bottom: 60px'>".$aSong["name_song"]."</h1>";
         if($oUser->isAdmin()){
-            echo "<div style='float: right;'><a href='?section=songs&action=edit&id=".$aSong["id_song"]."'><img src='img/icons/edit.png' class='icon' alt='Edycja' title='Edytować'></a>";
-            echo "<a href='?section=songs&action=delete&id=".$aSong["id_song"]."'><img src='img/icons/delete.png' class='icon' alt='Usunąć' title='Usunąć'></a></div>";
+            echo "<div style='float: right;'>
+                      <a href='?section=songs&action=edit&id=".$aSong["id_song"]."'><img src='img/icons/edit.png' class='icon' alt='Edycja' title='Edytować'></a>
+                      <a href='?section=songs&action=delete&id=".$aSong["id_song"]."'><img src='img/icons/delete.png' class='icon' alt='Usunąć' title='Usunąć'></a>
+                  </div>";
+
 
         }
-        echo "<div class='main_part'><div class='left_part'><p>Numer teczki: ".$aSong["id_song"]."</p><p>Ilość partytur: ".$aSong["count"]."</p>
-          <p>Autor: ".$aSong["author"]."</p>
-          <p>Teczka: ".$aSong["name_folder"]."</p></div>
-          <div class='right_part'><p>Notatki: ".$aSong["note"]."</p></div></div>
-          <p>Pliki:</p><hr>";
+        echo "<h1 align='center' style='margin-bottom: 60px'>".$aSong["name_song"]."</h1>";
+
+        echo "<div class='main_part'><div class='left_part'>
+                  <p>Numer teczki: ".$aSong["id_song"]."</p>
+                  <p>Ilość partytur: ".$aSong["count"]."</p>
+                  <p>Autor: ".$aSong["author"]."</p>
+                  <p>Teczka: ".$aSong["name_folder"]."</p>
+                  <p>Notatki:<br> ".$aSong["note"]."</p>
+             </div>
+          <div class='right_part'><p>Pliki:</p>";
         $folderName = getNameFolder($id);
         $dir = ROOT_FOLDER.'/files/'.$folderName.'/'.$id.'/';
         if (is_dir($dir)) {
             if ($dh = opendir($dir)) {
                 while (false !== ($file = readdir($dh))) {
                     if($file!="." && $file != "..")
-                        echo $file." - <a class='a' href='".$dir."/".$file."' download=''>Pobierz</a> - <a class='a' href='".$dir."/".$file."'>Otwórz</a><br>";
+                        echo "<div class='file'>".$file." <a style='float:right' class='a' href='".$dir."/".$file."' download=''><img src='img/icons/download.png' class='icon' title='Pobierz'></a><a class='a' style='float:right' href='".$dir."/".$file."'><img src='img/icons/openfile.png' class='icon' title='Otwórz'></a><br></div>";
                 }
                 closedir($dh);
             }
         }
+          echo "";
+
 
         if ($oUser->isAdmin()) {
-            echo '
-            <br><br>
-            <form action="?section=songs&action=uploadfile" method="post" enctype="multipart/form-data">
+            echo '<div class="upl_form">
+            <form action="?section=songs&action=uploadfile" method="post" enctype="multipart/form-data" style="margin-top: 30px; text-align: center;">
                 <input type="text" name="id_folder" value="'.$id.'" hidden>
-                <input type="file" name="filename"><br><br>
+                <input type="file" class="inp_tp_file" aria-label="browser" name="filename"><br><br>
                 <input type="submit" class="btn">
-            </form>
+            </form></div>
             ';
         }
-        echo '';
+        echo '</div></div>';
         break;
 }

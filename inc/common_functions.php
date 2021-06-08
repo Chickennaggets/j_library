@@ -9,7 +9,7 @@
                         <link rel="preconnect" href="https://fonts.gstatic.com">
                         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
                             <div class="header">
-                                <h1 class="zagl">Biblioteka Chóru Katedralnego</h1> 
+                                <h1 class="zagl">Biblioteka Chóru</h1> 
                             </div>
                </head>';
     }
@@ -17,8 +17,8 @@
     function print_main_header(){
         echo '
         <title>Chór Katedralny im. Ks. Alfreda Hoffmana w Siedlcach</title>
-        <link rel="stylesheet" href="../public/style.css">
-        <script src="../public/script.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
         <div class="info_header">
@@ -47,6 +47,12 @@
             <div class="link">
                 <a href="?section=info&action=kontakt" class="info_a">Kontakt</a>
             </div>
+            <div class="link">
+                <a href="https://www.facebook.com/groups/169337146589599"><img src="img/icons/facebook.png" class="icon" title="facebook"></a>
+                <a href=""><img src="img/icons/instagram.png" class="icon" title="instagram"></a>
+                <a href="http://katedra.siedlce.pl/"><img src="img/icons/link.png" class="icon" title="Katedra Siedlce"></a>
+            </div>
+            
         </div>
                 
         
@@ -66,14 +72,13 @@
                 echo "(Użytkownik)<br><br>";
             }
             if($oUser->isAdmin()){
-                echo "<a href='?section=folders' class = 'a'>Teczki</a><br>
-                      <a href='?section=users' class = 'a'>Użytkowniki</a><br>
-                      <a href='?section=news' class = 'a'>Aktualności</a><br>";
-                echo "<hr>";
+                echo "<a href='?section=folders' class = 'a'><div class='nav_part'><img src='img/icons/folder.png' class='icon'><div class='n_text'>Teczki</div></div></a>
+                      <a href='?section=users' class = 'a'><div class='nav_part'><img src='img/icons/kontakts.png' class='icon'><div class='n_text'>Użytkowniki</div></div></a>
+                      <a href='?section=news' class = 'a'><div class='nav_part'><img src='img/icons/news.png' class='icon'><div class='n_text'>Aktualności</div></div></a>";
             }
-            echo '<a href="?section=main" class = "a">Utwory</a><br>';
+            echo '<a href="?section=main" class = "a"><div class="nav_part"><img src="img/icons/file.png" class="icon"><div class="n_text">Utwory</div></div></a>';
 
-            echo '<a href="?section=users&action=logout" class = "a" onclick=log_out()>Wyloguj</a><br>';
+            echo '<a href="?section=users&action=logout" class = "a"><div class="nav_part"><img src="img/icons/logout.png" class="icon"><div class="n_text">Wyloguj</div></div></a>';
         }
         else{
             echo '<a href="?section=authorization" class = "a">Zaloguj</a>';
@@ -114,7 +119,7 @@
         echo '
         <footer class="footer">
             <p>
-                Chór Katedralny im. Ks. Alfreda Hoffmana w Siedlcach © 2021 | website by Yan Ramanouski
+                Chór Katedralny im. Ks. Alfreda Hoffmana w Siedlcach © 2021 | website by Yan Ramanouski 
             </p>
         </footer>
         ';

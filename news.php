@@ -37,11 +37,13 @@ switch($action) {
             while($row = $aNews->fetch_assoc()){
                 echo '
                 <div class="post">
-                <h2>'.$row["header"].'</h2>
-                <p>'.$row["post_text"].'</p>
-                
-                </div>';
-            }
+                <h2>'.$row["header"];
+                echo "<div style='float: right;'><a href='?section=news&action=edit&id=".$row["id_wall"]."'><img src='img/icons/edit.png' class='icon' alt='Edycja' title='Edytować'></a>";
+                echo "<a href='?section=news&action=delete&id=".$row["id_wall"]."'><img src='img/icons/delete.png' class='icon' alt='Usunąć' title='Usunąć'></a></div></h2>";
+
+                echo '<p>'.$row["post_text"].'</p></div>
+               ';
+     }
         }
         break;
 
