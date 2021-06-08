@@ -30,4 +30,35 @@ class News
         }
         return false;
     }
+    function getById($id){
+        global $conn;
+
+        $sql = "SELECT *
+                FROM wall
+                WHERE id_wall=".$id;
+        $result = $conn->query($sql);
+        if (!$result->num_rows) {
+            return false;
+        }
+
+        return $result->fetch_assoc();
+
+    }
+    function editPost($id, $header, $text){
+        global $conn;
+
+        $sql = "UPDATE wall 
+            SET 
+                header = '$header', 
+                post_text = '$text'
+            WHERE id_wall = '$id';";
+
+        if ($conn->query($sql) === TRUE) {
+            echo "Dane zostały zaktualizowane<br>";
+            //echo "<meta http-equiv='refresh' content='1; url=?section=main'>";
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+
+    }
 }

@@ -16,7 +16,6 @@ switch($action) {
 
         if (!$aSong)
             echo "Nie ma danych";
-
         ?>
 
         <div class="regform_d">

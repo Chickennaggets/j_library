@@ -29,6 +29,30 @@ switch($action) {
         $oNews->addPost($header,$post_text);
 
         break;
+    case 'edit':
+        $id = get::GET('id', 0, Get::TYPE_INT);
+
+        $aNews = $oNews->getById($id);
+
+        ?>
+        <div class="regform_d">
+            <form action="?section=news&action=update" style="text-align: center;" method="post">
+                <h2>Aktualności - Edycja</h2><br>
+                <input type="text" hidden value="<?php echo $id; ?>">
+                <input type="text" class="edbx" placeholder="Zagłówek" name = "header" value="<?php echo $aNews["header"]; ?>"<br><br>
+                <textarea name="post_text" placeholder="Tekst"><?php echo $aNews["post_text"]; ?></textarea><br><br>
+                <input type="submit" class="btn" value="Zapisz">
+            </form>
+        </div>
+        <?php
+        break;
+    case 'update':
+        $id = Get::post('id', '', GET::TYPE_STR);
+        $header = Get::post('header', '', GET::TYPE_STR);
+        $text = Get::post('post_text', '', GET::TYPE_STR);
+
+        $oNews->editPost($id, $header, $text);
+        break;
     default:
         echo '<a href="?section=news&action=new_post" class="a">Nowy zapis</a><hr>';
         $aNews = $oNews->getAll();
