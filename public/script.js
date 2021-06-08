@@ -75,4 +75,6 @@ function u_srch(){
             document.getElementById('upbutton').style.display = 'none';
         }
     }
-
+    function log_out(){
+        return confirm('Napewno chcesz wylogować się ?');
+    }

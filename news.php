@@ -10,12 +10,15 @@ $oNews = new News();
 switch($action) {
     case 'new_post':
         ?>
+    <div class="regform_d">
         <form action="?section=news&action=insert" style="text-align: center;" method="post">
             <h2>Aktualności - nowy zapis</h2><br>
             <input type="text" class="edbx" placeholder="Zagłówek" name = "header"><br><br>
             <textarea name="post_text" placeholder="Tekst"></textarea><br><br>
             <input type="submit" class="btn" value="Zapisz">
         </form>
+    </div>
+
     <?php
         break;
     case 'insert':

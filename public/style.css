@@ -3,7 +3,7 @@
     margin: 0px;
 }
 body{
-    background: white;
+    background: #f1f1f1;
 }
 .header{
     width: 100%;
@@ -67,9 +67,7 @@ hr{
 .navigator{
     padding: 15px;
     flex: 1;
-
     background-color: white;
-
     border-radius: 10px;
     box-shadow:rgb(215, 216, 219) 0px 1px 0px 0px, rgb(227, 228, 232) 0px 0px 0px 1px;
     margin-right: 10px;
@@ -77,8 +75,7 @@ hr{
 .p_navigator{
     padding: 15px;
     flex: 5;
-
-    min-height: 650px;
+    min-height: 80vh;
     height: auto;
     background-color: white;
     border-radius: 10px;
@@ -349,7 +346,7 @@ p{
     height: min-content;
     text-align: center;
     border-radius: 10px;
-    color: white;
+    color: lightgray;
     transition: 1s;
     filter: brightness(90%);
 
@@ -357,5 +354,32 @@ p{
 .element:hover{
     filter: brightness(135%);
     text-decoration: underline;
+    color: white;
+    cursor: pointer;
+}
+.regform_d{
+    margin-top: 30px;
+    text-align: center;
+}
+.main_part{
+    display: flex;
+    font-size: 20px;
+    align-content: space-between;
+}
+.left_part{
+    width: auto;
+    flex: 1;
+}
+.right_part{
+    width: auto;
+    flex: 1;
+}
+.icon{
+    filter: brightness(130%);
+    width: 30px;
+    margin: 2px;
+}
+.icon:hover{
+    filter: brightness(170%);
     cursor: pointer;
 }

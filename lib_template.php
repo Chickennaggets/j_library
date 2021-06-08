@@ -23,9 +23,11 @@ print_header();
         </div>
     </div>
     <?php
-        print_footer();
+    print_footer();
     ?>
 </div>
+
 </body>
+
     </html>
 <?php

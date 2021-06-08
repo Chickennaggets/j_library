@@ -167,12 +167,17 @@ switch($action) {
         if (!$aSong) {
             echo "Nie ma danych";
         }
-        echo "<h1 align='center'>".$aSong["name_song"]."</h1><br><br><br><br>";
-        echo "<h2>Numer teczki: ".$aSong["id_song"]."<br><hr>Ilość partytur: ".$aSong["count"]."<br>
-          <hr>Autor: ".$aSong["author"]."<br>
-          <hr>Teczka: ".$aSong["name_folder"]."<br>
-          <hr>Notatki: ".$aSong["note"]."<br>
-          <hr>Piki:</h2><br>";
+        echo "<h1 align='center' style='margin-bottom: 60px'>".$aSong["name_song"]."</h1>";
+        if($oUser->isAdmin()){
+            echo "<div style='float: right;'><a href='?section=songs&action=edit&id=".$aSong["id_song"]."'><img src='img/icons/edit.png' class='icon' alt='Edycja' title='Edytować'></a>";
+            echo "<a href='?section=songs&action=delete&id=".$aSong["id_song"]."'><img src='img/icons/delete.png' class='icon' alt='Usunąć' title='Usunąć'></a></div>";
+
+        }
+        echo "<div class='main_part'><div class='left_part'><p>Numer teczki: ".$aSong["id_song"]."</p><p>Ilość partytur: ".$aSong["count"]."</p>
+          <p>Autor: ".$aSong["author"]."</p>
+          <p>Teczka: ".$aSong["name_folder"]."</p></div>
+          <div class='right_part'><p>Notatki: ".$aSong["note"]."</p></div></div>
+          <p>Pliki:</p><hr>";
         $folderName = getNameFolder($id);
         $dir = ROOT_FOLDER.'/files/'.$folderName.'/'.$id.'/';
         if (is_dir($dir)) {
@@ -184,6 +189,7 @@ switch($action) {
                 closedir($dh);
             }
         }
+
         if ($oUser->isAdmin()) {
             echo '
             <br><br>
@@ -193,8 +199,7 @@ switch($action) {
                 <input type="submit" class="btn">
             </form>
             ';
-            echo "<br><a class = 'a' href=?section=songs&action=edit&id=".$aSong["id_song"].">Edycja</a>";
-            echo "<br><br><a class = 'a' href=?section=songs&action=delete&id=".$aSong["id_song"].">Usunąć utwór</a>";
         }
+        echo '';
         break;
 }

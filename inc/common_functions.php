@@ -73,7 +73,7 @@
             }
             echo '<a href="?section=main" class = "a">Utwory</a><br>';
 
-            echo '<a href="?section=users&action=logout" class = "a">Wyloguj</a><br>';
+            echo '<a href="?section=users&action=logout" class = "a" onclick=log_out()>Wyloguj</a><br>';
         }
         else{
             echo '<a href="?section=authorization" class = "a">Zaloguj</a>';

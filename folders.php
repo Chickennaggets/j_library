@@ -11,13 +11,15 @@ $oFold = new Folder();
 switch($action){
     case 'add':
         ?>
+    <div class="regform_d">
         <form method="post" action="?section=folders&action=insert" class = "form">
             <h1 style="text-align: center; margin: 30px; background-color: transparent;">Nowa teczka</h1>
-                <input type="text" class="edbx" name="name_fold" id="name_fold"
-                                            required placeholder="Nazwa teczki*" data-validate><br><br>
-                <textarea name = "note" id = "note" placeholder="Notatki"></textarea><br><br>
-                <input type="submit" name="submit"  class="btn" value="Dodaj">
+            <input type="text" class="edbx" name="name_fold" id="name_fold"
+                   required placeholder="Nazwa teczki*" data-validate><br><br>
+            <textarea name = "note" id = "note" placeholder="Notatki"></textarea><br><br>
+            <input type="submit" name="submit"  class="btn" value="Dodaj">
         </form>
+    </div>
     <?php
         break;
     case 'insert':
