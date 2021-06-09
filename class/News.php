@@ -11,7 +11,7 @@ class News
 
         if ($conn->query($sql) === TRUE) {
             echo "Dane zostały zaktualizowane<br>";
-            echo "<meta http-equiv='refresh' content='1; url=?section=main'>";
+            echo "<meta http-equiv='refresh' content='1; url=?section=news'>";
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
@@ -51,11 +51,24 @@ class News
             SET 
                 header = '$header', 
                 post_text = '$text'
-            WHERE id_wall = '$id';";
+            WHERE id_wall = $id;";
 
         if ($conn->query($sql) === TRUE) {
             echo "Dane zostały zaktualizowane<br>";
-            //echo "<meta http-equiv='refresh' content='1; url=?section=main'>";
+            echo "<meta http-equiv='refresh' content='1; url=?section=news'>";
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+    }
+    function deletePost($id){
+        global $conn;
+
+        $sql = "DELETE FROM wall 
+        WHERE id_wall=$id";
+
+        if ($conn->query($sql) === TRUE) {
+            echo "Utwór został usunięty<br>";
+            echo "<meta http-equiv='refresh' content='1; url=?section=news'>";
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
