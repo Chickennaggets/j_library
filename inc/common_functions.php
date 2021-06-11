@@ -2,88 +2,99 @@
 
 
     function print_header(){
-        echo '<head>
-                    <title>Biblioteka Chóru Katedralnego</title>
-                        <link rel="stylesheet" href="../public/style.css">
-                        <script src="../public/script.js"></script>
-                        <link rel="preconnect" href="https://fonts.gstatic.com">
-                        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
-                            <div class="header">
-                                <h1 class="zagl">Biblioteka Chóru</h1> 
-                            </div>
-               </head>';
+        global $oUser;
+
+        echo '      
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <script src="script.js"></script>
+            <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+            <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+            <link rel="stylesheet" href="style1.css">
+            <title>Biblioteka Chóru</title>
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Biblioteka Chóru Katedralnego</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                    <ul class="navbar-nav">                
+                    ';
+        if($oUser->isLogin()){
+        echo '
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">'.$_SESSION["online_login"].'</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="?section=main">Utwory</a>
+                        </li>';
+                        if($oUser->isAdmin()) {
+
+                            echo '<li class="nav-item">
+                                     <a class="nav-link" href="?section=folders">Teczki</a>
+                                  </li>
+                                  <li class="nav-item">
+                                     <a class="nav-link" href="?section=users">Użytkowniki</a>
+                                  </li>
+                                   <li class="nav-item">
+                                     <a class="nav-link" href="?section=news">Aktualności</a>
+                                   </li>';
+                        }
+                        echo ' 
+                        <li class="nav-item">
+                            <a class="nav-link" href="?section=users&action=logout">Wyloguj</a>
+                        </li>
+                    ';
+        }
+                        echo '<li class="nav-item">
+                                <a class="nav-link" href="?section=info&action=mainpage">Strona Chóru</a>
+                              </li>
+                           </ul></div></nav>';
     }
 
     function print_main_header(){
-        echo '
-        <title>Chór Katedralny im. Ks. Alfreda Hoffmana w Siedlcach</title>
-        <link rel="stylesheet" href="style.css">
-        <script src="script.js"></script>
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
-        <div class="info_header">
-            <div class="link">
-                <a href="?section=info&action=mainpage" class="info_a">Strona główna</a>
-            </div>
-            <div class="link">
-                <div class="dropdown">
-                    <a href="?section=info" class="info_a">O chórze</a>
-                      <div class="dropdown-content">
-                        <a href="?section=info&action=szulik">Dyrygent</a>
-                        <a href="?section=info&action=hoffman">Ks. A. Hoffman</a>
-                        <a href="?section=info&action=history">Historia chóru</a>
-                      </div>
-                </div>          
-            </div>
+    echo '        
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <script src="script.js"></script>
+            <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+             <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+             <link rel="stylesheet" href="style1.css">
             
-            <div class="link">
-                <a href="" class="info_a">Aktualności</a>
+             <title>Chór Katedralny im. Ks. Alfreda Hoffmana w Siedlcach</title>    
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">Chór Katedralny im. Ks. Alfreda Hoffmana w Siedlcach</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="?section=info&action=mainpage">Strona główna</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Aktualności</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="?section=authorization">Biblioteka</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="?section=info" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    O chórze
+                </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item" href="?section=info&action=szulik">Dyrygent</a></li>
+                    <li><a class="dropdown-item" href="?section=info&action=hoffman">Ks. A. Hoffman</a></li>
+                    <li><a class="dropdown-item" href="?section=info&action=history">Historia chóru</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="?section=info&action=kontakt">Kontakt</a>
+                </li>
+              </ul>
             </div>
-            
-            <div class="link">
-                <a href="?section=authorization" class="info_a">Biblioteka</a>
-            </div>
-            
-            <div class="link">
-                <a href="?section=info&action=kontakt" class="info_a">Kontakt</a>
-            </div>
-            <div class="link">
-                <a href="https://www.facebook.com/groups/169337146589599"><img src="img/icons/facebook.png" class="icon" title="facebook"></a>
-                <a href=""><img src="img/icons/instagram.png" class="icon" title="instagram"></a>
-                <a href="http://katedra.siedlce.pl/"><img src="img/icons/link.png" class="icon" title="Katedra Siedlce"></a>
-            </div>
-            
-        </div>
-                
-        
-        
-        ';
-    }
-
-    function print_nav_menu()
-    {
-        global $oUser;
-        echo '<div class="navigator">';
-        if($oUser->isLogin()){
-            echo $_SESSION["online_login"]."<br>";
-            if($_SESSION["root"]){
-                echo "(Administrator)<br><br>";
-            }else{
-                echo "(Użytkownik)<br><br>";
-            }
-            if($oUser->isAdmin()){
-                echo "<a href='?section=folders' class = 'a'><div class='nav_part'><img src='img/icons/folder.png' class='icon'><div class='n_text'>Teczki</div></div></a>
-                      <a href='?section=users' class = 'a'><div class='nav_part'><img src='img/icons/kontakts.png' class='icon'><div class='n_text'>Użytkowniki</div></div></a>
-                      <a href='?section=news' class = 'a'><div class='nav_part'><img src='img/icons/news.png' class='icon'><div class='n_text'>Aktualności</div></div></a>";
-            }
-            echo '<a href="?section=main" class = "a"><div class="nav_part"><img src="img/icons/file.png" class="icon"><div class="n_text">Utwory</div></div></a>';
-
-            echo '<a href="?section=users&action=logout" class = "a"><div class="nav_part"><img src="img/icons/logout.png" class="icon"><div class="n_text">Wyloguj</div></div></a>';
-        }
-        else{
-            echo '<a href="?section=authorization" class = "a">Zaloguj</a>';
-        }
-        echo '</div>';
+          </div>
+        </nav>';
     }
 
     function showError($text){
@@ -123,12 +134,6 @@
             </p>
         </footer>
         ';
-    }
-    function print_up_button(){
-        echo
-        '<a id="upbutton" href="#" onclick="smoothJumpUp(); return false;">
-            <img src="img/up.png" alt="Top" border="none" title="Do góry">
-         </a>';
     }
 
     function getNameFolder($id){

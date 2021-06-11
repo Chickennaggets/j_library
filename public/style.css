@@ -379,15 +379,6 @@ p{
     width: auto;
     flex: 1;
 }
-.icon{
-    filter: brightness(130%);
-    width: 27px;
-    margin-right: 2px;
-}
-.icon:hover{
-    filter: brightness(170%);
-    cursor: pointer;
-}
 .anim_tr{
     transition: 0.6s;
 }
@@ -428,7 +419,7 @@ p{
     display: flex;
     align-items: flex-start;
     padding: 5px;
-    width: 100%;
+    width: auto;
     transition: 1s;
 }
 .nav_part:hover{
@@ -438,8 +429,62 @@ p{
 .n_text{
     margin-left: 10px;
 }
+
+.navigator a.nav {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    transition: 1s;
+    padding-left: 45px;
+    margin: 5px;
+}
+.navigator a.icon {
+    background-repeat: no-repeat;
+    filter: brightness(130%);
+    background-size: 30px;
+}
+.navigator a.icon :hover {
+    filter: brightness(170%);
+    cursor: pointer;
+}
+.navigator a.icon.folder {
+    background-image: url("img/icons/folder.png");
+}
+.navigator a.icon.kontakts {
+    background-image: url("img/icons/kontakts.png");
+}
+.navigator a.icon.news {
+    background-image: url("img/icons/news.png");
+}
+.navigator a.icon.doc {
+    background-image: url("img/icons/file.png");
+}
+.navigator a.icon.logout {
+    background-image: url("img/icons/logout.png");
+}
 .top_panel{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     margin-bottom: 15px;
+}
+
+.top_panel a {
+    text-align: center;
+    width: auto;
+    transition: 1s;
+    padding-left: 2px;
+    margin: 5px;
+}
+.top_panel a.icon {
+    background-repeat: no-repeat;
+    background-position: left;
+    filter: brightness(130%);
+    background-size: 30px;
+}
+.top_panel a.icon :hover {
+    filter: brightness(170%);
+    cursor: pointer;
+}
+.top_panel a.icon.newfile {
+    background-image: url("img/icons/newfile.png");
 }

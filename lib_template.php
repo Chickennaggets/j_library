@@ -8,25 +8,18 @@ global $oUser;
 print_header();
 ?>
 <body>
-<div class="page">
-    <div class="parent">
-
+    <div class="container-fluid gx-0" style="min-height: 90vh; display: flex">
         <?php
-            if($oUser->isLogin())
-                print_nav_menu();
-            ?>
-
-        <div class="p_navigator">
-            <?php
-                include ROOT_FOLDER.$section.'.php';
-            ?>
-        </div>
+        include ROOT_FOLDER.$section.'.php';
+        ?>
     </div>
+
+
+
+
     <?php
     print_footer();
     ?>
-</div>
-
 </body>
 
     </html>

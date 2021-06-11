@@ -43,7 +43,7 @@ class User
 
     function Logout() {
         session_destroy();
-        header('Location: ?section=info&action=mainpage');
+        header('Location: ?section=authorization');
     }
 
     function getAll($word, $parameter){

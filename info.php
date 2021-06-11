@@ -1,8 +1,4 @@
 <?php
-    print_up_button();
-?>
-
-<?php
 $action = Get::get('action', '', GET::TYPE_STR);
 switch ($action){
     case 'history':
