@@ -82,7 +82,7 @@
                   <a class="nav-link dropdown-toggle" href="?section=info" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     O chórze
                 </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
                     <li><a class="dropdown-item" href="?section=info&action=szulik">Dyrygent</a></li>
                     <li><a class="dropdown-item" href="?section=info&action=hoffman">Ks. A. Hoffman</a></li>
                     <li><a class="dropdown-item" href="?section=info&action=history">Historia chóru</a></li>
@@ -128,11 +128,13 @@
     function print_footer()
     {
         echo '
-        <footer class="footer">
-            <p>
-                Chór Katedralny im. Ks. Alfreda Hoffmana w Siedlcach © 2021 | website by Yan Ramanouski 
-            </p>
-        </footer>
+        
+            <footer class="footer">
+                <p>
+                    Chór Katedralny im. Ks. Alfreda Hoffmana w Siedlcach © 2021 | website by Yan Ramanouski 
+                </p>
+            </footer>
+        
         ';
     }
 

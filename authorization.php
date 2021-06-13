@@ -19,22 +19,33 @@ switch ($action) {
         break;
     case 'registration':
         ?>
-
-            <form method="post" action="?section=authorization&action=regist_query" class = "form" id="fform" style="text-align: center;padding-top: 5%;">
-                <h1 style="text-align: center; margin: 30px; background-color: transparent;">Rejestracja</h1>
-
-	            <input type="text" class="edbx" name="log" id="log" required placeholder="Login*" data-validate><br><br>
-                <span class="help-text"></span>
-
-	            <input type="text" class="edbx" name="has1" id="has1" required placeholder="Hasło*" onchange="checkpasswords()" data-validate><br>
-                <span class="log-text"></span><br>
-
-                <input type="text" class="edbx" name="has2" id="has2" required placeholder="Powtóż hasło*" onchange="checkpasswords()" data-validate><br>
-                <span class="help-text"></span><br>
-
-                <input type="button" onclick="reg()" class="btn" value="Zarejestruj"><br><br>
-                <a class = "a" href="?section=authorization">Zalogj</a>
-            </form>
+            <div class="container-fluid pt-5 w-25" style="margin: auto; height: 90vh; margin-top: 15vh">
+                <form method="post" action="?section=authorization&action=regist_query" id="fform">
+                    <h2 style="text-align: center">Rejestracja</h2>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Login</label>
+                        <input type="text" class="form-control" name="log" required aria-describedby="loginHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Hasło</label>
+                        <input type="text" class="form-control" id="has1" name="has1" required aria-describedby="passHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label"> Powtóż hasło</label>
+                        <input type="text" class="form-control" id="has2" name="has2" required aria-describedby="passHelp">
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="checkRegulamin" onclick="checkreg();">
+                        <label class="form-check-label" for="exampleCheck1">Akceptuję <a href="#">regulamin</label>
+                    </div>
+                    <div class="mb-3 text-center">
+                        <input type="button" class="btn btn-primary w-50" disabled onclick="reg()" value="Zarejestruj" id="btn_login">
+                    </div>
+                    <div class="text-center">
+                        <a class = "a" href="?section=authorization">Zalogj</a>
+                    </div>
+                </form>
+            </div>
 
     <?php
         break;
@@ -51,8 +62,8 @@ switch ($action) {
         break;
     default: ?>
 
-    <div class="container-fluid pt-5 w-25" style="margin: auto;">
-        <form method="post" action="?section=authorization&action=login">
+    <div class="container-fluid pt-5 w-25" style="margin: auto; height: 90vh;">
+        <form method="post" action="?section=authorization&action=login" style="margin-top: 15vh">
             <h2 style="text-align: center">Zaloguj</h2>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Login</label>
@@ -62,13 +73,11 @@ switch ($action) {
                 <label for="exampleInputPassword1" class="form-label">Hasło</label>
                 <input type="password" class="form-control" name="has">
             </div>
-            <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Akceptuję regulamin</label>
+            <div class="container-fluid text-center" >
+                <button type="submit" class="btn btn-primary w-50 mb-2" id="btn_login">Zaloguj</button>
             </div>
-            <div class="container-fluid" style="text-align: center">
-                <button type="submit" class="btn btn-primary">Zaloguj</button>
-                <br><a href="?section=authorization&action=registration">Rejestracja</a>
+            <div class="mb-3 text-center">
+                <a href="?section=authorization&action=registration">Rejestracja</a>
             </div>
 
         </form>

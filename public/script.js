@@ -58,23 +58,11 @@ function u_srch(){
     xhttp.open("GET", "?section=users&action=show&parameter="+filt+"&word="+word+"&ajax", true);
     xhttp.send();
 }
-
-
-    var smoothJumpUp = function() {
-        if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
-            window.scrollBy(0,-50);
-            setTimeout(smoothJumpUp, 5);
+    function checkreg(){
+    if(document.getElementById('checkRegulamin').checked){
+            document.getElementById('btn_login').disabled = false;
         }
+    else{
+        document.getElementById('btn_login').disabled = true;
     }
-
-    window.onscroll = function() {
-        var scrolled = window.pageYOffset || document.documentElement.scrollTop;
-        if (scrolled > 600) {
-            document.getElementById('upbutton').style.display = 'block';
-        } else {
-            document.getElementById('upbutton').style.display = 'none';
-        }
-    }
-    function log_out(){
-        return confirm('Napewno chcesz wylogować się ?');
     }

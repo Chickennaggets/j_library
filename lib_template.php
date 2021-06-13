@@ -8,7 +8,7 @@ global $oUser;
 print_header();
 ?>
 <body>
-    <div class="container-fluid gx-0" style="min-height: 90vh; display: flex">
+    <div class="container-fluid gx-0" style="height: auto display: flex">
         <?php
         include ROOT_FOLDER.$section.'.php';
         ?>

@@ -70,31 +70,45 @@ switch($action) {
         $aFold = $oFold->getAll();
 
         ?>
-        <div class="regform_d">
-            <form method="post" action="?section=songs&action=insert" class = "form">
-                 <h1 style="text-align: center; margin: 30px; background-color: transparent;">Nowy utwór</h1>
-                      <input type="text" class="edbx" name="song_name" id="song_name"
-                                                                required placeholder="Nazwa utworu*" data-validate><br><br>
-                           <input type="number" class="edbx" name="count_p" id="count_p"
-                                                                required placeholder="Ilość partytur*" data-validate><br><br>
-                                <input type="text" class="edbx" name="autor" id="autor"
-                                                                required placeholder="Autor" data-validate><br><br>
-                                    <?php
-                                        if ($aFold) {
-                                            echo "Teczka <select class = 'edbx' name='folders' id='folders'>";
-                                            while($row = $aFold->fetch_assoc()) {
-                                                echo "<option value='".$row["id_folder"]."'>".$row["name_folder"]."</option>";
-                                            }
-                                            echo "</select><br><br>";
-                                        } else {
-                                            echo "Nie ma danych";
-                                        }
-                                        ?>
-
-                                        <textarea name="notatki" id="notatki" placeholder="Notatki"></textarea><br><br>
-                                        <input type="submit" name="submit" class="btn" value="Dodaj">
-            </form>
-        </div>
+            <div class="container-fluid d-flex flex-fill bd-highlight justify-content-center align-items-center h-100 pt-5" style="width: 500px;">
+                <form method="post" action="?section=songs&action=insert">
+                    <h2 class="mb-4 text-center">Nowy utwór</h2>
+                    <div class="mb-3">
+                        <label for="exampleInputText1" class="form-label">Nazwa utworu</label>
+                        <input type="text" required class="form-control" name="song_name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputText2" class="form-label">Ilość partytur</label>
+                        <input type="number" required class="form-control" name="count_p">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputText3" class="form-label">Autor</label>
+                        <input type="text" required class="form-control" name="autor">
+                    </div>
+                    <div class="mb-3">
+                        <?php
+                        if ($aFold) {
+                            echo '<select class="form-select" name="folders" aria-label="Default select example"><option value="5" hidden selected>Wybierz teczkę</option>';
+                            while($row = $aFold->fetch_assoc()) {
+                                echo "<option value='".$row["id_folder"]."'>".$row["name_folder"]."</option>";
+                            }
+                            echo "</select>";
+                        } else {
+                            echo "Nie ma danych";
+                        }
+                        ?>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Notatki</span>
+                        <textarea class="form-control" name="notatki" aria-label="Notatki"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <div class="container-fluid" style="text-align: center">
+                            <button type="submit" class="btn btn-primary w-50">Dodaj</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         <?php
         break;
 
@@ -199,11 +213,10 @@ switch($action) {
                               <label for="formFile" class="form-label">Wgraj pliki</label>
                               <input type="text" name="id_folder" value="'.$id.'" hidden>
                               <input class="form-control" type="file" aria-label="browser" name="filename" id="formFile">
-                              <button type="submit" class="btn btn-secondary" style="margin-top: 10px">Wyślij</button>
+                              <button type="submit" class="btn btn-primary w-50 mt-3">Wyślij</button>
                           </form>
                       </div>
-                  </div>
-                   ';
+                  </div>';
         }
         echo "</div>";
         break;

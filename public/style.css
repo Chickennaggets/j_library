@@ -325,6 +325,9 @@ p{
     color:white;
     background: rgba(1, 1, 1, 0.6);
     margin: 0px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
 }
 #upbutton {
     background: url("img/up.png") no-repeat;
