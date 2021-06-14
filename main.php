@@ -2,8 +2,8 @@
 
 ?>
 
-<div class="container-fluid pt-5 gx-5" >
-    <div class="row pt-4 pb-4" style="padding-top: 10px">
+<div class="container gx-5" >
+    <div class="row pb-4">
         <div class="col">
             <?php
             if($_SESSION["root"]){
@@ -25,7 +25,7 @@
             <input type = "text" id="sz_text" class="form-control" placeholder="Szukaj*" onchange="m_srch()">
         </div>
         <div class="col">
-            <input type="button" value="Szukaj" class="btn btn-secondary" id="sz_btn" onclick="m_srch()">
+            <input type="button" value="Szukaj" class="btn btn-primary" id="sz_btn" onclick="m_srch()">
         </div>
         </div>
     </div>

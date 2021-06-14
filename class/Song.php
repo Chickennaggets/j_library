@@ -7,7 +7,7 @@ class Song {
     function getById($id) {
         global $conn;
 
-        $sql = "SELECT id_song, name_song, count, author, folder.name_folder, song.note 
+        $sql = "SELECT id_song, name_song, count, author, song.id_folder, folder.name_folder, song.note 
             FROM song 
               LEFT JOIN folder ON song.id_folder = folder.id_folder 
             WHERE id_song = ".$id;
@@ -33,7 +33,7 @@ class Song {
 
         if ($conn->query($sql) === TRUE) {
             echo "Dane zostały zaktualizowane<br>";
-            echo "<meta http-equiv='refresh' content='1; url=?section=main'>";
+            header('Location: ?section=main');
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
@@ -46,8 +46,7 @@ class Song {
         WHERE id_song=$id";
 
         if ($conn->query($sql) === TRUE) {
-            echo "Utwór został usunięty<br>";
-            echo "<meta http-equiv='refresh' content='1; url=?section=main'>";
+            header('Location: ?section=main');
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
@@ -60,8 +59,7 @@ class Song {
             values ('$song_name', $count_p, '$autor', $folders, '$notatki');";
 
         if ($conn->query($sql) === TRUE) {
-            echo "Nowy utwór został dodany<br>";
-            echo "<meta http-equiv='refresh' content='1; url=?section=main'>";
+            header('Location: ?section=main');
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }

@@ -39,13 +39,16 @@ switch ($action) {
                         <label class="form-check-label" for="exampleCheck1">Akceptuję <a href="#">regulamin</label>
                     </div>
                     <div class="mb-3 text-center">
-                        <input type="button" class="btn btn-primary w-50" disabled onclick="reg()" value="Zarejestruj" id="btn_login">
+                        <input type="button" class="btn btn-primary w-50" disabled onclick="reg();" value="Zarejestruj" id="btn_login">
                     </div>
                     <div class="text-center">
                         <a class = "a" href="?section=authorization">Zalogj</a>
                     </div>
                 </form>
             </div>
+
+        <!-- Modal window -->
+
 
     <?php
         break;
@@ -55,8 +58,12 @@ switch ($action) {
 
         $aUser = $oUser->newUser($login, $pass);
 
-        if($aUser)
+        if($aUser){
             echo 'Konto zostało zarejestrowane. Żeby móc załogować się potrzebujesz akceptacji administratora.';
+            ?>
+            <?php
+
+        }
         else
             echo 'Błąd, możliwe że taki login już zajęty';
         break;

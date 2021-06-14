@@ -11,7 +11,7 @@ switch ($action){
         $parameter = get::Get('parameter','',Get::TYPE_STR);
         $aUser = $oUser->getAll($word, $parameter);
 
-        echo "<table class='table'>
+        echo "<div class='container gx-3 mt-3' style='min-height: 90vh'><table class='table table-hover'>
                 <tr>
                     <td>Login</td>
                     <td>Aktywowano</td>
@@ -37,7 +37,7 @@ switch ($action){
             }
             echo "<tr><td>" . $row["login"] . "</td>" . $akt . "<td>" . $adm . "</td><td>" . $row["regist_date"] . "</td><td>$delete</tr>";
         }
-        echo "</table>";
+        echo "</table></div>";
 
             break;
     case 'logout':
@@ -54,15 +54,25 @@ switch ($action){
         break;
     default:
         ?>
-            <select name="filters" class="edbx" id="filters" onclick="u_srch()" style="margin-right: 30px;" >
-                <option hidden value="login">Filtruj wg</option>
-                <option value="login">Loginu</option>
-                <option value="regist_date">Daty rejestracji</option>
-                <option value="activated">Aktywacji</option>
-                <option value="adminn">Uprawnień</option>
-            </select>
-            <input type = "text" id="sz_text" class="edbx" placeholder="Szukaj*" onchange="u_srch()">
-            <input type="button" value="Szukaj" class="btn" id="sz_btn" onclick="u_srch()" style="margin-left: 10px;"><br><br>
+    <div class="container gx-5">
+        <div class="row">
+            <div class="col">
+                <select name="filters" class="form-select" id="filters" onclick="u_srch()" >
+                    <option hidden value="login">Filtruj wg</option>
+                    <option value="login">Loginu</option>
+                    <option value="regist_date">Daty rejestracji</option>
+                    <option value="activated">Aktywacji</option>
+                    <option value="adminn">Uprawnień</option>
+                </select>
+            </div>
+            <div class="col">
+                <input type = "text" id="sz_text" class="form-control" placeholder="Szukaj*" onchange="u_srch()">
+            </div>
+            <div class="col">
+                <input type="button" value="Szukaj" class="btn btn-primary" id="sz_btn" onclick="u_srch()" >
+            </div>
+        </div>
+    </div>
             <div id = "demo">
             </div>
         <script>

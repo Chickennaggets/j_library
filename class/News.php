@@ -11,7 +11,7 @@ class News
 
         if ($conn->query($sql) === TRUE) {
             echo "Dane zostały zaktualizowane<br>";
-            echo "<meta http-equiv='refresh' content='1; url=?section=news'>";
+            header('Location: ?section=news');
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
@@ -55,7 +55,7 @@ class News
 
         if ($conn->query($sql) === TRUE) {
             echo "Dane zostały zaktualizowane<br>";
-            echo "<meta http-equiv='refresh' content='1; url=?section=news'>";
+            header('Location: ?section=news');
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
@@ -68,7 +68,7 @@ class News
 
         if ($conn->query($sql) === TRUE) {
             echo "Utwór został usunięty<br>";
-            echo "<meta http-equiv='refresh' content='1; url=?section=news'>";
+            header('Location: ?section=news');
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
