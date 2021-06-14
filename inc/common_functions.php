@@ -36,9 +36,21 @@
                                   <li class="nav-item">
                                      <a class="nav-link" href="?section=users">Użytkowniki</a>
                                   </li>
+
                                    <li class="nav-item">
                                      <a class="nav-link" href="?section=news">Aktualności</a>
                                    </li>';
+                            $num = $oUser->countQueries();
+                            if($num==0){
+                                $num="";
+                            }
+                            echo '
+                                   <li>
+                                      <a class="nav-link" href="?section=queries">Wnioski <span class="badge bg-secondary">'.$num.'</span></a>
+                                          
+                                   </li>
+                            ';
+
                         }
                         echo ' 
                         <li class="nav-item">

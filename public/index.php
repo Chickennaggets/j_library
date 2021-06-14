@@ -17,7 +17,7 @@ if (isset($_GET['ajax'])) {
     }
     else{
         if(faceControle($section))
-        include_once ROOT_FOLDER . 'lib_template.php';
+            include_once ROOT_FOLDER . 'lib_template.php';
         else
             echo "ERROR";
     }

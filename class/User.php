@@ -4,25 +4,26 @@ const TABLE = 'accounts';
 
 class User
 {
-    function isLogin() {
-        if(isset($_SESSION["online_login"])){
+    function isLogin()
+    {
+        if (isset($_SESSION["online_login"])) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
 
-    function isAdmin() {
-        if($_SESSION["root"]){
+    function isAdmin()
+    {
+        if ($_SESSION["root"]) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
 
-    function Login($login, $pass) {
+    function Login($login, $pass)
+    {
         global $conn;
 
         $sql = "SELECT login, activated, adminn 
@@ -30,29 +31,30 @@ class User
                         WHERE login = '$login' && ac_password = PASSWORD('$pass') && activated = true;";
         $result = $conn->query($sql);
 
-        if($result->num_rows>0){
+        if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
             $_SESSION["online_login"] = $login;
             $_SESSION["root"] = $row["adminn"];
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
 
-    function Logout() {
+    function Logout()
+    {
         session_destroy();
         header('Location: ?section=authorization');
     }
 
-    function getAll($word, $parameter){
+    function getAll($word, $parameter)
+    {
         global $conn;
 
         $sql = "SELECT login, activated, adminn, regist_date 
         FROM accounts
-        WHERE login LIKE '%".$word."%'
-        ORDER BY ".$parameter.";";
+        WHERE login LIKE '%" . $word . "%'
+        ORDER BY " . $parameter . ";";
 
         $result = $conn->query($sql);
 
@@ -62,7 +64,8 @@ class User
         return $result;
     }
 
-    function deleteUser($login){
+    function deleteUser($login)
+    {
         global $conn;
 
         $sql = "DELETE FROM accounts 
@@ -74,7 +77,9 @@ class User
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
     }
-    function changeStatus($login, $stat){
+
+    function changeStatus($login, $stat)
+    {
         global $conn;
 
         $stat = !$stat;
@@ -90,7 +95,9 @@ class User
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
     }
-    function newUser($login, $pass){
+
+    function newUser($login, $pass)
+    {
         global $conn;
 
         $sql = "SELECT login 
@@ -101,10 +108,9 @@ class User
 
         if ($result->num_rows > 0) {
             return false;
-        }
-        else {
-            $sql1 = "INSERT INTO accounts(login, ac_password, activated, adminn)
-            values('$login', PASSWORD('$pass'), false, false);";
+        } else {
+            $sql1 = "INSERT INTO queries(login, ac_password)
+            values('$login', PASSWORD('$pass'));";
 
             $result1 = $conn->query($sql1);
 
@@ -115,4 +121,33 @@ class User
             }
         }
     }
+
+    function countQueries(){
+        global $conn;
+
+        $sql = "SELECT COUNT(*) as cnt
+                FROM queries;";
+
+        $result = $conn->query($sql);
+
+        $row = $result->fetch_assoc();
+
+        return $row["cnt"];
+
+    }
+
+    function getAllQueries(){
+        global $conn;
+
+        $sql = "SELECT login, regist_date FROM queries";
+
+        $result = $conn->query($sql);
+
+        if ($result) {
+            return $result;
+        }
+        return false;
+    }
+
 }
+

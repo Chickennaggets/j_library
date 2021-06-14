@@ -19,7 +19,7 @@ switch ($action) {
         break;
     case 'registration':
         ?>
-            <div class="container-fluid pt-5 w-25" style="margin: auto; height: 90vh; margin-top: 15vh">
+            <div class="container-fluid pt-5 w-25" style="margin: auto; min-height: 100vh;">
                 <form method="post" action="?section=authorization&action=regist_query" id="fform">
                     <h2 style="text-align: center">Rejestracja</h2>
                     <div class="mb-3">
@@ -62,7 +62,6 @@ switch ($action) {
             echo 'Konto zostało zarejestrowane. Żeby móc załogować się potrzebujesz akceptacji administratora.';
             ?>
             <?php
-
         }
         else
             echo 'Błąd, możliwe że taki login już zajęty';
