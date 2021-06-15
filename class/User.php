@@ -15,7 +15,23 @@ class User
 
     function isAdmin()
     {
-        if ($_SESSION["root"]) {
+        if ($_SESSION["root"]=='admin') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function isUser(){
+        if ($_SESSION["root"]=='user') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function isGuest(){
+        if ($_SESSION["root"]=='guest') {
             return true;
         } else {
             return false;
@@ -26,7 +42,7 @@ class User
     {
         global $conn;
 
-        $sql = "SELECT login, activated, adminn 
+        $sql = "SELECT login, activated, ac_type 
                     FROM accounts 
                         WHERE login = '$login' && ac_password = PASSWORD('$pass') && activated = true;";
         $result = $conn->query($sql);
@@ -34,7 +50,7 @@ class User
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
             $_SESSION["online_login"] = $login;
-            $_SESSION["root"] = $row["adminn"];
+            $_SESSION["root"] = $row["ac_type"];
             return true;
         } else {
             return false;
@@ -51,7 +67,7 @@ class User
     {
         global $conn;
 
-        $sql = "SELECT login, activated, adminn, regist_date 
+        $sql = "SELECT login, activated, ac_type, regist_date 
         FROM accounts
         WHERE login LIKE '%" . $word . "%'
         ORDER BY " . $parameter . ";";
@@ -139,7 +155,7 @@ class User
     function getAllQueries(){
         global $conn;
 
-        $sql = "SELECT login, regist_date FROM queries";
+        $sql = "SELECT id_query, login, regist_date FROM queries";
 
         $result = $conn->query($sql);
 
@@ -148,6 +164,65 @@ class User
         }
         return false;
     }
+    function deleteQuery($id){
+        global $conn;
 
+        $sql = "DELETE FROM queries 
+                    WHERE id_query='$id';";
+
+        if ($conn->query($sql) === TRUE) {
+            header('Location: ?section=queries');
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+    }
+
+    function transfer($id, $ac_type){
+        global $conn;
+
+        $sql = "SELECT login, ac_password FROM queries WHERE id_query = '$id';";
+
+        $result = $conn->query($sql);
+
+        if($result->num_rows > 0) {
+            $row = $result->fetch_assoc() ;
+                $login = $row["login"];
+                $pass = $row["ac_password"];
+        }
+
+        $sql = "INSERT INTO accounts(login, ac_password, activated, ac_type, count_downloads)
+                values('$login', '$pass', false,'$ac_type',0);";
+
+        if ($conn->query($sql) === TRUE) {
+
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+
+        $sql = "DELETE FROM queries WHERE id_query = '$id'";
+
+        if ($conn->query($sql) === TRUE) {
+            header('Location: ?section=users');
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+    }
+    function getCountDownloads($login){
+        global $conn;
+
+        $sql = "SELECT count_downloads as cnt
+                FROM accounts;
+                WHERE login = '$login';";
+
+        $result = $conn->query($sql);
+
+        if($result) {
+            $row = $result->fetch_assoc();
+            $temp = $row["cnt"];
+            return $temp;
+        }
+
+        return 0;
+    }
 }
 

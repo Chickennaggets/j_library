@@ -15,7 +15,7 @@ switch ($action){
                 <tr>
                     <td>Login</td>
                     <td>Aktywowano</td>
-                    <td>Administrator</td>
+                    <td>Typ konta</td>
                     <td>Data rejestracji</td>
                 </tr>";
 
@@ -30,12 +30,10 @@ switch ($action){
             } else {
                 $akt = "<td><a href='?section=users&action=changeStatus&login=" . $row["login"] . "&status=" . $row["activated"] . "' class='c'>Nie</a></td>";
             }
-            if ($row["adminn"]) {
-                $adm = "Tak";
-            } else {
-                $adm = "Nie";
-            }
-            echo "<tr><td>" . $row["login"] . "</td>" . $akt . "<td>" . $adm . "</td><td>" . $row["regist_date"] . "</td><td>$delete</tr>";
+
+            $ac_type = $row["ac_type"];
+
+            echo "<tr><td>" . $row["login"] . "</td>" . $akt . "<td>" . $ac_type . "</td><td>" . $row["regist_date"] . "</td><td>$delete</tr>";
         }
         echo "</table></div>";
 
@@ -50,7 +48,16 @@ switch ($action){
     case 'changeStatus':
         $login = get::Get('login','',Get::TYPE_STR);
         $stat = get::Get('status','',Get::TYPE_STR);
+
         $oUser->changeStatus($login, $stat);
+        break;
+
+    case 'transfer':
+        $id = get::get('id', 0, Get::TYPE_INT);
+        $ac_type = get::post('ac_type', '', Get::TYPE_STR);
+
+        $oUser->transfer($id, $ac_type);
+
         break;
     default:
         ?>

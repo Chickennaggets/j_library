@@ -24,8 +24,18 @@
         echo '
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">'.$_SESSION["online_login"].'</a>
-                        </li>
-                        <li class="nav-item">
+                        </li>';
+
+        if($oUser->isGuest()){
+            $count = $oUser->getCountDownloads($_SESSION["online_login"]);
+            echo '
+            <li>
+                <a class="nav-link" href="#">Pobrania <span class="badge bg-secondary">'.$count.'</span></a>      
+            </li>
+            ';
+        }
+
+        echo'           <li class="nav-item">
                             <a class="nav-link" href="?section=main">Utwory</a>
                         </li>';
                         if($oUser->isAdmin()) {
@@ -46,8 +56,7 @@
                             }
                             echo '
                                    <li>
-                                      <a class="nav-link" href="?section=queries">Wnioski <span class="badge bg-secondary">'.$num.'</span></a>
-                                          
+                                      <a class="nav-link" href="?section=queries">Wnioski <span class="badge bg-secondary">'.$num.'</span></a>      
                                    </li>
                             ';
 

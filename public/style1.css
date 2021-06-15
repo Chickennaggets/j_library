@@ -22,11 +22,22 @@
     width: 100%;
 }
 p{
+    font-size: 17px;
     text-indent: 25px;
 }
 a{
     text-decoration: none;
 }
-body{
+.lib_body{
     padding-top: 70px;
+}
+a.icon{
+    width: auto;
+    height: auto;
+    background-repeat: no-repeat;
+    background-size: 30px;
+
+}
+.icon.trash{
+    src: url("img/icons/trash.svg");
 }

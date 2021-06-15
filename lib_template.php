@@ -3,24 +3,21 @@ global $section;
 global $oUser;
 
 ?>
-    <html>
+<html>
 <?php
 print_header();
 ?>
-<body>
+<body class="lib_body">
     <div class="container-fluid gx-0" style="height: auto display: flex">
         <?php
-        include ROOT_FOLDER.$section.'.php';
+            include ROOT_FOLDER.$section.'.php';
         ?>
     </div>
 
-
-
-
     <?php
-    print_footer();
+        print_footer();
     ?>
 </body>
 
-    </html>
+</html>
 <?php
