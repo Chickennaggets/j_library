@@ -105,6 +105,8 @@
                 </a>
                   <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
                     <li><a class="dropdown-item" href="?section=info&action=szulik">Dyrygent</a></li>
+                    <li><a class="dropdown-item" href="#">II Dyrygent</a></li>
+                    <li><a class="dropdown-item" href="#">Zarząd Chóru</a></li>
                     <li><a class="dropdown-item" href="?section=info&action=hoffman">Ks. A. Hoffman</a></li>
                     <li><a class="dropdown-item" href="?section=info&action=history">Historia chóru</a></li>
                   </ul>
