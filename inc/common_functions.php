@@ -179,3 +179,19 @@
         }
     }
 
+    function translate($word){
+        if($word=='admin'){
+            $ac_type = 'Administrator';
+        }
+        else if($word=='moderator'){
+            $ac_type = 'Moderator';
+        }
+        else if($word=='user'){
+            $ac_type = 'Chórzysta';
+        }
+        else{
+            $ac_type = 'Gość';
+        }
+        return $ac_type;
+    }
+

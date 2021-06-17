@@ -13,17 +13,17 @@ class User
         }
     }
 
-    function isAdmin()
+    function isAdmin() // Модератор
     {
-        if ($_SESSION["root"]=='admin') {
+        if ($_SESSION["root"]=='admin' || $_SESSION["root"]=='moderator') {
             return true;
         } else {
             return false;
         }
     }
 
-    function isUser(){
-        if ($_SESSION["root"]=='user') {
+    function isSuperAdmin(){
+        if ($_SESSION["root"]=='admin') {
             return true;
         } else {
             return false;
@@ -67,7 +67,7 @@ class User
     {
         global $conn;
 
-        $sql = "SELECT login, activated, ac_type, regist_date 
+        $sql = "SELECT id_account, login, ac_type, regist_date 
         FROM accounts
         WHERE login LIKE '%" . $word . "%'
         ORDER BY " . $parameter . ";";
@@ -210,19 +210,48 @@ class User
     function getCountDownloads($login){
         global $conn;
 
-        $sql = "SELECT count_downloads as cnt
-                FROM accounts;
+        $sql = "SELECT count_downloads
+                FROM accounts
                 WHERE login = '$login';";
 
         $result = $conn->query($sql);
 
-        if($result) {
-            $row = $result->fetch_assoc();
-            $temp = $row["cnt"];
-            return $temp;
+        $row = $result->fetch_assoc();
+
+        return $row["count_downloads"];
+    }
+
+    function getById($id){
+        global $conn;
+
+        $sql = "SELECT id_account, login, activated, ac_type, count_downloads, regist_date 
+        FROM accounts
+        WHERE id_account = '$id';";
+
+        $result = $conn->query($sql);
+        if (!$result->num_rows) {
+            return false;
         }
 
-        return 0;
+        return $result->fetch_assoc();
+    }
+
+    function updateUser($id, $ac_type, $count_downloads, $stan){
+        global $conn;
+
+        $sql = "UPDATE accounts 
+            SET 
+                ac_type = '$ac_type', 
+                count_downloads = '$count_downloads', 
+                activated = '$stan' 
+            WHERE id_account = '$id';";
+
+        if ($conn->query($sql) === TRUE) {
+            echo "Dane zostały zaktualizowane<br>";
+           // header('Location: ?section=users');
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
     }
 }
 

@@ -35,3 +35,16 @@ function u_srch(){
         document.getElementById('btn_login').disabled = true;
     }
     }
+
+    function changesel(){
+        var ddl = document.getElementById("selactype");
+        var selectedValue = ddl.options[ddl.selectedIndex].value;
+
+        if (selectedValue == "guest")
+        {
+            document.getElementById("count_downloads").hidden=false;
+        }
+        else{
+            document.getElementById("count_downloads").hidden=true;
+        }
+    }
