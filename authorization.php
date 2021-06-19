@@ -59,7 +59,11 @@ switch ($action) {
         $aUser = $oUser->newUser($login, $pass);
 
         if($aUser){
-            echo 'Konto zostało zarejestrowane. Żeby móc załogować się potrzebujesz akceptacji administratora.';
+            echo '<div class="container-fluid w-100 pt-5" style="min-height: 100vh"><h4 class="text-center mt-5 mb-5">Konto zostało zarejestrowane. Żeby móc załogować się potrzebujesz akceptacji administratora.</h4>
+                      <div class="container text-center">
+                         <a class="btn btn-primary mt-5" href="?section=authorization">Zaloguj</a>
+                      </div>
+                  </div>';
             ?>
             <?php
         }

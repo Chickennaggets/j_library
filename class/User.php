@@ -248,7 +248,7 @@ class User
 
         if ($conn->query($sql) === TRUE) {
             echo "Dane zostały zaktualizowane<br>";
-           // header('Location: ?section=users');
+            header('Location: ?section=users');
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }

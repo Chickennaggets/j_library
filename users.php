@@ -12,7 +12,7 @@ switch ($action){
         $aUser = $oUser->getAll($word, $parameter);
 
         echo "<div class='container gx-5 mt-3' style='min-height: 100vh'><table class='table table-hover'>
-                <tr>
+                <tr class='text-center'>
                     <td>Login</td>
                     <td>Typ konta</td>
                     <td>Data rejestracji</td>
@@ -20,7 +20,7 @@ switch ($action){
 
         while($row = $aUser->fetch_assoc()) {
         $ac_type = translate($row["ac_type"]);
-                echo '<tr><td><a href="?section=users&action=user&id='.$row["id_account"].'">'.$row["login"].'</a></td>
+                echo '<tr class="text-center"><td><a href="?section=users&action=user&id='.$row["id_account"].'">'.$row["login"].'</a></td>
                           <td>'.$ac_type.'</td>
                           <td>'.$row["regist_date"].'</td>
                       </tr>';
@@ -48,10 +48,33 @@ switch ($action){
             $ac_type = translate($aUser["ac_type"]);
         echo '
 
-            <div class="container-fluid w-50" style="min-height: 100vh;">
+            <div class="container-fluid gx-5 w-50" style="min-height: 100vh;">
                 <form method="post" action="?section=users&action=updater">
                     <div class="mb-3">
                         <h3 class="text-center">Ustawienia - '.$aUser["login"].'</h3>
+ 
+            <button type="button" class="btn float-end" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="red" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                  <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                </svg>
+            </button>
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Napewno chcesz usunąć to konto ?</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary w-25" onclick=document.location="?section=users&action=delete&login='.$aUser["login"].'">Tak</button>
+                            <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">Nie</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        
+                        
+                        
                     </div>
                     <div class="mb-3">
                         <input type="number" name="id" hidden value="'.$aUser["id_account"].'">
@@ -63,7 +86,7 @@ switch ($action){
                     </div>
                     <div class="mb-5">
                         <label class="form-label">Rodzaj konta</label>
-                        <select class="form-select w-75" id="selactype" name="ac_type" onchange="changesel()" aria-label="Default select example">
+                        <select class="form-select" id="selactype" name="ac_type" onchange="changesel()" aria-label="Default select example">
                             <option selected hidden value="'.$aUser["ac_type"].'">'.$ac_type.'</option>
                             <option value="guest">Gość</a></option>
                             <option value="user">Chórzysta</a></option>
@@ -77,7 +100,7 @@ switch ($action){
                     </div>
                     <div class="mb-5">
                         <label class="form-label" for="count_download">Ilość pobrań</label>
-                        <input type="number" class="form-control w-75" name="count_download" value="'.$aUser["count_downloads"].'">
+                        <input type="number" class="form-control" name="count_download" value="'.$aUser["count_downloads"].'">
                     </div>
                     <div class="mb-2">
                     <label class="form-label">Jeśli konto będzie wyłączone - osoba nie będzie mogła zalogować się.</label>

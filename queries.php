@@ -87,11 +87,13 @@ switch ($action) {
                          </div>';
 
                 }
+                if(!$aUser->fetch_assoc()){
+                    echo '<div class="container">
+                            <h4 class="text-center pt-5">Na razie nie ma wniosków na rejestrację</h4>
+                          </div>
+                    ';
+                }
                 echo '</div>';
         }
-        else{
-            echo 'nie ma danych';
-        }
-
         break;
 }

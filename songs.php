@@ -146,21 +146,28 @@ switch($action) {
 
         if ($aSong) {
             echo "<div class='container gx-3' style='min-height: 100vh';><table class='table table-hover'>";
-            echo "<tr>
-                        <td>Numer teczki</td>
-                        <td>Nazwa utworu</td>
-                        <td>Ilość partytur</td>
-                        <td>Autor</td>
-                        <td>Nazwa teczki</td>
-                  </tr>";
+            echo "<tr>";
+            if(!$oUser->isGuest()){ echo '<td>Numer teczki</td>';}
+            echo            '<td>Nazwa utworu</td>';
+            if($oUser->isAdmin()){ echo '<td>Ilość partytur</td>';}
+            echo            '<td>Autor</td>';
+             if(!$oUser->isGuest()){ echo '<td>Nazwa teczki</td>'; }
+             echo "   </tr>";
             while ($row = $aSong->fetch_assoc()) {
-                echo "<tr><td>" . $row["id_song"] . "</td>
-                          <td><a class = 'a' href='?section=songs&id=" . $row["id_song"] . "'>" . $row["name_song"] . "</a></td>
-                          <td>" . $row["count"] . "</td>
-                          <td>" . $row["author"] . "</td>
-                          <td>" . $row["name_folder"] . "</td>
-                     </tr>";
-            }
+                echo '<tr>';
+                if (!$oUser->isGuest()) {
+                    echo '        <td>' . $row["id_song"] . '</td>'; }
+                    echo '<td><a href="?section=songs&id=' . $row["id_song"] . '" > ' . $row["name_song"] . '</a></td>';
+                    if ($oUser->isAdmin()) {
+                        echo '   <td>' . $row["count"] . '</td>';
+                    }
+                    echo '<td>' . $row["author"] . '</td>';
+                    if (!$oUser->isGuest()) {
+                        echo '<td>' . $row["name_folder"] . '</td>';
+                    }
+                    echo '  </tr>';
+                }
+
             echo "</table></div>";
         }
         break;

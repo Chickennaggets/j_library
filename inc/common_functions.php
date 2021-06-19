@@ -128,9 +128,12 @@
         global $oUser;
         $action = get::Get('action','',Get::TYPE_STR);
         $allowedForUsers = array('main', 'songs','users');
+        $banned = array('add', 'edit','update', 'delete','insert','uploadfile');
         if($oUser->isLogin() && !$oUser->isAdmin()){
             $decision = in_array($section, $allowedForUsers, true);
             if($section=='users' && $action != 'logout')
+                $decision = false;
+            if($section=='songs' && in_array($action, $banned, true))
                 $decision = false;
             return $decision;
         }

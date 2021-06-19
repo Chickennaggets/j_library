@@ -1,12 +1,12 @@
 <?php
-
+global $oUser;
 ?>
 
 <div class="container gx-5" >
     <div class="row pb-4">
         <div class="col">
             <?php
-            if($_SESSION["root"]){
+            if($oUser->isAdmin()){
                 echo "<a href='?section=songs&action=add' class = 'a nav icon newfile'>Nowy utwór</a>";
             }
             ?>
