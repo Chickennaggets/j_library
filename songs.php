@@ -172,6 +172,7 @@ switch($action) {
         }
         break;
     case 'uploadfile':
+
         $id_folder = Get::post('id_folder', '', GET::TYPE_STR);
         $folderName = getNameFolder($id_folder);
         if(!is_dir(ROOT_FOLDER.'/files/'.$folderName)) {
@@ -186,7 +187,18 @@ switch($action) {
         else{
             echo 'File is not uploaded';
         }
-
+        header('Location: ?section=songs&id='.$id_folder);
+        break;
+    case 'deletefile':
+        $id = get::GET('id', 0, Get::TYPE_INT);
+        $path = get::GET('path', '', Get::TYPE_STR);
+        if(unlink($path)){
+            echo "file was deleted";
+        }
+        else{
+            echo "file was not deleted";
+        }
+        header('Location: ?section=songs&id='.$id);
         break;
     default:
         $id = get::GET('id', 0, Get::TYPE_INT);
@@ -200,7 +212,7 @@ switch($action) {
             echo '
             <div style="float: right;">
             
-            
+  
             <button class="btn" onclick=document.location="?section=songs&action=edit&id='.$aSong["id_song"].'">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
                      <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
@@ -245,6 +257,7 @@ switch($action) {
                 echo '<div class="container-fluid w-50 pt-3"><table class="table table-hover"><tr><h5>Pliki:</h5></tr>';
                 while (false !== ($file = readdir($dh))) {
                     if($file!="." && $file != ".."){
+                        $path = $dir.'/'.$file;
                         echo "<tr><td>"
                             .$file;
                         echo '<div style="float: right">
@@ -254,11 +267,30 @@ switch($action) {
                                         <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
                                     </svg>
                                  </a>
-                                 <a href="'.$dir.'/'.$file.'" download="" style="color: black">
+                                 <a href="'.$dir.'/'.$file.'" download="" style="color: black; margin-right: 5px;">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-arrow-down-square-fill" viewBox="0 0 16 16">
                                         <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5a.5.5 0 0 1 1 0z"/>
                                     </svg>
                                  </a>
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#delfile">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                          <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                                        </svg>
+                                    </a>
+                                    <div class="modal fade" id="delfile" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="staticBackdropLabel1">Napewno chcesz usunąć ten plik ?</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-footer">
+                                                <a class="btn btn-dark w-25" href="?section=songs&action=deletefile&path='.$path.'&id='.$aSong["id_song"].'">Tak</a>
+                                                    <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">Nie</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                </div>
                              </td></tr>';
                     }
@@ -271,13 +303,13 @@ switch($action) {
             echo '<div class="container-fluid d-flex flex-column justify-content-center w-50">
                       <div class="mb-3 lg-3">
                           <form action="?section=songs&action=uploadfile" method="post" class="" enctype="multipart/form-data" style="margin-top: 30px;">
-                          <div class="container w-50 mb-3 text-center">
-                              <label for="formFile" class="form-label">Wgraj pliki</label>
+                          <div class="container-fluid mb-3">
+                              <label for="formFile" class="form-label">Wgraj plik</label>
                               <input type="text" name="id_folder" value="'.$id.'" hidden>
                               <input class="form-control" type="file" aria-label="browser" name="filename" id="formFile">
                           </div>
                           <div class="mb-3 text-center">
-                            <button type="submit" class="btn btn-dark mt-3">Wyślij</button>
+                            <button type="submit" class="btn btn-dark px-3 mt-3">Wyślij</button>
                           </div>
                           </form>
                       </div>

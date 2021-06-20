@@ -37,18 +37,16 @@ switch ($action) {
                     </div>
                     <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="checkRegulamin" onclick="checkform();">
-                        <label class="form-check-label" for="#checkRegulamin">Akceptuję <a href="#">regulamin</label>
+                        <label class="form-check-label" for="#checkRegulamin">Akceptuję <a href="#">regulamin</a></label>
                     </div>
                     <div class="mb-3 text-center">
-                        <input type="button" class="btn btn-dark" disabled onclick="reg();" value="Zarejestruj" id="btn_login">
+                        <input type="button" class="btn btn-dark px-3" disabled onclick="reg();" value="Zarejestruj" id="btn_login">
                     </div>
                     <div class="text-center">
-                        <a class = "a" href="?section=authorization">Zalogj</a>
+                        <a href="?section=authorization">Zaloguj</a>
                     </div>
                 </form>
             </div>
-
-        <!-- Modal window -->
 
 
     <?php
@@ -88,7 +86,7 @@ switch ($action) {
                 <input type="password" required class="form-control" name="has">
             </div>
             <div class="container-fluid text-center" >
-                <button type="submit" class="btn btn-dark w-50 mb-2" id="btn_login">Zaloguj</button>
+                <button type="submit" class="btn btn-dark px-3 mb-2" id="btn_login">Zaloguj</button>
             </div>
             <div class="mb-3 text-center">
                 <a href="?section=authorization&action=registration">Rejestracja</a>

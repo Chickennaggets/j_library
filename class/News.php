@@ -3,11 +3,11 @@
 
 class News
 {
-    function addPost($header, $post_text){
+    function addPost($header, $post_text, $picture){
         global $conn;
 
-        $sql = "INSERT INTO wall(header, post_text)
-            values ('$header', '$post_text');";
+        $sql = "INSERT INTO wall(header, post_text, pictures)
+            values ('$header', '$post_text', '$picture');";
 
         if ($conn->query($sql) === TRUE) {
             echo "Dane zostały zaktualizowane<br>";
