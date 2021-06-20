@@ -25,7 +25,7 @@ global $oUser;
             <input type = "text" id="sz_text" class="form-control" placeholder="Szukaj*" onchange="m_srch()">
         </div>
         <div class="col">
-            <input type="button" value="Szukaj" class="btn btn-primary" id="sz_btn" onclick="m_srch()">
+            <input type="button" value="Szukaj" class="btn btn-dark" id="sz_btn" onclick="m_srch()">
         </div>
         </div>
     </div>

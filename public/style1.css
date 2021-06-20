@@ -36,8 +36,4 @@ a.icon{
     height: auto;
     background-repeat: no-repeat;
     background-size: 30px;
-
-}
-.icon.trash{
-    src: url("img/icons/trash.svg");
 }

@@ -12,17 +12,17 @@ switch ($action){
         $aUser = $oUser->getAll($word, $parameter);
 
         echo "<div class='container gx-5 mt-3' style='min-height: 100vh'><table class='table table-hover'>
-                <tr class='text-center'>
+                <tr>
                     <td>Login</td>
-                    <td>Typ konta</td>
-                    <td>Data rejestracji</td>
+                    <td class='text-center'>Typ konta</td>
+                    <td class='text-center'>Data rejestracji</td>
                 </tr>";
 
         while($row = $aUser->fetch_assoc()) {
         $ac_type = translate($row["ac_type"]);
-                echo '<tr class="text-center"><td><a href="?section=users&action=user&id='.$row["id_account"].'">'.$row["login"].'</a></td>
-                          <td>'.$ac_type.'</td>
-                          <td>'.$row["regist_date"].'</td>
+                echo '<tr><td><a href="?section=users&action=user&id='.$row["id_account"].'">'.$row["login"].'</a></td>
+                          <td class="text-center">'.$ac_type.'</td>
+                          <td class="text-center">'.$row["regist_date"].'</td>
                       </tr>';
         }
         echo "</table></div>";
@@ -54,7 +54,7 @@ switch ($action){
                         <h3 class="text-center">Ustawienia - '.$aUser["login"].'</h3>
  
             <button type="button" class="btn float-end" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="red" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="black" class="bi bi-trash-fill" viewBox="0 0 16 16">
                   <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
                 </svg>
             </button>
@@ -113,7 +113,7 @@ switch ($action){
                         </div>
                     </div>
                     <div class="mb-3 text-center">
-                        <input type="submit" class="btn btn-primary w-25" value="Zapisz">
+                        <input type="submit" class="btn btn-dark w-25" value="Zapisz">
                     </div>
                 </form>
             </div>';
@@ -169,7 +169,7 @@ switch ($action){
                 <input type = "text" id="sz_text" class="form-control" placeholder="Szukaj*" onchange="u_srch()">
             </div>
             <div class="col">
-                <input type="button" value="Szukaj" class="btn btn-primary" id="sz_btn" onclick="u_srch()" >
+                <input type="button" value="Szukaj" class="btn btn-dark" id="sz_btn" onclick="u_srch()" >
             </div>
         </div>
     </div>

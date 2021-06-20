@@ -25,7 +25,7 @@ switch($action){
                 <textarea class="form-control" name="note" aria-label="Notatki"></textarea>
             </div>
             <div class="mb-3 text-center">
-                <input type="submit" name="submit"  class="btn btn-primary w-25" value="Dodaj">
+                <input type="submit" name="submit"  class="btn btn-dark w-25" value="Dodaj">
             </div>
 
 

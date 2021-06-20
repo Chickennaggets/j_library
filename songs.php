@@ -55,7 +55,7 @@ switch($action) {
                 </div>
                 <div class="mb-3">
                     <div class="container-fluid" style="text-align: center">
-                        <button type="submit" class="btn btn-primary w-25">Zapisz</button>
+                        <button type="submit" class="btn btn-dark w-25">Zapisz</button>
                     </div>
                 </div>
             </form>
@@ -119,7 +119,7 @@ switch($action) {
                     </div>
                     <div class="mb-3">
                         <div class="container-fluid" style="text-align: center">
-                            <button type="submit" class="btn btn-primary w-25">Dodaj</button>
+                            <button type="submit" class="btn btn-dark w-25">Dodaj</button>
                         </div>
                     </div>
                 </form>
@@ -277,7 +277,7 @@ switch($action) {
                               <input class="form-control" type="file" aria-label="browser" name="filename" id="formFile">
                           </div>
                           <div class="mb-3 text-center">
-                            <button type="submit" class="btn btn-primary w-25 mt-3">Wyślij</button>
+                            <button type="submit" class="btn btn-dark mt-3">Wyślij</button>
                           </div>
                           </form>
                       </div>

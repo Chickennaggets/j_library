@@ -24,22 +24,23 @@ switch ($action) {
                     <h2 style="text-align: center">Rejestracja</h2>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Login</label>
-                        <input type="text" class="form-control" name="log" required aria-describedby="loginHelp">
+                        <input type="text" class="form-control" name="log" onchange="checkform()" id="regLogin" required aria-describedby="loginHelp">
+                        <span class="form-label" hidden></span>
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Hasło</label>
-                        <input type="text" class="form-control" id="has1" name="has1" required aria-describedby="passHelp">
+                        <input type="text" class="form-control" id="has1" name="has1" onchange="checkform()" required aria-describedby="passHelp">
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label"> Powtóż hasło</label>
-                        <input type="text" class="form-control" id="has2" name="has2" required aria-describedby="passHelp">
+                        <label for="exampleInputEmail2" class="form-label"> Powtóż hasło</label>
+                        <input type="text" class="form-control" id="has2" name="has2" onchange="checkform()" required aria-describedby="passHelp">
                     </div>
                     <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="checkRegulamin" onclick="checkreg();">
-                        <label class="form-check-label" for="exampleCheck1">Akceptuję <a href="#">regulamin</label>
+                        <input type="checkbox" class="form-check-input" id="checkRegulamin" onclick="checkform();">
+                        <label class="form-check-label" for="#checkRegulamin">Akceptuję <a href="#">regulamin</label>
                     </div>
                     <div class="mb-3 text-center">
-                        <input type="button" class="btn btn-primary w-50" disabled onclick="reg();" value="Zarejestruj" id="btn_login">
+                        <input type="button" class="btn btn-dark" disabled onclick="reg();" value="Zarejestruj" id="btn_login">
                     </div>
                     <div class="text-center">
                         <a class = "a" href="?section=authorization">Zalogj</a>
@@ -61,7 +62,7 @@ switch ($action) {
         if($aUser){
             echo '<div class="container-fluid w-100 pt-5" style="min-height: 100vh"><h4 class="text-center mt-5 mb-5">Konto zostało zarejestrowane. Żeby móc załogować się potrzebujesz akceptacji administratora.</h4>
                       <div class="container text-center">
-                         <a class="btn btn-primary mt-5" href="?section=authorization">Zaloguj</a>
+                         <a class="btn btn-dark mt-5" href="?section=authorization">Zaloguj</a>
                       </div>
                   </div>';
             ?>
@@ -72,19 +73,22 @@ switch ($action) {
         break;
     default: ?>
 
-    <div class="container-fluid pt-5 w-25" style="margin: auto; height: 90vh;">
+    <div class="container-fluid pt-5 w-25 needs-validation" novalidate style="margin: auto; height: 90vh;">
         <form method="post" action="?section=authorization&action=login" style="margin-top: 15vh">
             <h2 style="text-align: center">Zaloguj</h2>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Login</label>
-                <input type="text" class="form-control" name="log" aria-describedby="loginHelp">
+                <input type="text" class="form-control" required name="log" aria-describedby="loginHelp">
+                <div class="valid-feedback">
+                    Все хорошо!
+                </div>
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Hasło</label>
-                <input type="password" class="form-control" name="has">
+                <input type="password" required class="form-control" name="has">
             </div>
             <div class="container-fluid text-center" >
-                <button type="submit" class="btn btn-primary w-50 mb-2" id="btn_login">Zaloguj</button>
+                <button type="submit" class="btn btn-dark w-50 mb-2" id="btn_login">Zaloguj</button>
             </div>
             <div class="mb-3 text-center">
                 <a href="?section=authorization&action=registration">Rejestracja</a>
@@ -92,6 +96,7 @@ switch ($action) {
 
         </form>
     </div>
+
     <?php
 }
 

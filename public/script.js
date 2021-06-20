@@ -27,14 +27,6 @@ function u_srch(){
     xhttp.open("GET", "?section=users&action=show&parameter="+filt+"&word="+word+"&ajax", true);
     xhttp.send();
 }
-    function checkreg(){
-    if(document.getElementById('checkRegulamin').checked){
-            document.getElementById('btn_login').disabled = false;
-        }
-    else{
-        document.getElementById('btn_login').disabled = true;
-    }
-    }
 
     function changesel(){
         var ddl = document.getElementById("selactype");
@@ -46,5 +38,47 @@ function u_srch(){
         }
         else{
             document.getElementById("count_downloads").hidden=true;
+        }
+    }
+
+
+    function checkform(){
+
+    var login = false;
+    var password = false;
+    var regulamin = false;
+
+        if(document.getElementById("regLogin").value.length > 4){
+            document.getElementById("regLogin").className = "form-control is-valid";
+            login = true;
+        }
+        else{
+            document.getElementById("regLogin").className = "form-control is-invalid";
+            login = false;
+        }
+
+    var pass1 = document.getElementById("has1").value;
+    var pass2 = document.getElementById("has2").value;
+
+        if(pass1 == pass2 && pass1.length>=6){
+            document.getElementById("has1").className = "form-control is-valid";
+            document.getElementById("has2").className = "form-control is-valid";
+            password = true;
+        }
+        else{
+            document.getElementById("has1").className = "form-control is-invalid";
+            document.getElementById("has2").className = "form-control is-invalid";
+            password = false;
+        }
+
+
+
+        if(login, password){
+            if(document.getElementById('checkRegulamin').checked){
+                document.getElementById('btn_login').disabled = false;
+            }
+            else{
+                document.getElementById('btn_login').disabled = true;
+            }
         }
     }

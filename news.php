@@ -24,7 +24,7 @@ switch($action) {
                 <textarea class="form-control" required name="post_text" style="min-height: 200px" aria-label="Notatki"></textarea>
             </div>
             <div class="mb-3 text-center">
-                <input type="submit" class="btn btn-primary w-25" value="Zapisz">
+                <input type="submit" class="btn btn-dark w-25" value="Zapisz">
             </div>
         </form>
     </div>
@@ -60,7 +60,7 @@ switch($action) {
                     <textarea class="form-control" required name="post_text" aria-label="Notatki" style="min-height: 200px"><?php echo $aNews["post_text"]; ?></textarea>
                 </div>
                 <div class="mb-3 text-center">
-                    <input type="submit" class="btn btn-primary" value="Zapisz">
+                    <input type="submit" class="btn btn-dark" value="Zapisz">
                 </div>
             </form>
         </div>
