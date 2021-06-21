@@ -161,8 +161,6 @@ switch ($action){
                     <option hidden value="login">Filtruj wg</option>
                     <option value="login">Loginu</option>
                     <option value="regist_date">Daty rejestracji</option>
-                    <option value="activated">Aktywacji</option>
-                    <option value="adminn">Uprawnień</option>
                 </select>
             </div>
             <div class="col">

@@ -94,7 +94,7 @@
                   <a class="nav-link active" aria-current="page" href="?section=info&action=mainpage">Strona główna</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Aktualności</a>
+                  <a class="nav-link" href="?section=info&action=news">Aktualności</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="?section=authorization">Biblioteka</a>

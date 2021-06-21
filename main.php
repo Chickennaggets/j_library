@@ -13,14 +13,16 @@ global $oUser;
             ?>
         </div>
         <div class="col">
-            <select name="filters" class="form-select" onchange="m_srch()" id="filters">
-                <option hidden value="id_song">Filtruj wg</option>
-                <option value="id_song">Numeru teczki</option>
-                <option value="author">Autora</option>
-                <option value="name_song">Nazwy utworu</option>
-                <option value="count">Ilości partytur</option>
-                <option value="name_folder">Nazwy teczki</option>
-            </select>
+            <?php
+            echo '<select name="filters" class="form-select" onchange="m_srch()" id="filters">';
+            echo        '<option hidden value="name_song">Filtruj wg</option>';
+            if(!$oUser->isGuest()){ echo '<option value="id_song">Numeru teczki</option>'; }
+            echo       ' <option value="author">Autora</option>';
+            echo         '<option value="name_song">Nazwy utworu</option>';
+            if(!$oUser->isGuest()){ echo '<option value="count">Ilości partytur</option>
+                    <option value="name_folder">Nazwy teczki</option>'; }
+              echo '</select>';
+            ?>
         </div>
         <div class="col">
             <input type = "text" id="sz_text" class="form-control" placeholder="Szukaj*" onchange="m_srch()">

@@ -244,12 +244,13 @@ switch($action) {
         }
         echo "<h2 align='center' style='margin-bottom: 60px'>".$aSong["name_song"]."</h2>";
 
-        echo "<div class='container-fluid w-50'>
-                  <h5 class='mb-3'>Numer teczki: ".$aSong["id_song"]."</h5>
-                  <h5 class='mb-3'>Ilość partytur: ".$aSong["count"]."</h5>
-                  <h5 class='mb-3'>Autor: ".$aSong["author"]."</h5>
-                  <h5 class='mb-3'>Teczka: ".$aSong["name_folder"]."</h5>
-                  <h5 class='mb-3'>Notatki:</h5>".$aSong["note"]."</div>";
+        echo "<div class='container-fluid w-50'>";
+        if(!$oUser->isGuest()){ echo "<h5 class='mb-3'>Numer teczki: ".$aSong["id_song"]."</h5>"; }
+        if(!$oUser->isGuest()){ echo "<h5 class='mb-3'>Ilość partytur: ".$aSong["count"]."</h5>"; }
+        echo "<h5 class='mb-3'>Autor: ".$aSong["author"]."</h5>";
+        if(!$oUser->isGuest()){ echo "<h5 class='mb-3'>Teczka: ".$aSong["name_folder"]."</h5>"; }
+        if(!$oUser->isGuest()){ echo " <h5 class='mb-3'>Notatki:</h5>".$aSong["note"]; }
+        echo "</div>";
         $folderName = getNameFolder($id);
         $dir = ROOT_FOLDER.'/files/'.$folderName.'/'.$id.'/';
         if (is_dir($dir)) {

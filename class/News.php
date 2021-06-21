@@ -64,7 +64,7 @@ class News
         global $conn;
 
         $sql = "DELETE FROM wall 
-        WHERE id_wall=$id";
+        WHERE id_wall='$id'";
 
         if ($conn->query($sql) === TRUE) {
             echo "Utwór został usunięty<br>";

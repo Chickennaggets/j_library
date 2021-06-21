@@ -37,3 +37,10 @@ a.icon{
     background-repeat: no-repeat;
     background-size: 30px;
 }
+.card.bg-dark.m-1.mt-5{
+    filter: brightness(90%);
+    transition: 1s;
+}
+.card.bg-dark.m-1.mt-5:hover{
+    filter: brightness(120%);
+}

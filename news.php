@@ -100,8 +100,8 @@ switch($action) {
         if($aNews->num_rows > 0){
             while($row = $aNews->fetch_assoc()){
                 echo '
-                <div class="card m-5" style="max-width: 450px; min-width: 300px">
-                    <img src="img/news/'.$row["pictures"].'" class="card-img-top" alt="...">
+                <div class="card m-5" style="width: 450px; height: auto">
+                    <img src="img/news/'.$row["pictures"].'" style="object-fit: cover" height="250px" class="card-img-top" alt="...">
                     <div class="card-body">
                             <h5 class="card-title">'.$row["header"].'</h5>
                             <p class="card-text">'.$row["post_text"].'</p>
@@ -128,7 +128,7 @@ switch($action) {
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-primary w-25" onclick=document.location="?section=news&action=delete&id='.$row["id_wall"].'&pic='.$row["pictures"].'">Tak</button>
+                                        <a class="btn btn-primary w-25" href="?section=news&action=delete&id='.$row["id_wall"].'&pic='.$row["pictures"].'">Tak</a>
                                         <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">Nie</button>
                                     </div>
                                 </div>
