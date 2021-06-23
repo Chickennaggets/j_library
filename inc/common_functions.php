@@ -155,7 +155,7 @@
     {
         echo '
         
-            <footer class="footer bg-dark">
+            <footer class="footer bg-dark" style="height: 70px">
                 <p>
                     Chór Katedralny im. Ks. Alfreda Hoffmana w Siedlcach © 2021 | website by Yan Ramanouski 
                 </p>

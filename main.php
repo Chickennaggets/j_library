@@ -15,7 +15,7 @@ global $oUser;
         <div class="col">
             <?php
             echo '<select name="filters" class="form-select" onchange="m_srch()" id="filters">';
-            echo        '<option hidden value="name_song">Filtruj wg</option>';
+            echo        '<option hidden value="name_song">Sortuj wg</option>';
             if(!$oUser->isGuest()){ echo '<option value="id_song">Numeru teczki</option>'; }
             echo       ' <option value="author">Autora</option>';
             echo         '<option value="name_song">Nazwy utworu</option>';

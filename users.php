@@ -20,6 +20,9 @@ switch ($action){
 
         while($row = $aUser->fetch_assoc()) {
         $ac_type = translate($row["ac_type"]);
+                if(!$oUser->isSuperAdmin() && ($ac_type=='Administrator' || $ac_type=='Moderator')){
+                    continue;
+                }
                 echo '<tr><td><a href="?section=users&action=user&id='.$row["id_account"].'">'.$row["login"].'</a></td>
                           <td class="text-center">'.$ac_type.'</td>
                           <td class="text-center">'.$row["regist_date"].'</td>
@@ -83,6 +86,11 @@ switch ($action){
                     <div class="mb-3">
                         <label class="form-label"><b>Chórzysta</b> - Ma nieograniczony dostęp bo całej biblioteki, jej midów i PDF-ów.</label>
                         <label class="form-label"><b>Gość</b> - Ma dostęp tylko do listy utworów. Może pobierać midy i PDF-y ograniczoną przez moderatora/administratora ilość razy.</label>
+                        ';
+                        if($oUser->isSuperAdmin()){
+                            echo '<label class="form-label"><b>Moderator</b> - Ma nieograniczony dostęp bo całej biblioteki, może edytować wszystko w tym systemie za wyjątkiem naznaczać innych moderatorów.</label>';
+                        }
+        echo '
                     </div>
                     <div class="mb-5">
                         <label class="form-label">Rodzaj konta</label>
@@ -90,7 +98,12 @@ switch ($action){
                             <option selected hidden value="'.$aUser["ac_type"].'">'.$ac_type.'</option>
                             <option value="guest">Gość</a></option>
                             <option value="user">Chórzysta</a></option>
-                            <option value="moderator">Moderator</a></option>
+                            ';
+                        if($oUser->isSuperAdmin()){
+                            echo '<option value="moderator">Moderator</a></option>';
+                        }
+                        echo '
+                            
                         </select>
                     </div>
 
@@ -158,7 +171,7 @@ switch ($action){
         <div class="row">
             <div class="col">
                 <select name="filters" class="form-select" id="filters" onclick="u_srch()" >
-                    <option hidden value="login">Filtruj wg</option>
+                    <option hidden value="login">Sortuj wg</option>
                     <option value="login">Loginu</option>
                     <option value="regist_date">Daty rejestracji</option>
                 </select>

@@ -21,18 +21,18 @@ switch ($action) {
         ?>
             <div class="container-fluid pt-5 w-25" style="margin: auto; min-height: 100vh;">
                 <form method="post" action="?section=authorization&action=regist_query" id="fform">
-                    <h2 style="text-align: center">Rejestracja</h2>
+                    <h2 class="mb-5" style="text-align: center">Rejestracja</h2>
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Login</label>
+                        <label for="exampleInputEmail1" class="form-label">Login <em style="font-size: 80%;">(*Min 5 znaków)</em></label>
                         <input type="text" class="form-control" name="log" onchange="checkform()" id="regLogin" required aria-describedby="loginHelp">
                         <span class="form-label" hidden></span>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Hasło</label>
+                        <label for="exampleInputEmail1" class="form-label">Hasło <em style="font-size: 80%;">(*Min 6 znaków)</em></label>
                         <input type="text" class="form-control" id="has1" name="has1" onchange="checkform()" required aria-describedby="passHelp">
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputEmail2" class="form-label"> Powtóż hasło</label>
+                        <label for="exampleInputEmail2" class="form-label"> Powtórz hasło</label>
                         <input type="text" class="form-control" id="has2" name="has2" onchange="checkform()" required aria-describedby="passHelp">
                     </div>
                     <div class="mb-3 form-check">
@@ -58,7 +58,7 @@ switch ($action) {
         $aUser = $oUser->newUser($login, $pass);
 
         if($aUser){
-            echo '<div class="container-fluid w-100 pt-5" style="min-height: 100vh"><h4 class="text-center mt-5 mb-5">Konto zostało zarejestrowane. Żeby móc załogować się potrzebujesz akceptacji administratora.</h4>
+            echo '<div class="container-fluid w-100 pt-5" style="min-height: 100vh"><h4 class="text-center mt-5 mb-5">Konto zostało zarejestrowane. Żeby móc zalogować się potrzebujesz akceptacji administratora.</h4>
                       <div class="container text-center">
                          <a class="btn btn-dark mt-5" href="?section=authorization">Zaloguj</a>
                       </div>
@@ -77,9 +77,6 @@ switch ($action) {
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Login</label>
                 <input type="text" class="form-control" required name="log" aria-describedby="loginHelp">
-                <div class="valid-feedback">
-                    Все хорошо!
-                </div>
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Hasło</label>
