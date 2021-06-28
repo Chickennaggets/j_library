@@ -128,7 +128,7 @@
         global $oUser;
         $action = get::Get('action','',Get::TYPE_STR);
         $allowedForUsers = array('main', 'songs','users');
-        $banned = array('add', 'edit','update', 'delete','insert','uploadfile');
+        $banned = array('add', 'edit','update', 'delete','insert','uploadfile', 'deletefile');
         if($oUser->isLogin() && !$oUser->isAdmin()){
             $decision = in_array($section, $allowedForUsers, true);
             if($section=='users' && $action != 'logout')
@@ -198,3 +198,11 @@
         return $ac_type;
     }
 
+function DownloadFile($zip_name) {
+        header('Content-type: application/zip');
+        header('Content-Disposition: attachment; filename="'.$zip_name.'"');
+        header('Refresh: 0');
+        readfile($zip_name);
+        unlink($zip_name);
+
+}

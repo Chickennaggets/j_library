@@ -200,6 +200,39 @@ switch($action) {
         }
         header('Location: ?section=songs&id='.$id);
         break;
+    case 'guestdownload':
+        $dir = get::GET('folder', '', Get::TYPE_STR);
+        $utwor = get::GET('utwor', '', Get::TYPE_STR);
+
+        if($oUser->getCountDownloads($_SESSION["online_login"])>0){
+            if ($dh = opendir($dir)) {
+
+                $zip = new ZipArchive();
+                $filename = $utwor.".zip";
+
+                if ($zip->open($filename, ZipArchive::CREATE)!==TRUE) {
+                    exit("Невозможно открыть <$filename>\n");
+                }
+
+                while (false !== ($file = readdir($dh))) {
+                    if ($file != "." && $file != "..") {
+                        $filePath = $dir.$file;
+                        $zip->addFile($filePath,$file);
+                    }
+                }
+
+                $zip->close();
+                $oUser->setCountDownloads($_SESSION["online_login"], $oUser->getCountDownloads($_SESSION["online_login"])-1);
+                DownloadFile($filename);
+                exit;
+            }
+        }
+        else{
+            header('location: index.php');
+        }
+
+
+        break;
     default:
         $id = get::GET('id', 0, Get::TYPE_INT);
         $aSong = $oSong->getById($id);
@@ -254,26 +287,28 @@ switch($action) {
         $folderName = getNameFolder($id);
         $dir = ROOT_FOLDER.'/files/'.$folderName.'/'.$id.'/';
         if (is_dir($dir)) {
-            if ($dh = opendir($dir)) {
-                echo '<div class="container-fluid w-50 pt-3"><table class="table table-hover"><tr><h5>Pliki:</h5></tr>';
-                while (false !== ($file = readdir($dh))) {
-                    if($file!="." && $file != ".."){
-                        $path = $dir.'/'.$file;
-                        echo "<tr><td>"
-                            .$file;
-                        echo '<div style="float: right">
-                                 <a href="'.$dir.'/'.$file.'" style="color: black; margin-right: 5px;">
+            if(!$oUser->isGuest()) {
+                if ($dh = opendir($dir)) {
+                    echo '<div class="container-fluid w-50 pt-3"><table class="table table-hover"><tr><h5>Pliki:</h5></tr>';
+                    while (false !== ($file = readdir($dh))) {
+                        if ($file != "." && $file != "..") {
+                            $path = $dir . '/' . $file;
+                            echo "<tr><td>"
+                                . $file;
+                            echo '<div style="float: right">
+                                 <a href="' . $dir . '/' . $file . '" style="color: black; margin-right: 5px;">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
                                         <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
                                         <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
                                     </svg>
                                  </a>
-                                 <a href="'.$dir.'/'.$file.'" download="" style="color: black; margin-right: 5px;">
+                                 <a href="' . $dir . '/' . $file . '" download="" style="color: black; margin-right: 5px;">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-arrow-down-square-fill" viewBox="0 0 16 16">
                                         <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5a.5.5 0 0 1 1 0z"/>
                                     </svg>
-                                 </a>
-                                    <a type="button" data-bs-toggle="modal" data-bs-target="#delfile">
+                                 </a>';
+                            if($oUser->isAdmin()){
+                                echo '<a type="button" data-bs-toggle="modal" data-bs-target="#delfile">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
                                           <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
                                         </svg>
@@ -286,19 +321,74 @@ switch($action) {
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-footer">
-                                                <a class="btn btn-dark w-25" href="?section=songs&action=deletefile&path='.$path.'&id='.$aSong["id_song"].'">Tak</a>
+                                                <a class="btn btn-dark w-25" href="?section=songs&action=deletefile&path=' . $path . '&id=' . $aSong["id_song"] . '">Tak</a>
                                                     <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">Nie</button>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>';
+                            }
+                                 echo '
                                </div>
                              </td></tr>';
+                        }
                     }
+                    echo '</table></div>';
+                    closedir($dh);
                 }
-                echo '</table></div>';
-                closedir($dh);
             }
+            else{ // для гостя
+                if ($dh = opendir($dir)) {
+                    $issetfiles = false;
+                    echo '<div class="container-fluid w-50 pt-3"><table class="table table-hover"><tr><h5>Pliki:</h5></tr>';
+                    while (false !== ($file = readdir($dh))) {
+                        if ($file != "." && $file != "..") {
+                            echo '<tr><td>'.$file.'</td></tr>';
+                            $issetfiles = true;
+                        }
+                    }
+                    echo '</table>';
+                    if($oUser->getCountDownloads($_SESSION["online_login"])==0){
+                        $stat = 'disabled';
+                    }
+                    else{
+                        $stat = '';
+                    }
+                    if($issetfiles)
+                    echo '<!-- Button trigger modal -->
+<button type="button" class="btn btn-outline-dark px-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Pobrać pliki
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Uwaga</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Napewno chcęsz pobrać te pliki ?<br>
+        Masz teraz
+        ';
+        echo $oUser->getCountDownloads($_SESSION["online_login"]);
+                    echo' pobrań.
+      </div>
+      <div class="modal-footer">
+        <a href="?section=songs&action=guestdownload&folder='.$dir.'&utwor='.$aSong["name_song"].'" class="btn '.$stat.' btn-outline-dark px-3">Pobrać</a>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Confnij</button>
+      </div>
+    </div>
+  </div>
+</div>';
+                    echo '</div>';
+                }
+
+            }
+
+
+
         }
         if ($oUser->isAdmin()) {
             echo '<div class="container-fluid d-flex flex-column justify-content-center w-50">

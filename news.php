@@ -92,7 +92,7 @@ switch($action) {
         break;
     default:
         echo '<div class="container-fluid w-75 gx-1 p-3" style="min-height: 100vh">';
-        echo '<div class="container-fluid mb-3"><a href="?section=news&action=new_post" class="btn btn-dark">Nowy zapis</a></div>';
+        echo '<div class="container-fluid mb-3"><a href="?section=news&action=new_post" class="btn btn-outline-dark">Nowy zapis</a></div>';
         $aNews = $oNews->getAll();
 
         echo '<div class="container-fluid d-flex justify-content-start flex-wrap align-content-start align-items-start">';
@@ -105,7 +105,6 @@ switch($action) {
                     <div class="card-body">
                             <h5 class="card-title">'.$row["header"].'</h5>
                             <p class="card-text">'.$row["post_text"].'</p>
-                            <a href="#" class="btn btn-dark">Go somewhere</a>
                                 <div class="float-end">
                                     <button class="btn" onclick=document.location="?section=news&action=edit&id='.$row["id_wall"].'">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">

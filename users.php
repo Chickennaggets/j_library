@@ -126,7 +126,7 @@ switch ($action){
                         </div>
                     </div>
                     <div class="mb-3 text-center">
-                        <input type="submit" class="btn btn-dark w-25" value="Zapisz">
+                        <input type="submit" class="btn btn-outline-dark w-25" value="Zapisz">
                     </div>
                 </form>
             </div>';

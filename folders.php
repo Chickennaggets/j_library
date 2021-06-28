@@ -47,7 +47,7 @@ switch($action){
         $aFold = $oFold->getAll();
         ?>
         <div class="container w-50">
-        <a class = "btn btn-dark mb-3" href="?section=folders&action=add">Nowa teczka</a>
+        <a class = "btn btn-outline-dark mb-3" href="?section=folders&action=add">Nowa teczka</a>
         <?php
         if ($aFold->num_rows > 0) {
             echo "<table class='table table-hover table'>";

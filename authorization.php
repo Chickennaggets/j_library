@@ -14,7 +14,7 @@ switch ($action) {
             header('Location:  index.php');
         }
         else {
-            header("Location:  ?section=error&text=Incorrect_login_or_password");
+            header("Location:  ?section=authorization&err");
         }
         break;
     case 'registration':
@@ -74,6 +74,13 @@ switch ($action) {
     <div class="container-fluid pt-5 w-25 needs-validation" novalidate style="margin: auto; height: 90vh;">
         <form method="post" action="?section=authorization&action=login" style="margin-top: 15vh">
             <h2 style="text-align: center">Zaloguj</h2>
+
+            <?php
+                if(isset($_GET['err'])){
+                    echo '<h6 style="color: red">*Nieprawidłowy login lub hasło</h6>';
+                }
+            ?>
+
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Login</label>
                 <input type="text" class="form-control" required name="log" aria-describedby="loginHelp">

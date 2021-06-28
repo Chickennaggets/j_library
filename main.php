@@ -7,7 +7,7 @@ global $oUser;
         <div class="col">
             <?php
             if($oUser->isAdmin()){
-                echo '<a href="?section=songs&action=add" class = "btn btn-dark px-3">
+                echo '<a href="?section=songs&action=add" class = "btn btn-outline-dark px-3">
                         Nowy utwór</a>';
             }
             ?>

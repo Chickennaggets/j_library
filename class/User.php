@@ -221,6 +221,21 @@ class User
         return $row["count_downloads"];
     }
 
+    function setCountDownloads($login, $count){
+                global $conn;
+
+        $sql = "UPDATE accounts
+                SET
+                    count_downloads = '$count'
+                WHERE login = '$login';";
+
+        if ($conn->query($sql) === TRUE) {
+            return true;
+        } else {
+            return "Error: " . $sql . "<br>" . $conn->error;
+        }
+    }
+
     function getById($id){
         global $conn;
 
