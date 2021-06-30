@@ -13,9 +13,9 @@ switch ($action){
 
         echo "<div class='container gx-5 mt-3' style='min-height: 100vh'><table class='table table-hover'>
                 <tr>
-                    <td>Login</td>
-                    <td class='text-center'>Typ konta</td>
-                    <td class='text-center'>Data rejestracji</td>
+                    <td class='col-3'>Login</td>
+                    <td class='col-3 text-center'>Typ konta</td>
+                    <td class='col-3 text-end'>Data rejestracji</td>
                 </tr>";
 
         while($row = $aUser->fetch_assoc()) {
@@ -23,9 +23,9 @@ switch ($action){
                 if(!$oUser->isSuperAdmin() && ($ac_type=='Administrator' || $ac_type=='Moderator')){
                     continue;
                 }
-                echo '<tr><td><a href="?section=users&action=user&id='.$row["id_account"].'">'.$row["login"].'</a></td>
-                          <td class="text-center">'.$ac_type.'</td>
-                          <td class="text-center">'.$row["regist_date"].'</td>
+                echo '<tr><td class="col-3" ><a href="?section=users&action=user&id='.$row["id_account"].'">'.$row["login"].'</a></td>
+                          <td class="col-3 text-center">'.$ac_type.'</td>
+                          <td class="col-3 text-end">'.$row["regist_date"].'</td>
                       </tr>';
         }
         echo "</table></div>";
@@ -168,19 +168,19 @@ switch ($action){
     default:
         ?>
     <div class="container gx-5">
-        <div class="row">
-            <div class="col">
+        <div class="container d-flex justify-content-around w-75 pb-4">
+            <div class="m-2 col-3">
                 <select name="filters" class="form-select" id="filters" onclick="u_srch()" >
                     <option hidden value="login">Sortuj wg</option>
                     <option value="login">Loginu</option>
                     <option value="regist_date">Daty rejestracji</option>
                 </select>
             </div>
-            <div class="col">
+            <div class="m-2 col-5">
                 <input type = "text" id="sz_text" class="form-control" placeholder="Szukaj*" onchange="u_srch()">
             </div>
-            <div class="col">
-                <button value="Szukaj" class="btn btn-dark" id="sz_btn" onclick="u_srch()">
+            <div class="m-2 col">
+                <button value="Szukaj" class="btn btn-dark px-4" id="sz_btn" onclick="u_srch()">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                     </svg>
