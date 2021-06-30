@@ -2,7 +2,7 @@
 global $oUser;
 ?>
 
-<div class="container-fluid gx-5" >
+<div class="container-fluid gx-5">
     <div class="container d-flex justify-content-around w-75 pb-4">
         <div class="m-2">
             <?php

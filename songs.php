@@ -175,18 +175,44 @@ switch($action) {
 
         $id_folder = Get::post('id_folder', '', GET::TYPE_STR);
         $folderName = getNameFolder($id_folder);
+
         if(!is_dir(ROOT_FOLDER.'/files/'.$folderName)) {
             mkdir(ROOT_FOLDER.'/files/'.$folderName, 0700);
         }
         if(!is_dir(ROOT_FOLDER.'/files/'.$folderName.'/'.$id_folder)) {
             mkdir(ROOT_FOLDER.'/files/'.$folderName.'/'.$id_folder, 0700);
         }
-        if(move_uploaded_file($_FILES['filename']['tmp_name'], ROOT_FOLDER.'/files/'.$folderName.'/'.$id_folder.'/'.$_FILES['filename']['name'])){
+        /*if(move_uploaded_file($_FILES['filename']['tmp_name'], ROOT_FOLDER.'/files/'.$folderName.'/'.$id_folder.'/'.$_FILES['filename']['name'])){
             echo 'File was uploaded';
         }
         else{
             echo 'File is not uploaded';
+        }*/
+
+        if( isset($_FILES['filename']['name'])) {
+
+            $total_files = count($_FILES['filename']['name']);
+
+            for($key = 0; $key < $total_files; $key++) {
+
+                if(isset($_FILES['filename']['name'][$key])
+                    && $_FILES['filename']['size'][$key] > 0) {
+
+                    $original_filename = $_FILES['filename']['name'][$key];
+                    $target = ROOT_FOLDER.'/files/'.$folderName.'/'.$id_folder.'/'.$_FILES['filename']['name'] . basename($original_filename);
+                    $tmp  = $_FILES['filename']['tmp_name'][$key];
+                    move_uploaded_file($tmp, $target);
+                }
+
+            }
+
         }
+
+
+
+
+
+
         header('Location: ?section=songs&id='.$id_folder);
         break;
     case 'deletefile':
@@ -357,39 +383,36 @@ switch($action) {
                     }
                     if($issetfiles)
                     echo '<!-- Button trigger modal -->
-<button type="button" class="btn btn-outline-dark px-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Pobrać pliki
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Uwaga</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Napewno chcęsz pobrać te pliki ?<br>
-        Masz teraz
+            <button type="button" class="btn btn-outline-dark px-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Pobrać pliki
+            </button>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Uwaga</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    Napewno chcęsz pobrać te pliki ?<br>
+                    Masz teraz
         ';
         echo $oUser->getCountDownloads($_SESSION["online_login"]);
                     echo' pobrań.
-      </div>
-      <div class="modal-footer">
-        <a href="?section=songs&action=guestdownload&folder='.$dir.'&utwor='.$aSong["name_song"].'" class="btn '.$stat.' btn-outline-dark px-3">Pobrać</a>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Confnij</button>
-      </div>
-    </div>
-  </div>
-</div>';
+                  </div>
+                  <div class="modal-footer">
+                    <a href="?section=songs&action=guestdownload&folder='.$dir.'&utwor='.$aSong["name_song"].'" class="btn '.$stat.' btn-outline-dark px-3">Pobrać</a>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Confnij</button>
+                  </div>
+                </div>
+              </div>
+            </div>';
                     echo '</div>';
                 }
 
             }
-
-
-
         }
         if ($oUser->isAdmin()) {
             echo '<div class="container-fluid d-flex flex-column justify-content-center w-50">
@@ -398,7 +421,7 @@ switch($action) {
                           <div class="container-fluid mb-3">
                               <label for="formFile" class="form-label">Wgraj plik</label>
                               <input type="text" name="id_folder" value="'.$id.'" hidden>
-                              <input class="form-control" type="file" aria-label="browser" name="filename" id="formFile">
+                              <input class="form-control" type="file" multiple accept=".wav,.pdf,.mp3" aria-label="browser" name="filename[]" id="formFile">
                           </div>
                           <div class="mb-3 text-center">
                             <button type="submit" class="btn btn-dark px-3 mt-3">Wyślij</button>
