@@ -141,7 +141,7 @@ switch($action) {
     case 'search':
         $parameter = Get::get('parameter', '', GET::TYPE_STR);
         $word = Get::get('word', '', GET::TYPE_STR);
-
+        $_SESSION["song_sort"] = $parameter;
         $aSong = $oSong->searchSongs($parameter, $word);
 
         if ($aSong) {
@@ -207,11 +207,6 @@ switch($action) {
             }
 
         }
-
-
-
-
-
 
         header('Location: ?section=songs&id='.$id_folder);
         break;

@@ -14,8 +14,12 @@ global $oUser;
         </div>
         <div class="m-2 col-3">
             <?php
+            if(isset($_SESSION["song_sort"]))
+                $filt = $_SESSION["song_sort"];
+            else
+                $filt = "name_song";
             echo '<select name="filters" class="form-select" onchange="m_srch()" id="filters">';
-            echo        '<option hidden value="name_song">Sortuj wg</option>';
+            echo        '<option hidden value="'.$filt.'">Sortuj wg</option>';
             if(!$oUser->isGuest()){ echo '<option value="id_song">Numeru teczki</option>'; }
             echo       ' <option value="author">Autora</option>';
             echo         '<option value="name_song">Nazwy utworu</option>';
