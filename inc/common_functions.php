@@ -1,6 +1,57 @@
 <?php
 
 
+    function showError($text){
+        echo $text;
+    }
+
+    function main_template ($section) {
+        if (in_array($section, array('info'))) {
+            return TMPL_FOLDER . 'main_template.php';
+        }
+        return TMPL_FOLDER . 'lib_template.php';
+    }
+
+    /**
+     *
+     * @global type $SYS_CONF
+     * @param type $section
+     */
+    function verify_section($section) {
+        global $SYS_CONF;
+
+        $allSections = array_merge($SYS_CONF['public_sections'], $SYS_CONF['user_sections']);
+        if (!in_array($section, $allSections)) {
+            header('Location: /');
+        }
+    }
+
+    function is_public($section) {
+        global $SYS_CONF;
+        return in_array($section, $SYS_CONF['public_sections']);
+    }
+
+    function for_user($section) {
+        global $SYS_CONF;
+        return in_array($section, $SYS_CONF['user_sections']);
+    }
+
+    function faceControle($section) {
+        global $oUser, $SYS_CONF;
+
+        verify_section($section);
+
+        if (is_public($section)) {
+            return $section;
+        }
+
+        if (for_user($section) && $oUser->isLogin()) {
+            return $section;
+        }
+
+        return 'authorization';
+    }
+
     function print_header(){
         global $oUser;
 
@@ -120,42 +171,12 @@
         </nav>';
     }
 
-    function showError($text){
-        echo $text;
-    }
-
-    function faceControle($section){
-        global $oUser;
-        $action = get::Get('action','',Get::TYPE_STR);
-        $allowedForUsers = array('main', 'songs','users');
-        $banned = array('add', 'edit','update', 'delete','insert','uploadfile', 'deletefile');
-        if($oUser->isLogin() && !$oUser->isAdmin()){
-            $decision = in_array($section, $allowedForUsers, true);
-            if($section=='users' && $action != 'logout')
-                $decision = false;
-            if($section=='songs' && in_array($action, $banned, true))
-                $decision = false;
-            return $decision;
-        }
-        else if(!$oUser->isLogin()){
-            if($section == 'authorization'){
-                return true;
-            }
-        }
-        else if($oUser->isLogin() && $oUser->isAdmin()){
-            return true;
-        }
-        else{
-            return false;
-        }
-
-    }
 
     function print_footer()
     {
         echo '
         
-            <footer class="footer bg-dark" style="height: 140px">
+            <footer class="footer bg-dark" style="height: 70px">
                 <p>
                     Chór Katedralny im. Ks. Alfreda Hoffmana w Siedlcach © 2021 | website by Yan Ramanouski 
                 </p>
@@ -175,6 +196,10 @@
                     $result = "0" . $min;
                 return $result;
             }
+            else if($id == $max){
+                $result = "0".$max;
+                return $result;
+            }
             else{
                 $min+=100;
                 $max+=100;
@@ -182,7 +207,8 @@
         }
     }
 
-    function translate($word){
+
+function translate($word){
         if($word=='admin'){
             $ac_type = 'Administrator';
         }

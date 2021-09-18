@@ -4,6 +4,9 @@ const TABLE = 'accounts';
 
 class User
 {
+    /**
+     * @return bool
+     */
     function isLogin()
     {
         if (isset($_SESSION["online_login"])) {
@@ -13,6 +16,9 @@ class User
         }
     }
 
+    /**
+     * @return bool
+     */
     function isAdmin() // Модератор
     {
         if ($_SESSION["root"]=='admin' || $_SESSION["root"]=='moderator') {
@@ -22,6 +28,9 @@ class User
         }
     }
 
+    /**
+     * @return bool
+     */
     function isSuperAdmin(){
         if ($_SESSION["root"]=='admin') {
             return true;
@@ -30,6 +39,9 @@ class User
         }
     }
 
+    /**
+     * @return bool
+     */
     function isGuest(){
         if ($_SESSION["root"]=='guest') {
             return true;
@@ -38,6 +50,11 @@ class User
         }
     }
 
+    /**
+     * @param $login
+     * @param $pass
+     * @return bool
+     */
     function Login($login, $pass)
     {
         global $conn;
@@ -57,12 +74,20 @@ class User
         }
     }
 
+    /**
+     *
+     */
     function Logout()
     {
         session_destroy();
         header('Location: ?section=authorization');
     }
 
+    /**
+     * @param $word
+     * @param $parameter
+     * @return bool|mysqli_result
+     */
     function getAll($word, $parameter)
     {
         global $conn;
@@ -80,6 +105,9 @@ class User
         return $result;
     }
 
+    /**
+     * @param $login
+     */
     function deleteUser($login)
     {
         global $conn;
@@ -94,6 +122,10 @@ class User
         }
     }
 
+    /**
+     * @param $login
+     * @param $stat
+     */
     function changeStatus($login, $stat)
     {
         global $conn;
@@ -112,6 +144,11 @@ class User
         }
     }
 
+    /**
+     * @param $login
+     * @param $pass
+     * @return bool
+     */
     function newUser($login, $pass)
     {
         global $conn;
@@ -138,6 +175,9 @@ class User
         }
     }
 
+    /**
+     * @return mixed
+     */
     function countQueries(){
         global $conn;
 
@@ -152,6 +192,9 @@ class User
 
     }
 
+    /**
+     * @return bool|mysqli_result
+     */
     function getAllQueries(){
         global $conn;
 
@@ -164,6 +207,10 @@ class User
         }
         return false;
     }
+
+    /**
+     * @param $id
+     */
     function deleteQuery($id){
         global $conn;
 
@@ -177,6 +224,10 @@ class User
         }
     }
 
+    /**
+     * @param $id
+     * @param $ac_type
+     */
     function transfer($id, $ac_type){
         global $conn;
 
@@ -207,6 +258,11 @@ class User
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
     }
+
+    /**
+     * @param $login
+     * @return mixed
+     */
     function getCountDownloads($login){
         global $conn;
 
@@ -221,6 +277,11 @@ class User
         return $row["count_downloads"];
     }
 
+    /**
+     * @param $login
+     * @param $count
+     * @return bool|string
+     */
     function setCountDownloads($login, $count){
                 global $conn;
 
@@ -236,6 +297,10 @@ class User
         }
     }
 
+    /**
+     * @param $id
+     * @return array|false|null
+     */
     function getById($id){
         global $conn;
 
@@ -251,6 +316,12 @@ class User
         return $result->fetch_assoc();
     }
 
+    /**
+     * @param $id
+     * @param $ac_type
+     * @param $count_downloads
+     * @param $stan
+     */
     function updateUser($id, $ac_type, $count_downloads, $stan){
         global $conn;
 

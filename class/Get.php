@@ -8,6 +8,7 @@ class Get {
     const TYPE_INT = 'int';
     const TYPE_FLOAT = 'float';
     const TYPE_STR = 'string';
+    const TYPE_ISSET = 'isset';
 
     function __construct() {
 
@@ -38,6 +39,8 @@ class Get {
             case 'trim_string':
                 $data = trim(get::escape($data));
                 break;
+            case self::TYPE_ISSET:
+                return isset($_GET[$name]);
         }
         return $data;
     }

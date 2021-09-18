@@ -5,6 +5,7 @@ include CLASS_FOLDER.'Get.php';
 include CLASS_FOLDER.'Folder.php';
 include CLASS_FOLDER.'Song.php';
 include CLASS_FOLDER.'News.php';
+include CLASS_FOLDER.'Tmpl.php';
 require_once ROOT_FOLDER.'inc/common_functions.php';
 
 session_start();

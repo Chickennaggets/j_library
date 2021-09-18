@@ -4,6 +4,9 @@ class Folder {
 
     const TABLE = 'folder';
 
+    /**
+     * @return bool|mysqli_result
+     */
     function getAll() {
         global $conn;
 
@@ -17,6 +20,10 @@ class Folder {
         }
         return $result;
     }
+
+    /**
+     * @param $name_folder - name folder
+     */
     function deleteFolder($name_folder){
         global $conn;
 
@@ -32,6 +39,10 @@ class Folder {
         }
     }
 
+    /**
+     * @param $name_fold - name folder
+     * @param $notes - notes
+     */
     function createFolder($name_fold, $notes){
         global $conn;
 

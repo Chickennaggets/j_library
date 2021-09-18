@@ -1,6 +1,9 @@
 <?php
-
-
+/**
+ * Description of Tmpl
+ *
+ *
+ */
 class Tmpl {
 
     function __construct() {
@@ -13,12 +16,14 @@ class Tmpl {
         $folder = TMPL_FOLDER . ($section ? $section . '/' : '');
         $file = $folder . $tmpl . '.html';
 
-        if  (file_exists($file)) {
+        if (file_exists($file)) {
             $content = file_get_contents($folder . $tmpl . '.html');
 
-            foreach($data AS $key => $value){
+            foreach ($data as $key => $value) {
                 $content = str_replace('{{'.$key.'}}', $value, $content);
             }
+
+            $content = preg_replace ('/{{(.*?)}}/i', '', $content);
         }
 
         return $content;

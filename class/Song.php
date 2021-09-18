@@ -4,6 +4,10 @@ class Song {
 
     const TABLE = 'songs';
 
+    /**
+     * @param $id
+     * @return array|false|null
+     */
     function getById($id) {
         global $conn;
 
@@ -19,6 +23,14 @@ class Song {
         return $result->fetch_assoc();
     }
 
+    /**
+     * @param $song_name
+     * @param $count_p
+     * @param $autor
+     * @param $folders
+     * @param $notatki
+     * @param $id
+     */
     function updateSong($song_name, $count_p, $autor, $folders, $notatki, $id){
         global $conn;
 
@@ -39,6 +51,9 @@ class Song {
         }
     }
 
+    /**
+     * @param $id
+     */
     function deleteSong($id){
         global $conn;
 
@@ -52,6 +67,13 @@ class Song {
         }
     }
 
+    /**
+     * @param $song_name
+     * @param $count_p
+     * @param $autor
+     * @param $folders
+     * @param $notatki
+     */
     function addSong($song_name, $count_p, $autor, $folders, $notatki){
         global $conn;
 
@@ -65,6 +87,11 @@ class Song {
         }
     }
 
+    /**
+     * @param $parameter
+     * @param $word
+     * @return bool|mysqli_result
+     */
     function searchSongs($parameter, $word){
         global $conn;
 

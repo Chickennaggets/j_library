@@ -1,0 +1,21 @@
+{{error}}
+
+<div class="container-fluid pt-5 w-25 needs-validation" novalidate style="margin: auto; height: 90vh;">
+    <form method="post" action="?section=authorization&action=login" style="margin-top: 15vh">
+        <h2 style="text-align: center">Zaloguj</h2>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Login</label>
+                <input type="text" class="form-control" required name="log" aria-describedby="loginHelp">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Hasło</label>
+                <input type="password" required class="form-control" name="has">
+            </div>
+            <div class="container-fluid text-center" >
+                <button type="submit" class="btn btn-dark px-3 mb-2" id="btn_login">Zaloguj</button>
+            </div>
+            <div class="mb-3 text-center">
+                <a href="?section=authorization&action=registration">Rejestracja</a>
+            </div>
+    </form>
+</div>
